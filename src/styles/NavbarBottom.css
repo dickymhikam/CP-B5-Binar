@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+
+.navbar-bottom-wrapper {
+  background: #fff;
+  height: 4.2rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  visibility: hidden;
+}
+.text-link {
+  text-decoration: none !important;
+}
+@media (max-width: 428px) {
+  .navbar-bottom-wrapper {
+    visibility: visible;
+  }
+}
