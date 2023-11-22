@@ -1,0 +1,94 @@
+
+*{
+  padding:0;
+  margin:0;
+  font-family:'Montserrat';
+}
+
+.type-container {
+  padding: 1% 9%;
+}
+
+.type-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1% 8%;
+}
+
+.type-header h2 {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+}
+
+.type-header p {
+  color: #6148FF;
+  font-weight: 800;
+  font-size: 12px;
+  text-align: end;
+  margin: 0;
+}
+
+.btn-class{
+  padding:6px 10px 6px 10px;
+  font-size:12px;
+  font-weight:700;
+  border-radius:15px;
+  border:none;
+  background:#E8F1FF;
+  margin-left:1.2rem;
+}
+
+.btn-class:hover{
+  background:#6148FF;
+  color: #EBF3FC;
+}
+
+/* Card */
+.card{
+  border: none;
+  border-radius: 22px !important;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  cursor:pointer;
+}
+
+.card-title{
+  font-weight:700;
+  color:#6148FF !important;
+}
+
+.card-text{
+  font-size:11px;
+  font-weight:700;
+}
+
+.mentor{
+  font-weight:600;
+  font-size:10px;
+}
+
+.writing-learn{
+  font-size:10px;
+}
+
+.btn-buy{
+  padding:2px 16px 2px 16px;
+  border-radius:15px;
+  border:none;
+  gap:5px;
+  background:#489CFF;
+  color:#EBF3FC;
+  font-weight:700;
+  font-size:13px;
+}
+
+.btn-buy:hover{
+  background:#6148FF;
+}
+
+@media screen and (max-width: 768px) {
+  .type-container {
+    padding: 1% 4%;
+  }
+}
