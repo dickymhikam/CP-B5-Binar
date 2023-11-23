@@ -1,119 +1,124 @@
 .home-banner {
-    background-color: #6148FF;
-    display: flex;
-    width: 100%;
+  background-color: #6148ff;
+  display: flex;
+  width: 100%;
 }
 
 .img-banner {
-    flex: 7;
-    position: relative;
+  flex: 7;
+  position: relative;
 }
 
 .img-banner img {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .img-banner-overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(to right, rgba(255, 233, 202, 0), rgba(97, 72, 255, 1));
-    pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 233, 202, 0),
+    rgba(97, 72, 255, 1)
+  );
+  pointer-events: none;
 }
 
 .text-banner {
-    display: grid;
-    align-items: end;
-    justify-content: center;
-    padding-right: 12%;
+  display: grid;
+  align-items: end;
+  justify-content: center;
+  padding-right: 12%;
 }
 
 .text-banner h2 {
-    color: #FFF;
-    width: 100%;
-    height: 40px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 36px;
-    margin-bottom: 20%;
-    align-self: flex-end;
+  color: #fff;
+  width: 100%;
+  height: 40px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  margin-bottom: 20%;
+  align-self: flex-end;
 }
 
 .button-banner {
-    background-color: #FFF;
-    color: #6148FF;
-    width: 250px;
-    height: 40px;
-    border: none;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    align-self: flex-start;
+  background-color: #fff;
+  color: #6148ff;
+  width: 250px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  align-self: flex-start;
 }
 
 .all-category {
-    background-color: #EBF3FC;
-    padding: 1% 15%;
+  background-color: #ebf3fc;
+  padding: 1% 15%;
 }
 
 .text-category {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .text-category h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
 }
 
 .text-category p {
-    color: #6148FF;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 12px;
-    text-align: end;
-    margin: 0;
+  color: #6148ff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  text-align: end;
+  margin: 0;
 }
 
 .all-card-category {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 2%;
 }
 
 .card-category h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
-    .home-banner {
-        display: none;
-    }
+  .home-banner {
+    display: none;
+  }
 
-    .text-banner {
-        display: block;
-        align-items: center;
-        justify-content: center;
-    }
+  .text-banner {
+    display: block;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .all-category {
-        padding: 1% 10%;
-    }
+  .all-category {
+    padding: 1% 10%;
+  }
 
-    .all-card-category {
-        gap: 10px;
-    }
+  .all-card-category {
+    gap: 10px;
+  }
 }

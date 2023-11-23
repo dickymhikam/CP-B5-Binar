@@ -9,7 +9,7 @@ import "../styles/NavbarBottom.css";
 
 const NavbarBottom = () => {
   return (
-    <div className="navbar-bottom-wrapper d-flex align-items-center justify-content-center gap-1 text-center sticky-bottom align-content-center">
+    <div className="navbar-bottom-wrapper d-flex align-items-center justify-content-center gap-2 text-center sticky-bottom align-content-center">
       <div className="menu">
         <Link to={"/"} className="text-link">
           <img src={fiHome} alt="Beranda" />
