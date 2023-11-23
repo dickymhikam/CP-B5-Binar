@@ -1,9 +1,7 @@
-.main-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
+.auth-coba{
+  height: 100vh;
+} 
 .txtmasuk{
   color:#6148FF;
   font-family: 'Montserrat', sans-serif; 
@@ -15,8 +13,9 @@
   size : 12px ;
 }
 
-input{
+.form-control{
   border-radius : 16px !important;
+ 
 }
 ::placeholder {
   color: #8A8A8A !important;
@@ -30,16 +29,27 @@ input{
   border-radius : 16px;
   size : 14px ;
 }
-a{
+.a{
+  font-family: 'Poppins', sans-serif;
   color:#6148FF !important;
   font-weight: bold;
-  font-family: 'Poppins', sans-serif;
+  
 
 }
-
 .account-block {
-  padding: 0;
+  /* padding: 0; */
   background-color : #6148FF !important;
-  height: 100%;
-  position: relative; 
+  /* height: 100%;
+  position: relative;  */
 }
+
+@media (max-width: 990px) {
+  .account-block {
+      display:none
+
+      
+  }
+
+}
+
+
