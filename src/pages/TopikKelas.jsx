@@ -6,6 +6,7 @@ import SideFilter from "../components/SideFilter";
 import HorizontalFilterTopik from "../components/HorizontalFilterTopik";
 import CardTopikKelas from "../components/CardTopikKelas";
 import Nav from "../components/Nav";
+import NavbarBottom from "../components/NavbarBottom";
 // import Checkbox from "../components/Checkbox";
 
 const TopikKelas = () => {
@@ -48,6 +49,7 @@ const TopikKelas = () => {
           </Row>
         </div>
       </div>
+      <NavbarBottom />
     </>
   );
 };

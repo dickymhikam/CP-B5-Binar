@@ -6,6 +6,7 @@ import SideFilter from "../components/SideFilter";
 import HorizontalFilter from "../components/HorizontalFilter";
 import CardKelas from "../components/CardKelas";
 import Nav from "../components/Nav";
+import NavbarBottom from "../components/NavbarBottom";
 // import Checkbox from "../components/Checkbox";
 
 const KelasBerjalan = () => {
@@ -48,6 +49,7 @@ const KelasBerjalan = () => {
           </Row>
         </div>
       </div>
+      <NavbarBottom />
     </>
   );
 };
