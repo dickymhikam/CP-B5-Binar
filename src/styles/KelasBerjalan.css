@@ -18,7 +18,7 @@ label {
   font-weight: 400;
   line-height: 1.5rem; /* 166.667% */
 }
-body {
+.bg-kelas-berjalan {
   background-color: #ebf3fc;
 }
 .search-kelas {

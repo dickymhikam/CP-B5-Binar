@@ -128,6 +128,6 @@
     }
 
     .button-menu {
-        display: none;
+        visibility: hidden;
     }
 }
