@@ -1,15 +1,16 @@
 // import React from 'react'
-import "../styles/ProfilSaya.css";
-import Nav from "../components/Nav";
-import CardAkun from "../components/CardAkun";
-import HeaderAkun from "../components/HeaderAkun";
+import Nav from "../components/Home/Nav";
+import CardProfilSaya from "../components/Akun/CardProfilSaya";
+import HeaderAkun from "../components/Akun/HeaderAkun";
+import NavbarBottom from "../components/Home/NavbarBottom";
 
 const ProfilSaya = () => {
   return (
     <>
       <Nav />
       <HeaderAkun />
-      <CardAkun />
+      <CardProfilSaya />
+      <NavbarBottom />
     </>
   );
 };

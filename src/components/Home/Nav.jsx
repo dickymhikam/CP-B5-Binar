@@ -1,12 +1,12 @@
-import "../styles/Nav.css";
+import "../../styles/Nav.css";
 import { Link } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 
-import btnsearch from "../assets/bx_search-alt.png";
-import btnlogin from "../assets/fi_log-in.png";
-import btnNotif from "../assets/fi_bell.svg";
-import btnUser from "../assets/fi_user.svg";
-import btnList from "../assets/fi_list.svg";
+import btnsearch from "../../assets/bx_search-alt.svg";
+import btnlogin from "../../assets/fi_log-in.svg";
+import btnNotif from "../../assets/fi_bell.svg";
+import btnUser from "../../assets/fi_user.svg";
+import btnList from "../../assets/fi_list.svg";
 
 const Nav = () => {
   return (
@@ -30,9 +30,9 @@ const Nav = () => {
                 </Link> */}
         <div className="button-menu d-flex align-items-center">
           <Dropdown>
-            <Dropdown.Toggle className="btn-kelas d-flex align-items-center gap-2">
+            <Dropdown.Toggle className="bg-transparent d-flex align-items-center border-0 ">
               <img src={btnList}/>
-              <p className="mb-0">Kelas</p>
+              {/* <p className="mb-0">Kelas</p> */}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>

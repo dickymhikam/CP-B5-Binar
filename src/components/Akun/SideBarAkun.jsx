@@ -1,9 +1,10 @@
 // import React from "react";
-import FiEdit from "../assets/fi_edit-3.svg";
-import FiSetting from "../assets/fi_settings.svg";
-import FiCart from "../assets/mdi_cart-outline.svg";
-import FiLogOut from "../assets/fi_log-out.svg";
+import FiEdit from "../../assets/fi_edit-3.svg";
+import FiSetting from "../../assets/fi_settings.svg";
+import FiCart from "../../assets/mdi_cart-outline.svg";
+import FiLogOut from "../../assets/fi_log-out.svg";
 import { Link } from "react-router-dom";
+import "../../styles/SideBarAkun.css";
 
 const SideBarAkun = () => {
   return (
@@ -34,7 +35,6 @@ const SideBarAkun = () => {
           </li>
         </Link>
       </ul>
-      <p className="text-secondary mx-5 px-5">Version 1.1.0</p>
     </>
   );
 };

@@ -1,16 +1,16 @@
 // import React from "react";
-import book from "../assets/book.svg";
-import star from "../assets/ic_round-star.svg";
-import permata from "../assets/permata.svg";
-import time from "../assets/ri_time-fill.svg";
-import badge from "../assets/mdi_badge-outline.svg";
-import main from "../assets/image.png";
+import book from "../../assets/book.svg";
+import star from "../../assets/ic_round-star.svg";
+import permata from "../../assets/permata.svg";
+import time from "../../assets/ri_time-fill.svg";
+import badge from "../../assets/mdi_badge-outline.svg";
+import main from "../../assets/image.png";
 // import "../styles/KelasBerjalan.css";
 
 const CardTopikKelas = () => {
   return (
     <div className="row row-cols-1 row-cols-md-2 g-4 py-5">
-      <div className="col">
+      <div className="col d-flex justify-content-center">
         <div className="card">
           <img src={main} className="card-img-top" alt="..." />
           <div className="card-body">
@@ -43,7 +43,7 @@ const CardTopikKelas = () => {
           </div>
         </div>
       </div>
-      <div className="col">
+      <div className="col d-flex justify-content-center">
         <div className="card">
           <img src={main} className="card-img-top" alt="..." />
           <div className="card-body">
@@ -78,7 +78,7 @@ const CardTopikKelas = () => {
           </div>
         </div>
       </div>
-      <div className="col">
+      <div className="col d-flex justify-content-center">
         <div className="card">
           <img src={main} className="card-img-top" alt="..." />
           <div className="card-body">

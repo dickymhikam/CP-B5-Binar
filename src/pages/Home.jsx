@@ -1,8 +1,8 @@
 import "../styles/Home.css";
-import Nav from "../components/Nav";
-import Card from "../components/Card";
-import Footer from "../components/Footer";
-import NavbarBottom from "../components/NavbarBottom";
+import Nav from "../components/Home/Nav";
+import Card from "../components/Kelas/CardKursus";
+import Footer from "../components/Home/Footer";
+import NavbarBottom from "../components/Home/NavbarBottom";
 
 import imgBanner from "../assets/img-banner.png";
 import cardCategory from "../assets/unsplash__x335IZXxfc.png";

@@ -1,0 +1,16 @@
+.list-group {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+.list-item {
+  border-bottom: 1px solid #e5e5e5;
+  margin-right: 2rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+.list-name {
+  font-weight: 600;
+  color: #6148ff;
+  font-size: 14px;
+}

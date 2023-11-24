@@ -91,7 +91,7 @@
   background-color: #6148ff !important;
   color: white !important;
 }
-@media (max-width: 428px) {
+@media (max-width: 768px) {
   .horizontal-filter {
     gap: 10px;
   }

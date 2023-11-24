@@ -74,12 +74,12 @@
 }
 
 .checkbox-label {
-  margin-left: 8px; /* Sesuaikan dengan jarak yang diinginkan */
+  margin-left: 8px;
 }
 
-@media (max-width: 428px) {
+@media (max-width: 768px) {
   .kelas-header {
-    flex-direction: column-reverse; /* Membalikkan urutan kolom secara vertikal */
+    flex-direction: column-reverse;
   }
   .form {
     display: none;

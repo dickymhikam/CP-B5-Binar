@@ -1,12 +1,12 @@
-import "../styles/card.css";
-import book from "../assets/book.svg";
-import star from "../assets/ic_round-star.svg";
-import permata from "../assets/permata.svg";
-import time from "../assets/ri_time-fill.svg";
-import badge from "../assets/mdi_badge-outline.svg";
-import main from "../assets/image.png";
+import "../../styles/CardKursus.css";
+import book from "../../assets/book.svg";
+import star from "../../assets/ic_round-star.svg";
+import permata from "../../assets/permata.svg";
+import time from "../../assets/ri_time-fill.svg";
+import badge from "../../assets/mdi_badge-outline.svg";
+import main from "../../assets/image.png";
 
-const Card = () => {
+const CardKursus = () => {
   return (
     <>
       {/* Header */}
@@ -29,13 +29,13 @@ const Card = () => {
       </div>
 
       {/* Card */}
-      <div className="container">
-        <div className="row row-cols-2 row-cols-md-2 row-cols-lg-3 g-4 py-3">
-          <div className="col">
-            <div className="card">
+      <div className="container d-flex justify-content-center">
+        <div className="row row-cols-1 row-cols-md-3 row-cols-lg-3 py-3 card-kursus-wrapper">
+          <div className="col px-0 d-flex justify-content-center">
+            <div className="card ">
               <img src={main} className="card-img-top" alt="..." />
               <div className="card-body">
-                <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-between ">
                   <h5 className="card-title">UI/UX</h5>
                   <span className="rate">
                     <img src={star} className="icon-star mb-sm-1" />
@@ -66,7 +66,7 @@ const Card = () => {
               </div>
             </div>
           </div>
-          <div className="col">
+          <div className="col px-0 d-flex justify-content-center">
             <div className="card">
               <img src={main} className="card-img-top" alt="..." />
               <div className="card-body">
@@ -101,7 +101,7 @@ const Card = () => {
               </div>
             </div>
           </div>
-          <div className="col">
+          <div className="col px-0 d-flex justify-content-center">
             <div className="card">
               <img src={main} className="card-img-top" alt="..." />
               <div className="card-body">
@@ -142,4 +142,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default CardKursus;

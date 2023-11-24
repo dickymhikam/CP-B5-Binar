@@ -2,11 +2,11 @@
 import "../styles/TopikKelas.css";
 import { Form, Row, Col } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
-import SideFilter from "../components/SideFilter";
-import HorizontalFilterTopik from "../components/HorizontalFilterTopik";
-import CardTopikKelas from "../components/CardTopikKelas";
-import Nav from "../components/Nav";
-import NavbarBottom from "../components/NavbarBottom";
+import SideFilter from "../components/Kelas/SideFilter";
+import HorizontalFilterTopik from "../components/Kelas/HorizontalFilterTopik";
+import CardTopikKelas from "../components/Kelas/CardTopikKelas";
+import Nav from "../components/Home/Nav";
+import NavbarBottom from "../components/Home/NavbarBottom";
 // import Checkbox from "../components/Checkbox";
 
 const TopikKelas = () => {
