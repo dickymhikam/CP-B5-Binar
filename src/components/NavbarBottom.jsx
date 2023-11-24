@@ -17,26 +17,26 @@ const NavbarBottom = () => {
         </Link>
       </div>
       <div className="menu">
-        <img src={fiNotif} alt="Beranda" />
         <Link to={"/"} className="text-link">
+          <img src={fiNotif} alt="Notif" />
           Notifikasi
         </Link>
       </div>
       <div className="menu">
         <Link to={"/kelas-saya"} className="text-link">
-          <img src={fiKelas} alt="Beranda" />
+          <img src={fiKelas} alt="Kursus" />
           Kelas
         </Link>
       </div>
       <div className="menu">
         <Link to={"/topik-kelas"} className="text-link">
-          <img src={fiKursus} alt="Beranda" />
+          <img src={fiKursus} alt="Kelas" />
           Kursus
         </Link>
       </div>
       <div className="menu">
-        <img src={fiAkun} alt="Beranda" />
-        <Link to={"/"} className="text-link">
+        <Link to={"/profil-saya"} className="text-link">
+          <img src={fiAkun} alt="Akun" />
           Akun
         </Link>
       </div>

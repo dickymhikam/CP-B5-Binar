@@ -1,0 +1,46 @@
+.background {
+  background-color: #ebf3fc;
+  height: 9rem;
+}
+.kembali {
+    margin-left: 1rem;
+}
+.back-to-home {
+  text-decoration: none !important;
+  font-weight: 600;
+  color: #6148ff;
+}
+.card-akun {
+  border: 1px solid #6148ff;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 0;
+  margin-top: 11.2rem;
+  width: 80%;
+  margin-left: 6rem;
+}
+.card-header {
+  background-color: #6148ff;
+  color: white;
+  font-weight: 700;
+  height: 4rem;
+  border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px!important;
+}
+.list-group {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+.list-item {
+  border-bottom: 1px solid #e5e5e5;
+  margin-right: 2rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+.list-name {
+  font-weight: 600;
+  color: #6148ff;
+  font-size: 14px;
+}

@@ -5,7 +5,9 @@
   margin: 0;
   font-family: "Montserrat";
 }
-
+.bg-topik-kelas {
+  background-color: #ebf3fc;
+}
 .btn-class {
   padding: 6px 10px 6px 10px;
   font-size: 12px;

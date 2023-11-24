@@ -5,6 +5,7 @@ import KelasBerjalan from "./pages/KelasBerjalan";
 import TopikKelas from "./pages/TopikKelas";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PaySuccess from './pages/PembayarnBerhasil';
+import ProfilSaya from './pages/ProfilSaya';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/kelas-saya" element={<KelasBerjalan />} />
           <Route path="/topik-kelas" element={<TopikKelas />} />
           <Route path="/payment-success" element={<PaySuccess />} />
+          <Route path="/profil-saya" element={<ProfilSaya />} />
         </Routes>
       </BrowserRouter>
     </>
