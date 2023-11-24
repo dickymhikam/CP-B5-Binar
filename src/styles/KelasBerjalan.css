@@ -1,17 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
 
-h3 {
+.tagline-kelas-berjalan {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
 }
-h5 {
+.filters-tagline {
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
   font-style: normal;
   font-weight: 700;
   line-height: 1.5rem; /* 150% */
 }
-label {
+.checkbox-label {
   font-family: "Montserrat", sans-serif;
   font-size: 0.75rem;
   font-style: normal;

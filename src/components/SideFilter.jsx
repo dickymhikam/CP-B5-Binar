@@ -5,7 +5,7 @@ const SideFilter = () => {
   return (
     <div className="side-filter">
       <div className="container ps-3">
-        <h5 className="mb-3 pt-3">Filter</h5>
+        <h5 className="mb-3 pt-3 filters-tagline">Filter</h5>
         <div className="checkbox-filter gap-2">
           <div className="mb-2 d-flex align-items-center">
             <input type="checkbox" id="checkbox1" />
@@ -27,7 +27,7 @@ const SideFilter = () => {
           </div>
         </div>
 
-        <h5 className="mt-4 mb-3">Kategori</h5>
+        <h5 className="mt-4 mb-3 filters-tagline">Kategori</h5>
         <div className="checkbox-kategori gap-2">
           <div className="mb-2 d-flex align-items-center">
             <input type="checkbox" id="checkbox1" />
@@ -61,7 +61,7 @@ const SideFilter = () => {
           </div>
         </div>
 
-        <h5 className="mt-4 mb-3">Level Kesulitas</h5>
+        <h5 className="mt-4 mb-3 filters-tagline">Level Kesulitas</h5>
         <div className="checkbox-level gap-2">
           <div className="mb-2 d-flex align-items-center">
             <input type="checkbox" id="checkbox1" />

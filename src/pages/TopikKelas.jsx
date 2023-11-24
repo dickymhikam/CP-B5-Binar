@@ -16,7 +16,7 @@ const TopikKelas = () => {
       <div className="bg-topik-kelas">
         <div className="container">
           <div className="kelas-header d-flex justify-content-between align-items-center py-4 gap-5">
-            <h3 className="text-start m-0">Topik Kelas</h3>
+            <h3 className="text-start m-0 tagline-topik-kelas">Topik Kelas</h3>
             <Form
               inline
               className="d-flex justify-content-end m-0 search-kelas"
