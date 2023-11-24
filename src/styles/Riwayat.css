@@ -1,0 +1,40 @@
+.detail-riwayat-wrapper {
+    display: flex;
+    padding: 15px 0px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.detail-riwayat-header {
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.detail-riwayat-card .card {
+    height: auto;
+}
+
+.card-riwayat-wrapper {
+    gap: 20px;
+}
+
+.card-riwayat-title {
+    color:#6148FF !important;
+    font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 14px;
+}
+
+.card-riwayat-text {
+    font-size: 8px;
+    font-weight:700;
+    line-height: 14px;
+}
