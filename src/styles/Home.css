@@ -59,6 +59,11 @@
   line-height: 24px;
   text-align: center;
   align-self: flex-start;
+  transition: 0.2s ease-in;
+}
+
+.button-banner:hover {
+  filter: brightness(150%);
 }
 
 .all-category {
