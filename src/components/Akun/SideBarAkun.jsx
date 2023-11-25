@@ -12,26 +12,26 @@ const SideBarAkun = () => {
       <ul className="list-group gap-2 py-3">
         <Link to={"/profil-saya"} className="text-decoration-none">
           <li className="list-item d-flex align-items-center gap-2">
-            <img src={FiEdit} alt="" className="pb-3"/>
-            <p className="mb-0 list-name pb-3">Profil Saya</p>
+            <img src={FiEdit} alt=""/>
+            <p className="mb-0 list-name ">Profil Saya</p>
           </li>
         </Link>
         <Link to={"/ubah-password"} className="text-decoration-none">
           <li className="list-item d-flex align-items-center gap-2">
-            <img src={FiSetting} alt="" className="pb-3"/>
-            <p className="mb-0 list-name pb-3">Ubah Password</p>
+            <img src={FiSetting} alt=""/>
+            <p className="mb-0 list-name ">Ubah Password</p>
           </li>
         </Link>
         <Link to={"/riwayat-pembayaran"} className="text-decoration-none">
           <li className="list-item d-flex align-items-center gap-2">
-            <img src={FiCart} alt="" className="pb-3"/>
-            <p className="mb-0 list-name pb-3">Riwayat Pembayaran</p>
+            <img src={FiCart} alt=""/>
+            <p className="mb-0 list-name ">Riwayat Pembayaran</p>
           </li>
         </Link>
         <Link to={"/logout"} className="text-decoration-none">
           <li className="list-item d-flex align-items-center gap-2">
-            <img src={FiLogOut} alt="" className="pb-3"/>
-            <p className="mb-0 list-name pb-3">Log Out</p>
+            <img src={FiLogOut} alt=""/>
+            <p className="mb-0 list-name ">Log Out</p>
           </li>
         </Link>
       </ul>
