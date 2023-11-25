@@ -94,6 +94,11 @@
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
+  transition: 0.2s ease-in;
+}
+
+.btn-login-admin:hover {
+  filter: brightness(150%);
 }
 
 @media screen and (max-width: 768px) {

@@ -93,6 +93,11 @@
     border-radius: 10px;
     width: 47px;
     height: 38px;
+    transition: 0.2s ease-in;
+}
+
+.btn-admin-search:hover {
+    filter: brightness(150%);
 }
 
 .sidebar-admin-offcanvas {
