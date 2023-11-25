@@ -36,12 +36,12 @@ const Nav = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">
+              <Dropdown.Item >
                 <Link to={"/kelas-saya"}>
                   <button className="btn-kelas">Kelas Saya</button>
                 </Link>
               </Dropdown.Item>
-              <Dropdown.Item href="#/action-2">
+              <Dropdown.Item>
                 <Link to={"/topik-kelas"}>
                   <button className="btn-kelas">Topik Kelas</button>
                 </Link>
