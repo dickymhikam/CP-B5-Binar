@@ -9,6 +9,7 @@ import ProfilSaya from "./pages/ProfilSaya";
 import UbahPassword from "./pages/UbahPassword";
 import RiwayatPembayaran from "./pages/RiwayatPembayaran";
 import Notifikasi from "./pages/Notifikasi";
+import LoginAdmin from "./components/Admin/LoginAdmin";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/ubah-password" element={<UbahPassword />} />
           <Route path="/riwayat-pembayaran" element={<RiwayatPembayaran />} />
           <Route path="/notifikasi" element={<Notifikasi />} />
+          <Route path="/admin/login" element={<LoginAdmin />} />
         </Routes>
       </BrowserRouter>
     </>
