@@ -80,6 +80,17 @@
     gap: 24px;
 }
 
+.button-menu img {
+    transition: 0.2s ease-in-out;
+}
+
+.button-menu img:hover {
+    background: var(--Light-Blue-100, #489CFF);
+    border-radius: 10px;
+    width: 100px;
+    height: 25px;
+}
+
 .btn-kelas {
     background-color: #489CFF;
     color: #FFF;
