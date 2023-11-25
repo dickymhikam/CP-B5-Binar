@@ -1,52 +1,33 @@
 import "../../styles/LoginAdmin.css";
-// import React from "react";
-// import { Link } from 'react-router-dom';
 
-const Login = () => {
-  return (
-    <>
-      <div className="auth-section">
-        <div className="row auth-wrapper">
-          <div className=" col-lg-7 my-auto d-flex justify-content-center">
-            <div className="px-5">
-              <h3 className="txtmasuk font-bold">Masuk</h3>
-              <form className="fm">
-                <div className="control-form mb-3  ">
-                  <label>Email / No Telepon</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Contoh:Johndoe@gmail.com"
-                  />
+const LoginAdmin = () => {
+    return (
+        <>
+            <div className="login-admin-wrapper">
+                <div className="login-admin-brand">
+                    <div className="navbar-brand"></div>
                 </div>
-                <div className="control-form mb-3">
-                  <label>Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="Masukan Password"
-                  />
+                <div className="login-admin-body">
+                    <div className="login-admin-input">
+                        <div className="admin-body-header">
+                            Login
+                        </div>
+                        <form className="admin-body-form" action="">
+                            <div className="admin-form-item">
+                                <label>ID Admin</label>
+                                <input type="text" placeholder="ID Admin" />
+                            </div>
+                            <div className="admin-form-item">
+                                <label>Password</label>
+                                <input type="password" placeholder="Masukkan password" />
+                            </div>
+                            <button className="btn-login-admin" type="submit">Masuk</button>
+                        </form>
+                    </div>
                 </div>
-                <div className="d-grid mb-5 ">
-                  <button className="btn btn-masuk" type="submit">
-                    Masuk
-                  </button>
-                </div>
-                <p className="control-form text-muted text-center">
-                  Belum punya akun?{" "}
-                  <a href="/register" className="text-decoration-none a">
-                    {" "}
-                    Daftar di sini
-                  </a>
-                </p>
-              </form>
             </div>
-          </div>
-          <div className="col-lg-5 account-block"></div>
-        </div>
-      </div>
-    </>
-  );
-};
+        </>
+    )
+}
 
-export default Login;
+export default LoginAdmin;
