@@ -38,6 +38,7 @@
   border:none;
   background:#E8F1FF;
   margin-left:1.2rem;
+  transition: 0.2s ease-in;
 }
 
 .btn-class:hover{
@@ -83,6 +84,7 @@
   color:#EBF3FC;
   font-weight:700;
   font-size:13px;
+  transition: 0.2s ease-in;
 }
 
 .btn-buy:hover{
