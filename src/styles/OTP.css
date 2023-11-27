@@ -1,0 +1,112 @@
+.OTP-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.OTP-brand {
+    background: var(--Dark-Blue-100, #6148FF);
+    width: 45%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.OTP-body {
+    padding: 0 5% 0 5%;
+    width: 55%;
+}
+
+.otp-card {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.otp-card {
+    padding: 0 36px 0 36px;
+}
+
+.otp-card h1 {
+    color: var(--Dark-Blue-100, #6148FF);
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    margin-bottom: 48px;
+}
+
+.otp-card-inputs {
+    display: grid;
+    gap: 16px;
+    justify-content: center;
+    grid-template-columns: repeat(6, auto);
+    margin-top: 44px;
+    margin-bottom: 24px;
+}
+
+.otp-card-inputs input {
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 16px;
+    border: 1px solid var(--Dark-Blue-100, #6148FF);
+    background: #FFF;
+}
+
+.otp-card-inputs input:focus {
+    outline: 2px solid blueviolet;
+    border-color: transparent;
+}
+
+.otp-card button {
+    background: var(--Dark-Blue-100, #6148FF);
+    border-radius: 16px;
+    color: var(--neutral-01, #FFF);
+    width: 100%;
+    height: 48px;
+    padding: 12px 24px;
+    gap: 4px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 48px;
+}
+
+.otp-card button:hover {
+    opacity: 0.9;
+}
+
+.otp-card button[disabled] {
+    opacity: 0.6;
+    cursor: default;
+}
+
+@media screen and (max-width: 767px) {
+    .OTP-brand {
+        display: none;
+    }
+
+    .OTP-wrapper {
+        background: var(--Light-Blue-5, #EBF3FC);
+        height: 100vh;
+        align-items: start;
+    }
+
+    .OTP-body {
+        width: 100%;
+        padding: 20px 0px 37px 0px;
+    }
+
+    .OTP-body img {
+        padding-left: 26px;
+    }
+
+    .otp-card {
+        justify-content: center;
+        margin-top: 38px;
+    }
+}
