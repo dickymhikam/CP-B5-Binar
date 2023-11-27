@@ -13,6 +13,7 @@ import Notifikasi from "./pages/Notifikasi";
 import LoginAdmin from "./components/Admin/LoginAdmin";
 import DashboardAdmin from "./pages/DashboardAdmin";
 import KelasAdmin from "./pages/KelasAdmin";
+import DetailKelas from "./pages/DetailKelas";
 
 function App() {
   return (
@@ -22,11 +23,12 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/otp" element={<OTP />} />
           <Route path="/kelas-saya" element={<KelasBerjalan />} />
           <Route path="/topik-kelas" element={<TopikKelas />} />
+          <Route path="/detail-kelas" element={<DetailKelas />} />
           <Route path="/payment-success" element={<PaySuccess />} />
           <Route path="/profil-saya" element={<ProfilSaya />} />
-          <Route path="/otp" element={<OTP />} />
           <Route path="/ubah-password" element={<UbahPassword />} />
           <Route path="/riwayat-pembayaran" element={<RiwayatPembayaran />} />
           <Route path="/notifikasi" element={<Notifikasi />} />
