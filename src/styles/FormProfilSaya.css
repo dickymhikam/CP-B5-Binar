@@ -1,5 +1,12 @@
 /* Form Profile */
 
+.ubah-pass-tagline {
+  font-size: 24px ;
+  margin-top: 20px;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+
+}
 .input-profile {
   display: grid;
   justify-content: center;

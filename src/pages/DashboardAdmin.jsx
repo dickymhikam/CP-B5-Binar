@@ -13,7 +13,7 @@ const DashboardAdmin = () => {
             </div>
             <div className="admin-body">
                 <NavAdmin />
-                <div className="p-5">
+                <div className="px-5 pt-5">
                     <CardAdmin/>
                 </div>
                 <div className="p-5">

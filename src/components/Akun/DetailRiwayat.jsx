@@ -12,7 +12,7 @@ const DetailRiwayatPembayaran = () => {
     <>
         <div className="detail-riwayat-wrapper">
             <div className="detail-riwayat-header">
-                Riwayat Pemabayaran
+                Riwayat Pembayaran
             </div>
             <div className="detail-riwayat-card">
                 {/* card */}

@@ -6,7 +6,6 @@
   /* top: 25%; */
   left: 15;
   max-width: 100%;
-  overflow-y: hidden;
 }
 .modal-content {
   border-radius: 30px;
