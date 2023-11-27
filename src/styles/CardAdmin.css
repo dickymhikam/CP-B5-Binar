@@ -1,0 +1,51 @@
+.card{
+    padding: 24px;
+    border-radius: 15px !important;
+    width: 280px;
+    height: 108px;
+}
+
+.icon-admin{
+    height: 60px;
+    width: 60px;
+}
+
+.content-card{
+    display: flex;
+    align-items: center;
+}
+
+.writing{
+    gap: 24px;
+    line-height: 6px;
+    margin-left: 15px;
+}
+
+.number{
+    color: #FFFFFF;
+    font-weight: 400;
+}
+
+.title{
+    color: #FFFFFF;
+    font-weight:700 ;
+}
+.card-users{
+    background:#489CFF ;
+}
+
+.card-active{
+    background: #73CA5C;
+}
+
+.card-premium{
+    background:#6148FF ;
+}
+
+@media screen and (max-width: 768px) {
+    .card-dashboard{
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+}

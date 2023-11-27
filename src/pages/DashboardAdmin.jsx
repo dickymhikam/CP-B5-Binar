@@ -1,5 +1,7 @@
+import CardAdmin from "../components/Admin/CardAdmin";
 import NavAdmin from "../components/Admin/NavAdmin";
 import SideBarAdmin from "../components/Admin/SideBarAdmin";
+import TableAdmin from "../components/Admin/TableAdmin";
 import "../styles/Admin.css"
 
 const DashboardAdmin = () => {
@@ -12,7 +14,10 @@ const DashboardAdmin = () => {
             <div className="admin-body">
                 <NavAdmin />
                 <div className="p-5">
-                    <p>isi body DASHBOARD disini</p>
+                    <CardAdmin/>
+                </div>
+                <div className="p-5">
+                    <TableAdmin/>
                 </div>
             </div>
         </div>
