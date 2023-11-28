@@ -29,7 +29,7 @@
     flex-direction: column;
     justify-content: center;
     height: 250px;
-    width: 60%;
+    width: 55%;
 }
 .detail-card-text {
     display: flex;
@@ -115,24 +115,4 @@
     font-weight: 700;
     line-height: 24px;
     margin: 0;
-}
-/* detail-video */
-.detail-header-video {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60%;
-    height: 327px;
-    margin-top: 34px;
-    background-color: red;
-}
-/* detail-about */
-.detail-body-about {
-    width: 60%;
-    background-color: green;
-}
-/* detail-materi */
-.detail-body-materi {
-    width: 40%;
-    background-color: yellow;
 }

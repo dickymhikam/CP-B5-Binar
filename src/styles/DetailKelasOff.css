@@ -1,1 +1,78 @@
-/* mas adimas */
+.btn-materi {
+    border-radius: 25px;
+    background-color: #6148ff;
+    border: #6148ff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+  }
+  .check-progress {
+    min-width: 130px;
+    text-align: center;
+  }
+  .materi-belajar {
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+  }
+  .progress-bar {
+    text-align: center;
+    font-size: x-small;
+    padding-left: 5px;
+    background-color: #6148ff;
+    border-radius: 20px;
+  }
+  .progress {
+    background-color: #d9d9d9 !important;
+    border-radius: 20px;
+  }
+  .tagline-materi {
+    font-size: 12px;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    color: #6148ff;
+  }
+  .waktu-materi {
+    font-size: 12px;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    color: #489cff;
+  }
+  .title-materi-offcanvas {
+    width: 190px;
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+  }
+  .nomor-materi {
+    background-color: #ebf3fc;
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50%;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+  }
+  .materi-item .play-btn {
+    display: flex;
+    align-items: center;
+    justify-content: end !important;
+  }
+  .play-btn {
+    padding-left: 3px;
+  }
+  .sidebar-admin-offcanvas {
+    visibility: hidden;
+  }
+  .sidebar-offcanvas-body {
+    background: #fff;
+    width: 70% !important;
+    font-size: 12px !important;
+    color: black;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .sidebar-admin-offcanvas {
+      visibility: visible;
+      margin-right: 20px;
+    }
+  }
+  
