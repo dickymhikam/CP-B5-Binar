@@ -34,6 +34,7 @@
   font-weight: 400;
   line-height: 24px; /* 240% */
   flex: 1 0 0;
+  text-align: justify;
 }
 .text-ditunjuk {
   width: 318px;
@@ -52,4 +53,15 @@
   font-weight: 400;
   line-height: 24px; /* 240% */
   flex: 1 0 0;
+}
+@media screen and (max-width: 768px) {
+  .detail-header-video {
+    width: 100%;
+    margin-top: 0;
+    border-radius: 0;
+  }
+  .detail-body-about {
+    width: 100%;
+    padding: 0 5% 0 5%;
+  }
 }

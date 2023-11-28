@@ -1,118 +1,140 @@
 /* detail-kelas-page */
 .detail-kelas-bg {
-    background: var(--Light-Blue-5, #EBF3FC);
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
-    width: 100%;
-    height: 250px;
-    position: absolute;
-    top: 100px;
-    left: 0;
-    z-index: 0;
+  background: var(--Light-Blue-5, #ebf3fc);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  height: 250px;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  z-index: 0;
 }
 .detail-kelas-wrapper {
-    position: relative;
-    top: 5%;
-    left: 0;
-    z-index: 1;
-    padding: 0 5% 0 5%;
+  position: relative;
+  top: 5%;
+  left: 0;
+  z-index: 1;
+  padding: 0 5% 0 5%;
 }
 .detail-kelas-header {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .detail-kelas-body {
-    display: flex;
+  display: flex;
 }
 /* detail-card */
 .detail-header-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 250px;
-    width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 250px;
+  width: 55%;
 }
 .detail-card-text {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .detail-card-text img {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 .detail-card-text h3 {
-    color: var(--Black, #000);
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 24px;
-    margin: 0 0 0 20px;
+  color: var(--Black, #000);
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0 0 0 20px;
 }
 .detail-card-body {
-    margin-top: 20px;
-    padding: 0 5% 0 5%;
+  margin-top: 20px;
+  padding: 0 5% 0 5%;
 }
 .detail-card-body-title {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .detail-card-body-title h5 {
-    color: var(--Dark-Blue-100, #6148FF);
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 14px;
-    margin-bottom: 10px;
+  color: var(--Dark-Blue-100, #6148ff);
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 14px;
+  margin-bottom: 10px;
 }
 .detail-card-body-title .rate {
-    font-size: 14px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
 }
 .detail-card-body h2 {
-    color: #202244;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    margin-bottom: 5px;
+  color: #202244;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 5px;
 }
 .detail-card-body h3 {
-    color: var(--Black, #000);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 18px;
+  color: var(--Black, #000);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
 }
 .detail-card-body-stat {
-    display: flex;
-    align-items: center;
-    gap: 5%;
-    color: var(--Black, #000);
-    font-family: "Montserrat", sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  color: var(--Black, #000);
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
 }
 .detail-card-body-btn {
-    background: var(--Success, #73CA5C);
-    border-radius: 25px;
-    border: none;
-    box-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.10);
-    display: flex;
-    width: auto;
-    height: auto;
-    padding: 1% 5% 1% 5%;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  background: var(--Success, #73ca5c);
+  border-radius: 25px;
+  border: none;
+  box-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  width: auto;
+  height: auto;
+  padding: 1% 5% 1% 5%;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 .detail-card-body-btn p {
-    color: var(--neutral-01, #FFF);
-    text-align: center;
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 24px;
-    margin: 0;
+  color: var(--neutral-01, #fff);
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0;
+}
+@media screen and (max-width: 768px) {
+  .detail-kelas-bg {
+    display: none;
+  }
+  .detail-kelas-wrapper {
+    padding: 0;
+  }
+  .detail-kelas-header {
+    flex-direction: column-reverse;
+  }
+  .detail-card-text {
+    display: none;
+  }
+  .detail-header-card {
+    width: 100%;
+    height: 200px;
+  }
+
+  .detail-body-materi {
+    display: none;
+  }
 }

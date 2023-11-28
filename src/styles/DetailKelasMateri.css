@@ -50,7 +50,7 @@
 .number-materi {
   width: 10%;
   max-width: 30px;
-  max-height: 30px ;
+  max-height: 30px;
   background: #ebf3fc;
   display: flex;
   justify-content: center;
@@ -118,4 +118,9 @@
   width: 352px;
   align-items: center;
   gap: 10px;
+}
+@media screen and (max-width: 768px) {
+  .detail-kelas-header {
+    flex-direction: column-reverse;
+  }
 }

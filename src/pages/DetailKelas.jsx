@@ -60,7 +60,7 @@ const DetailKelas = () => {
                   45 menit
                 </p>
               </div>
-              <div className="d-flex align-items-center">
+              <div className="d-flex align-items-center gap-3">
                 <button className="detail-card-body-btn">
                   <p>Join Grup Telegram</p>
                   <img src={btnJoin} />
