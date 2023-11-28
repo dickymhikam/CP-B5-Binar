@@ -1,6 +1,7 @@
 import fisuccess from "../assets/payment-success.png";
 import Nav from "../components/Home/Nav";
 import "../styles/PaySuccess.css";
+import NavbarBottom from "../components/Home/NavbarBottom";
 
 const PaySuccess = () => {
   return (
@@ -17,6 +18,7 @@ const PaySuccess = () => {
         <button className="btn-start">Mulai Belajar</button>
         <p className="footer-text">Kembali Ke Beranda</p>
       </div>
+      <NavbarBottom />
     </>
   );
 };

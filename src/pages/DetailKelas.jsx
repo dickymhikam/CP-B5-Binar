@@ -19,6 +19,7 @@ import play from "../assets/playvideo.svg";
 
 import DetailAbout from "../components/Detail/DetailAbout";
 import DetailMateri from "../components/Detail/DetailMateri";
+import NavbarBottom from "../components/Home/NavbarBottom";
 
 const DetailKelas = () => {
   return (
@@ -85,6 +86,7 @@ const DetailKelas = () => {
           </div>
         </div>
       </div>
+      <NavbarBottom />
     </>
   );
 };

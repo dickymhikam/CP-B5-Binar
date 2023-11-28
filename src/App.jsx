@@ -14,6 +14,7 @@ import LoginAdmin from "./components/Admin/LoginAdmin";
 import DashboardAdmin from "./pages/DashboardAdmin";
 import KelasAdmin from "./pages/KelasAdmin";
 import DetailKelas from "./pages/DetailKelas";
+import PembayaranDetail from "./pages/PembayaranDetail";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/kelas-saya" element={<KelasBerjalan />} />
           <Route path="/topik-kelas" element={<TopikKelas />} />
           <Route path="/detail-kelas" element={<DetailKelas />} />
+          <Route path="/detail-pembayaran" element={<PembayaranDetail />} />
           <Route path="/payment-success" element={<PaySuccess />} />
           <Route path="/profil-saya" element={<ProfilSaya />} />
           <Route path="/ubah-password" element={<UbahPassword />} />
