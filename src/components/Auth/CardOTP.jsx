@@ -1,38 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const CardOTP = () => {
-    const [lastInputStatus, setLastInputStatus] = useState(0);
     const [otpInputs, setOtpInputs] = useState(Array.from({ length: 6 }, () => ''));
     const [isSimpanEnabled, setIsSimpanEnabled] = useState(false);
 
-    const handleKeyUp = (e, index) => {
-        const currentElement = e.target;
-        const nextIndex = index + 1;
-        const prevIndex = index - 1;
+    const inputRefs = useRef([...Array(6)].map(() => React.createRef()));
 
-        if (prevIndex >= 0 && e.keyCode === 8) {
-            if (lastInputStatus === 1) {
-                const newInputs = [...otpInputs];
-                newInputs[prevIndex] = '';
-                setOtpInputs(newInputs);
-                document.getElementById(`otp-input-${prevIndex}`).focus();
-            }
-            setLastInputStatus(1);
-        } else {
-            const reg = /^[0-9]+$/;
-            if (!reg.test(currentElement.value)) {
-                currentElement.value = currentElement.value.replace(/D/g, '');
-            } else if (currentElement.value) {
-                const newInputs = [...otpInputs];
-                newInputs[index] = currentElement.value;
-                setOtpInputs(newInputs);
+    const handleInputChange = (e, index) => {
+        const value = e.target.value;
+        const newInputs = [...otpInputs];
+        newInputs[index] = value;
+        setOtpInputs(newInputs);
 
-                if (nextIndex < otpInputs.length) {
-                    document.getElementById(`otp-input-${nextIndex}`).focus();
-                } else {
-                    setLastInputStatus(0);
-                }
-            }
+        if (value !== '' && index < otpInputs.length - 1) {
+            inputRefs.current[index + 1].current.focus();
+        } else if (value === '' && index > 0) {
+            inputRefs.current[index - 1].current.focus();
         }
     };
 
@@ -50,13 +33,12 @@ const CardOTP = () => {
                     {otpInputs.map((input, index) => (
                         <input
                             key={index}
+                            ref={inputRefs.current[index]}
                             id={`otp-input-${index}`}
                             type="text"
                             maxLength="1"
                             value={input}
-                            onChange={(e) => {
-                                handleKeyUp(e, index);
-                            }}
+                            onChange={(e) => handleInputChange(e, index)}
                         />
                     ))}
                 </div>
@@ -66,7 +48,7 @@ const CardOTP = () => {
                 <button disabled={!isSimpanEnabled}>Simpan</button>
             </div>
         </>
-    )
-}
+    );
+};
 
 export default CardOTP;
