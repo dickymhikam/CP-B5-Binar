@@ -1,1 +1,67 @@
-/* mas awang */
+.detail-header-video {
+  justify-content: center;
+  width: 55%;
+  height: 327px;
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.85);
+  align-items: center;
+  display: flex;
+  margin-top: 34px;
+}
+
+.detail-body-about {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+.txt-kelass {
+  width: 318px;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 70%; /* 70% */
+  color: #000000;
+  padding-top: 20px;
+}
+.txt-design-all {
+  color: #000000cc;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 240% */
+  flex: 1 0 0;
+  text-align: justify;
+}
+.text-ditunjuk {
+  width: 318px;
+  color: var(--Black, #000);
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 14px; /* 70% */
+}
+.list-text {
+  color: #000000cc;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 240% */
+  flex: 1 0 0;
+}
+@media screen and (max-width: 768px) {
+  .detail-header-video {
+    width: 100%;
+    margin-top: 0;
+    border-radius: 0;
+  }
+  .detail-body-about {
+    width: 100%;
+    padding: 0 5% 0 5%;
+  }
+}
