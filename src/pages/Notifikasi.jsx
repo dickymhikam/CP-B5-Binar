@@ -1,5 +1,3 @@
-// import React from 'react'
-
 import HeaderAkun from "../components/Akun/HeaderAkun";
 import Nav from "../components/Home/Nav";
 import NavbarBottom from "../components/Home/NavbarBottom";

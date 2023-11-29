@@ -1,4 +1,3 @@
-// import React from 'react'
 import Nav from "../components/Home/Nav";
 import CardProfilSaya from "../components/Akun/CardProfilSaya";
 import HeaderAkun from "../components/Akun/HeaderAkun";

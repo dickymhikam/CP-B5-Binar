@@ -1,4 +1,3 @@
-// import React from 'react'
 import fiHome from "../../assets/iconamoon_home-bold.svg";
 import fiNotif from "../../assets/pajamas_notifications.svg";
 import fiKelas from "../../assets/Vector.svg";

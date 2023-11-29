@@ -1,6 +1,7 @@
-// import React from 'react'
 import { Row, Col, Container } from "react-bootstrap";
+
 import "../../styles/CardProfilSaya.css"
+
 import SideBarAkun from "./SideBarAkun";
 import FormProfilSaya from "./FormProfilSaya";
 

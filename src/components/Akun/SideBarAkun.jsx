@@ -1,9 +1,10 @@
-// import React from "react";
 import FiEdit from "../../assets/fi_edit-3.svg";
 import FiSetting from "../../assets/fi_settings.svg";
 import FiCart from "../../assets/mdi_cart-outline.svg";
 import FiLogOut from "../../assets/fi_log-out.svg";
+
 import { Link } from "react-router-dom";
+
 import "../../styles/SideBarAkun.css";
 
 const SideBarAkun = () => {
@@ -28,7 +29,7 @@ const SideBarAkun = () => {
             <p className="mb-0 list-name ">Riwayat Pembayaran</p>
           </li>
         </Link>
-        <Link to={"/logout"} className="text-decoration-none">
+        <Link to={"/"} className="text-decoration-none">
           <li className="list-item d-flex align-items-center gap-2">
             <img src={FiLogOut} alt=""/>
             <p className="mb-0 list-name ">Log Out</p>

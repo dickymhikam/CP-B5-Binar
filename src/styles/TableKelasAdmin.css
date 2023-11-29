@@ -81,52 +81,37 @@
 .text-kategori {
   font-weight: 550;
   line-height: 20px;
-  /* width:100px;
-    Height : 14px; */
 }
 
 .text-nama {
   font-weight: 700;
   line-height: 20px;
-  /* width:250px;
-    Height : 14px; */
 }
 
 .text-tipe-premium {
   font-size: 12px;
   font-weight: 700;
   color: #6148ff;
-  /* width:100px;
-    Height : 14px; */
+
 }
 
 .text-tipe-gratis {
   font-size: 12px;
   font-weight: 700;
   color: #73ca5c;
-  /* width:100px;
-    Height : 14px; */
 }
 
 .text-level {
   font-weight: 700;
   line-height: 20px;
-  /* width:100px;
-    Height : 14px; */
 }
 
 .text-harga {
   font-weight: 600;
   line-height: 20px;
-  /* width:150px;
-    Height : 20px; */
+
 }
-/* .cd{
-    width : 105px ;
-    height: 20px ;
-    border-radius: 5px;
-    gap : 5px
-} */
+
 .btn-create {
   width: 50px;
   height: 20px;

@@ -1,5 +1,6 @@
 import { Funnel } from "react-bootstrap-icons";
 import { Form } from "react-bootstrap";
+
 import "../../styles/TableAdmin.css";
 
 
@@ -19,7 +20,7 @@ const TableAdmin = () => {
             <Form.Control
               type="text"
               placeholder="Cari Kelas"
-              className="pl-5 search-form-admin" // Sesuaikan padding kiri agar ikon tetap terlihat
+              className="pl-5 search-form-admin"
             />
           </div>
         </div>

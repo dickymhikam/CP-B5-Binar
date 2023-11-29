@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import "../styles/KelasBerjalan.css";
 
 const HorizontalFilter = () => {
   const [activeButton, setActiveButton] = useState("All");

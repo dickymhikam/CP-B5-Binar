@@ -2,6 +2,7 @@ import NavAdmin from "../components/Admin/NavAdmin";
 import SideBarAdmin from "../components/Admin/SideBarAdmin";
 import CardAdmin from "../components/Admin/CardAdmin";
 import TableAdminKelas from "../components/Admin/TableAdminKelas";
+
 import "../styles/TableKelasAdmin.css";
 
 const KelasAdmin = () => {

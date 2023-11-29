@@ -1,6 +1,7 @@
-// import React from 'react'
 import fiArrowLeft from "../../assets/fi_arrow-left.svg";
+
 import { Link } from "react-router-dom";
+
 import "../../styles/HeaderAkun.css";
 
 const HeaderAkun = () => {

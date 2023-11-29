@@ -1,5 +1,4 @@
 import "../../styles/Auth.css";
-// import React from "react";
 
 const Register = () => {
   return (

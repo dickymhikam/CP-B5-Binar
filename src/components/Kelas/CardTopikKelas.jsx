@@ -1,14 +1,16 @@
-// import React from "react";
 import book from "../../assets/book.svg";
 import star from "../../assets/ic_round-star.svg";
 import permata from "../../assets/permata.svg";
 import time from "../../assets/ri_time-fill.svg";
 import badge from "../../assets/mdi_badge-outline.svg";
 import main from "../../assets/image.png";
-// import "../styles/KelasBerjalan.css";
+
+import { Link } from "react-router-dom";
 
 const CardTopikKelas = () => {
   return (
+    <>
+    <Link to={"/detail-kelas"} className="text-decoration-none text-dark">
     <div className="row row-cols-1 row-cols-md-2 g-4 py-5">
       <div className="col d-flex justify-content-center">
         <div className="card">
@@ -112,6 +114,8 @@ const CardTopikKelas = () => {
         </div>
       </div>
     </div>
+    </Link>
+    </>
   );
 };
 

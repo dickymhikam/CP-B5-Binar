@@ -1,4 +1,5 @@
 import "../styles/Home.css";
+
 import Nav from "../components/Home/Nav";
 import Card from "../components/Kelas/CardKursus";
 import Footer from "../components/Home/Footer";
@@ -6,6 +7,7 @@ import NavbarBottom from "../components/Home/NavbarBottom";
 
 import imgBanner from "../assets/img-banner.png";
 import cardCategory from "../assets/unsplash__x335IZXxfc.png";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -24,7 +26,9 @@ const Home = () => {
               <br />
               dari Praktisi Terbaik!
             </h2>
-            <button className="button-banner">IKUTI KELAS</button>
+            <Link to={"/topik-kelas"} className="align-self-start">
+              <button className="button-banner">IKUTI KELAS</button>
+            </Link>
           </div>
         </div>
       </section>
@@ -65,6 +69,7 @@ const Home = () => {
       </section>
 
       <Card />
+
       <Footer />
       <NavbarBottom />
     </>

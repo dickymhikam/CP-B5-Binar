@@ -1,7 +1,10 @@
 import { useState } from "react";
+
 import "../../styles/TableAdmin.css";
+
 import { Form } from "react-bootstrap";
 import { Funnel } from "react-bootstrap-icons";
+
 import addBtn from "../../assets/gala_add.svg";
 import ModalTambahKelas from "../Modals/ModalTambahKelas";
 import ModalUbahKelas from "../Modals/ModalUbahKelas";
@@ -31,7 +34,7 @@ const TableAdminKelas = () => {
               <Form.Control
                 type="text"
                 placeholder="Cari Kelas"
-                className="pl-5 search-form-admin" // Sesuaikan padding kiri agar ikon tetap terlihat
+                className="pl-5 search-form-admin"
               />
             </div>
           </div>

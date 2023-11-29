@@ -44,14 +44,3 @@
   font-weight: 700;
   font-size: 1rem;
 }
-/* @media screen and (max-width: 768px) {
-  .modal-content {
-    border-radius: 0;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
-  .modal .modal-dialog {
-    margin: 0;
-    bottom: 0;
-  }
-} */

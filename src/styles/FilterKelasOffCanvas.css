@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+
+.btn-filter-off {
+  background-color: transparent;
+  color: #6148ff;
+  font-size: 1rem;
+  font-weight: 800;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+  display: none !important;
+}
+.btn-filter-off:hover {
+  background-color: transparent;
+  color: #489cff;
+}
+.filter-offcanvas {
+  overflow-y: hidden;
+}
+.filters-tagline {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5rem;
+}
+.checkbox-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+.hapus-filter {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 700;
+  border-radius: 0.9375rem;
+}
+.search-form {
+  border-radius: 1rem;
+  border: 2px solid #6148ff;
+  color: var(--Deep-Grey, #8a8a8a);
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.sidebar-offcanvas-filter-body {
+  height: 39rem !important;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+.checkbox-label {
+  margin-left: 8px;
+}
+@media (max-width: 768px) {
+  .btn-filter-off {
+    display: block !important;
+  }
+}

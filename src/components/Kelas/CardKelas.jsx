@@ -1,18 +1,19 @@
-// import React from "react";
 import book from "../../assets/book.svg";
-import star from "../../assets/ic_round-star.svg";
-// import permata from "../assets/permata.svg";
+import star from "../../assets/ic_round-star.svg"
 import time from "../../assets/ri_time-fill.svg";
 import badge from "../../assets/mdi_badge-outline.svg";
 import main from "../../assets/image.png";
+
 import ProgressBar from "react-bootstrap/ProgressBar";
-// import "../styles/KelasBerjalan.css";
+import { Link } from "react-router-dom";
 
 const CardKelas = () => {
   const now1 = 90;
   const now2 = 50;
   const now3 = 70;
   return (
+    <>
+    <Link to={"/detail-kelas"} className="text-decoration-none text-dark">
     <div className="row row-cols-1 row-cols-md-2 g-4 py-5">
       <div className="col d-flex justify-content-center">
         <div className="card">
@@ -122,6 +123,8 @@ const CardKelas = () => {
         </div>
       </div>
     </div>
+    </Link>
+    </>
   );
 };
 

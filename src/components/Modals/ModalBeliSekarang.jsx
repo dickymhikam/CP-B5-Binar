@@ -1,6 +1,6 @@
-// import React from 'react'
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+
 import "../styles/ModalBeliSekarang.css";
 
 import book from "../assets/clarity_book-line.svg";

@@ -1,5 +1,5 @@
-// import React from "react";
 import "../../styles/Riwayat.css"
+
 import book from "../../assets/book.svg";
 import star from "../../assets/ic_round-star.svg";
 import permata from "../../assets/permata.svg";

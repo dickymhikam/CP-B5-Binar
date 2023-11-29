@@ -1,6 +1,3 @@
-// import React from "react";
-// import "../styles/KelasBerjalan.css";
-
 const SideFilter = () => {
   return (
     <div className="side-filter">

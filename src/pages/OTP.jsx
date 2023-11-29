@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import "../styles/OTP.css"
+
 import CardOTP from "../components/Auth/CardOTP";
 import btnBack from "../assets/fi_arrow-left-black.svg";
+
+import "../styles/OTP.css"
 
 const OTPBerhasil = () => {
     return (

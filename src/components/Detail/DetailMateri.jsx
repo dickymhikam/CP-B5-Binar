@@ -1,7 +1,7 @@
-// import React from 'react'
 import filock from "../../assets/fi_lock.svg";
 import ficheck from "../../assets/fi_check.svg";
 import ProgressBar from "react-bootstrap/ProgressBar";
+
 import { PlayCircleFill } from "react-bootstrap-icons";
 
 const DetailMateri = () => {

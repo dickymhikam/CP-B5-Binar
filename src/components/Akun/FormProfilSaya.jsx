@@ -1,6 +1,5 @@
-// import React from 'react'
-
 import { ImageAlt } from "react-bootstrap-icons";
+
 import "../../styles/FormProfilSaya.css";
 
 const FormProfilSaya = () => {

@@ -1,7 +1,7 @@
-// import React from 'react'
 import UbahPassword from './FormUbahPassword'
-import { Row, Col, Container } from "react-bootstrap";
 import SideBarAkun from "./SideBarAkun";
+
+import { Row, Col, Container } from "react-bootstrap";
 
 const CardPassword = () => {
   return (

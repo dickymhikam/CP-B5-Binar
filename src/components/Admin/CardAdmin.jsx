@@ -1,5 +1,7 @@
 import "../../styles/CardAdmin.css";
+
 import fiAdmin from "../../assets/icon-card-admin.svg";
+
 const CardAdmin = () => {
   return (
     <>

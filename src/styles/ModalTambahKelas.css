@@ -3,7 +3,6 @@
 .modal-form-wrapper {
   height: 100vh;
   position: absolute;
-  /* top: 25%; */
   left: 15;
   max-width: 100%;
 }

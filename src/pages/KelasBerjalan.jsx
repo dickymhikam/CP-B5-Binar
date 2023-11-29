@@ -1,13 +1,15 @@
-// import { useState } from "react";
 import "../styles/KelasBerjalan.css";
+
 import { Form, Row, Col } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
+
 import SideFilter from "../components/Kelas/SideFilter";
 import HorizontalFilter from "../components/Kelas/HorizontalFilter";
 import CardKelas from "../components/Kelas/CardKelas";
 import Nav from "../components/Home/Nav";
 import NavbarBottom from "../components/Home/NavbarBottom";
-// import Checkbox from "../components/Checkbox";
+import FilterKelasOffCanvas from "../components/Kelas/FilterKelasOffCanvas";
+
 
 const KelasBerjalan = () => {
   return (
@@ -19,25 +21,28 @@ const KelasBerjalan = () => {
             <h3 className="text-start m-0 tagline-kelas-berjalan">
               Kelas Berjalan
             </h3>
-            <Form
-              inline
-              className="d-flex justify-content-end m-0 search-kelas"
-            >
-              <Row>
-                <Col>
-                  <div className="position-relative form">
-                    <Form.Control
-                      type="text"
-                      placeholder="Cari Kelas"
-                      className="pl-5 search-form" // Sesuaikan padding kiri agar ikon tetap terlihat
-                    />
-                    <div className="d-flex align-items-center position-absolute top-50 end-0 translate-middle-y px-2">
-                      <Search />
+            <div className="d-flex">
+              <FilterKelasOffCanvas />
+              <Form
+                inline
+                className="d-flex justify-content-end m-0 search-kelas"
+              >
+                <Row>
+                  <Col>
+                    <div className="position-relative form">
+                      <Form.Control
+                        type="text"
+                        placeholder="Cari Kelas"
+                        className="pl-5 search-form" // Sesuaikan padding kiri agar ikon tetap terlihat
+                      />
+                      <div className="d-flex align-items-center position-absolute top-50 end-0 translate-middle-y px-2">
+                        <Search />
+                      </div>
                     </div>
-                  </div>
-                </Col>
-              </Row>
-            </Form>
+                  </Col>
+                </Row>
+              </Form>
+            </div>
           </div>
 
           <div className="konten-kelas my-5">
