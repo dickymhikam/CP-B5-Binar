@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-import "../styles/ModalOnboardingKelas.css";
+import "../../styles/ModalOnboardingKelas.css";
 
-import onboarding from "../assets/group.svg";
+import onboarding from "../../assets/group.svg";
 
 const ModalOnboardingKelas = (props) => {
   return (
@@ -41,12 +43,14 @@ const ModalOnboardingKelas = (props) => {
 
       </Modal.Body>
       <Modal.Footer className="modal-footer-beli d-flex justify-content-center border-0 ">
+        <Link to={"/detail-kelas"}>
         <Button
           onClick={props}
           className="btn-onboarding d-flex justify-content-center align-items-center gap-2"
         >
           Ikuti Kelas
         </Button>
+        </Link>
       </Modal.Footer>
     </Modal>
   );

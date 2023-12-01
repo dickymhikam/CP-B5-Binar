@@ -10,6 +10,8 @@ import arah from "../assets/carbon.svg";
 
 import NavbarBottom from "../components/Home/NavbarBottom";
 
+import { Link } from "react-router-dom"
+
 const PembayaranDetail = () => {
   return (
     <>
@@ -181,9 +183,11 @@ const PembayaranDetail = () => {
                     </p>
                   </div>
                 </div>
+                <Link to={"/payment-success"}>
                 <button className="btn btn-bayar">
                   Bayar dan Ikuti Kelas Selamanya <img src={arah} alt="" />
                 </button>
+                </Link>
               </div>
             </div>
           </div>

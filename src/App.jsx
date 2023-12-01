@@ -15,6 +15,7 @@ import DashboardAdmin from "./pages/DashboardAdmin";
 import KelasAdmin from "./pages/KelasAdmin";
 import DetailKelas from "./pages/DetailKelas";
 import PembayaranDetail from "./pages/PembayaranDetail";
+import ResetPass from "./components/Auth/ResetPass";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/reset-password" element={<ResetPass />} />
           <Route path="/otp" element={<OTP />} />
           <Route path="/kelas-saya" element={<KelasBerjalan />} />
           <Route path="/topik-kelas" element={<TopikKelas />} />

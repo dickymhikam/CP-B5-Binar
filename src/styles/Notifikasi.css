@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+
+.notif-content-wrapper {
+  width: 100%;
+}
+.notif-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: #6148ff;
+}
+.notif-text {
+  font-size: 0.75rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+.notif-syarat {
+  font-size: 0.75rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #8a8a8a;
+}
+.notif-date {
+  font-size: 0.75rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: #8a8a8a;
+}
+.status {
+  width: 10px;
+  margin-top: 3px !important;
+}
+@media (max-width: 768px) {
+  .notif-container {
+    padding: 0;
+  }
+  .notif-content-wrapper {
+    flex-direction: column;
+  }
+  .notif-wrapper {
+    margin: 0 !important;
+    border-bottom: 1px solid #8a8a8a;
+    margin-bottom: 15px !important;
+  }
+  .notif-date {
+    justify-content: space-between;
+    margin-right: 1rem;
+  }
+}

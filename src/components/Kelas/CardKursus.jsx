@@ -1,3 +1,6 @@
+import { useState } from "react";
+// import { Link } from "react-router-dom";
+
 import "../../styles/CardKursus.css";
 
 import book from "../../assets/book.svg";
@@ -6,9 +9,12 @@ import permata from "../../assets/permata.svg";
 import time from "../../assets/ri_time-fill.svg";
 import badge from "../../assets/mdi_badge-outline.svg";
 import main from "../../assets/image.png";
-import { Link } from "react-router-dom";
+
+import ModalBeliSekarang from "../Modals/ModalBeliSekarang";
 
 const CardKursus = () => {
+  const [modalShowBeli, setModalShowBeli] = useState(false);
+
   return (
     <>
       {/* Header */}
@@ -31,7 +37,7 @@ const CardKursus = () => {
       </div>
 
       {/* Card */}
-      <Link to={"detail-kelas"} className="text-decoration-none text-dark">
+      {/* <Link to={"detail-kelas"} className="text-decoration-none text-dark"> */}
         <div className="container d-flex justify-content-center">
           <div className="row row-cols-1 row-cols-md-3 row-cols-lg-3 py-3 card-kursus-wrapper">
             <div className="col px-0 d-flex justify-content-center">
@@ -63,9 +69,16 @@ const CardKursus = () => {
                       120 menit
                     </p>
                   </div>
-                  <button className="btn-buy">
-                    <img src={permata} /> Beli Rp 240.000
-                  </button>
+                  <button
+                  className="btn-buy"
+                  onClick={() => setModalShowBeli(true)}
+                >
+                  <img src={permata} /> Beli Rp 240.000
+                </button>
+                <ModalBeliSekarang
+                  show={modalShowBeli}
+                  onHide={() => setModalShowBeli(false)}
+                />
                 </div>
               </div>
             </div>
@@ -141,7 +154,7 @@ const CardKursus = () => {
             </div>
           </div>
         </div>
-      </Link>
+      {/* </Link> */}
     </>
   );
 };

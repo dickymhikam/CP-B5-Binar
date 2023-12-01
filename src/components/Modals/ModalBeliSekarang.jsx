@@ -1,14 +1,16 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-import "../styles/ModalBeliSekarang.css";
+import { Link } from "react-router-dom";
 
-import book from "../assets/clarity_book-line.svg";
-import star from "../assets/ic_round-star.svg";
-import time from "../assets/ri_time-fill.svg";
-import badge from "../assets/mdi_badge-outline.svg";
-import main from "../assets/image.png";
-import arrow from "../assets/carbon_next-filled.svg";
+import "../../styles/ModalBeliSekarang.css";
+
+import book from "../../assets/clarity_book-line.svg";
+import star from "../../assets/ic_round-star.svg";
+import time from "../../assets/ri_time-fill.svg";
+import badge from "../../assets/mdi_badge-outline.svg";
+import main from "../../assets/image.png";
+import arrow from "../../assets/carbon_next-filled.svg";
 
 const BeliSekarang = (props) => {
   return (
@@ -63,12 +65,14 @@ const BeliSekarang = (props) => {
         </div>
       </Modal.Body>
       <Modal.Footer className="modal-footer-beli d-flex justify-content-center border-0">
+        <Link to={"/detail-pembayaran"}>
         <Button
           onClick={props}
           className="btn-beli d-flex justify-content-center align-items-center gap-2"
         >
           Beli Sekarang <img src={arrow} alt="" />
         </Button>
+        </Link>
       </Modal.Footer>
     </Modal>
   );
