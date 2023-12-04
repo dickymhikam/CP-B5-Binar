@@ -64,11 +64,11 @@ const BeliSekarang = (props) => {
           </div>
         </div>
       </Modal.Body>
-      <Modal.Footer className="modal-footer-beli d-flex justify-content-center border-0">
+      <Modal.Footer className="modal-footer-beli d-flex justify-content-center border-0 ">
         <Link to={"/detail-pembayaran"}>
         <Button
           onClick={props}
-          className="btn-beli d-flex justify-content-center align-items-center gap-2"
+          className="btn-buy-kelas-modal d-flex justify-content-center align-items-center gap-2"
         >
           Beli Sekarang <img src={arrow} alt="" />
         </Button>

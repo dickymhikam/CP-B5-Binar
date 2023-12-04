@@ -34,35 +34,35 @@ const Home = () => {
       </section>
 
       <section>
-        <div className="all-category">
-          <div className="text-category">
-            <h2>Kategori Belajar</h2>
-            <p>Lihat Semua</p>
+        <div className="category-wrapper">
+          <div className="category-header ">
+            <h2 className="category-tagline">Kategori</h2>
+            <p className="see-all-category">Lihat Semua</p>
           </div>
-          <div className="all-card-category">
-            <div className="card-category">
-              <img src={cardCategory} />
-              <h3>UI/UX Design</h3>
+          <div className="row category-row">
+            <div className="category-column col-lg-2  col-md-3 col-sm-4 col-6  ps-lg-0 ">
+              <img src={cardCategory} alt="" className="category-image" />
+              <p className="category-text px-2 pt-2">UI / UX Design</p>
             </div>
-            <div className="card-category">
-              <img src={cardCategory} />
-              <h3>Product Management</h3>
+            <div className=" category-column  col-lg-2 col-md-3 col-sm-4 col-6 ps-lg-0 ">
+              <img src={cardCategory} alt="" className="category-image" />
+              <p className="category-text  px-2 pt-2">Product Management</p>
             </div>
-            <div className="card-category">
-              <img src={cardCategory} />
-              <h3>Web Development</h3>
+            <div className=" category-column  col-lg-2  col-md-3  col-sm-4 col-6  ps-lg-0 ">
+              <img src={cardCategory} alt="" className="category-image" />
+              <p className="category-text px-2 pt-2">Web Development</p>
             </div>
-            <div className="card-category">
-              <img src={cardCategory} />
-              <h3>Android Development</h3>
+            <div className=" category-column  col-lg-2 col-md-3 col-sm-4 col-6 ps-lg-0">
+              <img src={cardCategory} alt="" className="category-image" />
+              <p className="category-text px-2 pt-2">Android Development</p>
             </div>
-            <div className="card-category">
-              <img src={cardCategory} />
-              <h3>iOS Development</h3>
+            <div className=" category-column  col-lg-2 col-md-3 col-sm-4  col-6  ps-lg-0">
+              <img src={cardCategory} alt="" className="category-image" />
+              <p className="category-text px-2 pt-2">IOS Development</p>
             </div>
-            <div className="card-category">
-              <img src={cardCategory} />
-              <h3>Data Science</h3>
+            <div className=" category-column col-lg-2 col-md-3 col-sm-4 col-6  ps-lg-0 ">
+              <img src={cardCategory} alt="" className="category-image" />
+              <p className="category-text px-2 pt-2">Data Science</p>
             </div>
           </div>
         </div>

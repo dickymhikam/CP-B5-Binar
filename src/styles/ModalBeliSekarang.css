@@ -76,23 +76,20 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.btn-buy {
+.btn-buy-kelas-modal {
   padding: 2px 16px 2px 16px;
-  border-radius: 15px;
+  border-radius: 50px !important;
   border: none;
   gap: 5px;
-  background: #489cff;
+  background: #6148ff;
   color: #ebf3fc;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 16px !important;
   transition: 0.2s ease-in;
   font-family: "Montserrat", sans-serif;
+  height: 3rem;
+  width: 20rem;
 }
-
-.btn-buy:hover {
-  background: #6148ff;
-}
-
 @media screen and (max-width: 768px) {
   .type-container {
     padding: 1% 4%;

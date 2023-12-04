@@ -1,19 +1,37 @@
 import "../../styles/Nav.css";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 
 import btnsearch from "../../assets/bx_search-alt.svg";
-import btnlogin from "../../assets/fi_log-in.svg";
 import btnNotif from "../../assets/fi_bell.svg";
 import btnUser from "../../assets/fi_user.svg";
 import btnList from "../../assets/fi_list.svg";
+// import btnLogin from "../../assets/fi_log-in.svg";
 
 const Nav = () => {
+  const location = useLocation();
+
+  const getButtonText = () => {
+    if (location.pathname === "/profil-saya") {
+      return "Akun";
+    } else if (location.pathname === "/notifikasi") {
+      return "Notifikasi";
+    } else if (location.pathname === "/kelas-saya") {
+      return "Kelas Saya";
+    } else if (location.pathname === "/topik-kelas") {
+      return "Topik Kelas";
+    } else {
+      return null;
+    }
+  };
+
+  const buttonText = getButtonText();
+
   return (
     <>
       <nav className="navbar-wrapper">
-        <Link to={"/"}>
+        <Link to={"/"} className="text-decoration-none">
           <div className="navbar-brand"></div>
         </Link>
         <div className="navbar-search">
@@ -23,41 +41,65 @@ const Nav = () => {
             placeholder="Cari Kursus terbaik..."
           />
           <button className="button-search">
-            <img src={btnsearch} />
+            <img src={btnsearch} alt="Search" />
           </button>
         </div>
         {/* <Link to={"/login"}>
-                    <button className="button-login"><img src={btnlogin} />Masuk</button>
-                </Link> */}
+          <button className="button-login"><img src={btnLogin} />Masuk</button>
+        </Link> */}
         <div className="button-menu d-flex align-items-center">
           <Dropdown>
             <Dropdown.Toggle className="bg-transparent d-flex align-items-center border-0 ">
-              <img src={btnList}/>
-              {/* <p className="mb-0">Kelas</p> */}
+              {location.pathname === "/kelas-saya" || location.pathname === "/topik-kelas" ? (
+                <button className="btn-menu-on">
+                  <img src={btnList}/>
+                  <div className="mx-2">
+                    {buttonText}
+                  </div>
+                </button>
+              ) : (
+                <button className="btn-menu-off">
+                  <img src={btnList}/>
+                </button>
+              )}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item >
-                <Link to={"/kelas-saya"}>
-                  <button className="btn-kelas">Kelas Saya</button>
-                </Link>
+              <Dropdown.Item as={Link} to={"/kelas-saya"} className="text-decoration-none">
+                <button className="btn-dropdown-item">Kelas Saya</button>
               </Dropdown.Item>
-              <Dropdown.Item>
-                <Link to={"/topik-kelas"}>
-                  <button className="btn-kelas">Topik Kelas</button>
-                </Link>
+              <Dropdown.Item as={Link} to={"/topik-kelas"} className="text-decoration-none">
+                <button className="btn-dropdown-item">Topik Kelas</button>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <Link to={"/notifikasi"}>
-            <button className="btn-user pt-1">
-              <img src={btnNotif} />
-            </button>
+          <Link to={"/notifikasi"} className="text-decoration-none">
+            {location.pathname === "/notifikasi" ? (
+              <button className="btn-menu-on">
+                <img src={btnNotif} className="pt-1"/>
+                <div className="mx-2">
+                  {buttonText}
+                </div>
+              </button>
+            ) : (
+              <button className="btn-menu-off">
+                <img src={btnNotif}/>
+              </button>
+            )}
           </Link>
-          <Link to={"/profil-saya"}>
-            <button className="btn-user">
-              <img src={btnUser} />
-            </button>
+          <Link to={"/profil-saya"} className="text-decoration-none">
+            {location.pathname === "/profil-saya" ? (
+              <button className="btn-menu-on">
+                <img src={btnUser}/>
+                <div className="mx-2">
+                  {buttonText}
+                </div>
+              </button>
+            ) : (
+              <button className="btn-menu-off">
+                <img src={btnUser}/>
+              </button>
+            )}
           </Link>
         </div>
       </nav>
