@@ -65,7 +65,7 @@ const BeliSekarang = (props) => {
         </div>
       </Modal.Body>
       <Modal.Footer className="modal-footer-beli d-flex justify-content-center border-0 ">
-        <Link to={"/detail-pembayaran"}>
+        <Link to={"/detail-pembayaran"} className="text-decoration-none">
         <Button
           onClick={props}
           className="btn-buy-kelas-modal d-flex justify-content-center align-items-center gap-2"

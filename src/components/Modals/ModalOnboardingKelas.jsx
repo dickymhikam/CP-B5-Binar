@@ -43,7 +43,7 @@ const ModalOnboardingKelas = (props) => {
 
       </Modal.Body>
       <Modal.Footer className="modal-footer-beli d-flex justify-content-center border-0 ">
-        <Link to={"/detail-kelas"}>
+        <Link to={"/detail-kelas"} className="text-decoration-none">
         <Button
           onClick={props}
           className="btn-onboarding d-flex justify-content-center align-items-center gap-2"
