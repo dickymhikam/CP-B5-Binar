@@ -22,12 +22,16 @@
 .header-border {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .border {
   width: 90px;
   height: 91px;
   border-radius: 50%;
   border: solid 3px #6148ff !important;
+  display: flex;
+  justify-content: end;
+  align-items: end;
 }
 
 .text-label {
@@ -50,9 +54,6 @@
   border-radius: 50%;
   border: 1px solid #6148ff;
   background: #fff;
-  position: absolute;
-  right: 22.2%;
-  top: 21.5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,11 +84,6 @@
 }
 
 @media screen and (max-width: 768px) {
-  .btn-img {
-    position: absolute;
-    top: 42.1%;
-    left: 54%;
-  }
   .form-control {
     width: 250px;
   }

@@ -5,16 +5,16 @@ import "../../styles/FormProfilSaya.css";
 const FormProfilSaya = () => {
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
-    // Lakukan sesuatu dengan file yang diunggah (misalnya, kirim ke server, dll.)
     console.log("File yang diunggah:", file);
   };
   return (
     <>
       <div className="header-border">
-        <div className="border mb-1" />
-        <label htmlFor="upload-input" className="btn-img">
-          <ImageAlt className="icon-img" />
-        </label>
+        <div className="border mb-1">
+          <label htmlFor="upload-input" className="btn-img">
+            <ImageAlt className="icon-img" />
+          </label>
+        </div>
         <input
           type="file"
           id="upload-input"
