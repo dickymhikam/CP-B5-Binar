@@ -60,7 +60,6 @@ const TopikKelas = () => {
         </div>
         <NavbarBottom />
       </div>
-      <FilterKelasOffCanvas />
     </>
   );
 };

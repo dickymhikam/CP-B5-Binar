@@ -26,10 +26,13 @@
   outline: none;
 }
 
-
 .fm label{
   font-family: "Poppins", sans-serif;
-  size: 12px;
+  font-size: 12px;
+}
+
+.body-txt-lupa{
+  color:#6148FF;
 }
 
 .input-form-user::placeholder {
@@ -78,6 +81,10 @@
 }
 
 @media (max-width: 768px) {
+  .auth-section {
+    background: var(--Light-Blue-5, #EBF3FC);
+  }
+
   .account-block {
     display: none;
   }

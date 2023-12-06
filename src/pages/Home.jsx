@@ -7,9 +7,20 @@ import NavbarBottom from "../components/Home/NavbarBottom";
 
 import imgBanner from "../assets/img-banner.png";
 import cardCategory from "../assets/unsplash__x335IZXxfc.png";
+
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getAllCategory } from "../services/api";
 
 const Home = () => {
+  const [categoryCourse, setCategoryCourse] = useState([]);
+
+  useEffect(() => {
+    getAllCategory()
+      .then((result) => {
+      setCategoryCourse(result);})
+  }, []);
+
   return (
     <>
       <Nav />
@@ -35,35 +46,17 @@ const Home = () => {
 
       <section>
         <div className="category-wrapper">
-          <div className="category-header ">
+          <div className="category-header">
             <h2 className="category-tagline">Kategori</h2>
             <p className="see-all-category">Lihat Semua</p>
           </div>
           <div className="row category-row">
-            <div className="category-column col-lg-2  col-md-3 col-sm-4 col-6  ps-lg-0 ">
-              <img src={cardCategory} alt="" className="category-image" />
-              <p className="category-text px-2 pt-2">UI / UX Design</p>
-            </div>
-            <div className=" category-column  col-lg-2 col-md-3 col-sm-4 col-6 ps-lg-0 ">
-              <img src={cardCategory} alt="" className="category-image" />
-              <p className="category-text  px-2 pt-2">Product Management</p>
-            </div>
-            <div className=" category-column  col-lg-2  col-md-3  col-sm-4 col-6  ps-lg-0 ">
-              <img src={cardCategory} alt="" className="category-image" />
-              <p className="category-text px-2 pt-2">Web Development</p>
-            </div>
-            <div className=" category-column  col-lg-2 col-md-3 col-sm-4 col-6 ps-lg-0">
-              <img src={cardCategory} alt="" className="category-image" />
-              <p className="category-text px-2 pt-2">Android Development</p>
-            </div>
-            <div className=" category-column  col-lg-2 col-md-3 col-sm-4  col-6  ps-lg-0">
-              <img src={cardCategory} alt="" className="category-image" />
-              <p className="category-text px-2 pt-2">IOS Development</p>
-            </div>
-            <div className=" category-column col-lg-2 col-md-3 col-sm-4 col-6  ps-lg-0 ">
-              <img src={cardCategory} alt="" className="category-image" />
-              <p className="category-text px-2 pt-2">Data Science</p>
-            </div>
+            {categoryCourse && categoryCourse.categoryName && (
+              <div className="category-column col-lg-2 col-md-3 col-sm-4 col-6 ps-lg-0">
+                <img src={cardCategory} alt="" className="category-image" />
+                <p className="category-text px-2 pt-2">{categoryCourse.categoryName}</p>
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -18,7 +18,7 @@ const CardKursus = () => {
   return (
     <>
       {/* Header */}
-      <div className="type-container mt-2">
+      <div className="type-container">
         <div className="row">
           <div className="type-header">
             <h2>Kursus Populer</h2>

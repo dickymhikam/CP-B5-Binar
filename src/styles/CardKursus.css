@@ -1,11 +1,6 @@
-* {
-  padding: 0;
-  margin: 0;
-  font-family: "Montserrat";
-}
-
 .type-container {
   padding: 1% 9%;
+  margin-top: 20px;
 }
 .type-container-card{
   padding: 1% 15%;
@@ -15,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1% 8%;
+  padding: 1% 8% 1% 8%;
 }
 
 .type-header h2 {
@@ -111,7 +106,15 @@
 
 @media screen and (max-width: 768px) {
   .type-container {
-    padding: 1% 4%;
+    background: var(--Light-Blue-5, #EBF3FC);
+    padding: 1% 4% 1% 4%;
+    margin-top: 0;
+  }
+  .type-container-card {
+    background: var(--Light-Blue-5, #EBF3FC);
+  }
+  .type-header {
+    padding: 1% 13.5% 1% 13.5%;
   }
   .card-kursus-wrapper {
     gap: 20px;
