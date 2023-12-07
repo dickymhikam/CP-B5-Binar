@@ -13,8 +13,8 @@ const CardKelas = () => {
   const now3 = 70;
   return (
     <>
-      <Link to={"/detail-kelas"} className="text-decoration-none text-dark">
-        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 py-3 card-kursus-wrapper">
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 py-3 card-kursus-wrapper">
+        <Link to={"/detail-kelas"} className="text-decoration-none text-dark">
           <div className="col px-0 d-flex justify-content-center card-kursus-home">
             <div className="card my-2">
               <img src={main} className="card-img-top" alt="..." />
@@ -58,6 +58,9 @@ const CardKelas = () => {
               </div>
             </div>
           </div>
+        </Link>
+
+        <Link to={"/detail-kelas"} className="text-decoration-none text-dark">
 
           <div className="col px-0 d-flex justify-content-center card-kursus-home">
             <div className="card my-2">
@@ -99,6 +102,9 @@ const CardKelas = () => {
               </div>
             </div>
           </div>
+        </Link>
+
+        <Link to={"/detail-kelas"} className="text-decoration-none text-dark">
           <div className="col px-0 d-flex justify-content-center card-kursus-home">
             <div className="card my-2">
               <img src={main} className="card-img-top" alt="..." />
@@ -139,8 +145,8 @@ const CardKelas = () => {
               </div>
             </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </>
   );
 };
