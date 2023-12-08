@@ -3,6 +3,7 @@ import "../../styles/Auth.css";
 import { useState } from "react";
 import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom'; 
 import { toast } from "react-toastify";
 
 const Register = () => {
@@ -10,6 +11,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [telp, setTelp] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -23,14 +25,9 @@ const Register = () => {
           email: email,
           telp: telp,
           password: password,
-        });
-
-        window.location.href = "/otp";
-
-      if (response.data.data.token) {
-        localStorage.setItem('token', response.data.data.token);
-      }
-
+      });
+      response.data.data;
+      navigate('/otp',{ state: { email } });
     } catch (error) {
       if (error.response) {
         toast.error(error.response.data.message);
@@ -61,7 +58,7 @@ const Register = () => {
                   <input
                     type="email"
                     className="form-control-login"
-                    placeholder="Contoh:Johndoe@gmail.com"
+                    placeholder="Contoh: johndoe@gmail.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -81,7 +78,7 @@ const Register = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     className="form-control-login"
-                    placeholder="Masukan Password"
+                    placeholder="Buat Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
@@ -94,13 +91,13 @@ const Register = () => {
                 </div>
                 <div className="d-grid mb-5 ">
                   <button className="btn btn-masuk" type="submit">
-                    Masuk
+                    Daftar
                   </button>
                 </div>
                 <p className=" text-muted text-center">
-                  Belum punya akun?{" "}
+                  Sudah punya akun?
                   <a href="/Login" className="text-decoration-none a ">
-                    Login
+                    Masuk di sini
                   </a>
                 </p>
               </form>

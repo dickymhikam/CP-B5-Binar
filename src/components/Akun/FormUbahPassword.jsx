@@ -1,12 +1,47 @@
 import { useState } from "react";
 import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
+import { toast } from "react-toastify";
 
+import { changePassword } from "../../services/api";
 
 const FormUbahPassword = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
   const [showPassword3, setShowPassword3] = useState(false);
+  const [passwords, setPasswords] = useState({
+    oldPassword: "",
+    newPassword: "",
+    repeatNewPassword: "",
+  });
+
+  const handleChange = (e, field) => {
+    setPasswords({ ...passwords, [field]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (passwords.newPassword !== passwords.repeatNewPassword) {
+      toast.error("Password baru tidak cocok");
+      return;
+    }
+
+    try {
+      await changePassword({
+        oldpassword: passwords.oldPassword,
+        newpassword: passwords.newPassword,
+      });
+      setPasswords({
+        oldPassword: "",
+        newPassword: "",
+        repeatNewPassword: "",
+      });
+      toast.success("Password berhasil diubah");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   return (
     <>
@@ -14,40 +49,59 @@ const FormUbahPassword = () => {
         <h1 className="ubah-pass-tagline">Ubah Password</h1>
       </div>
       <div className="input-profile">
-        <form className="mt-2">
+        <form className="mt-2" onSubmit={handleSubmit}>
           <label className="text-label">Masukkan Password Lama</label>
           <div className="input-form-user">
             <input
               type={showPassword ? "text" : "password"}
               className="form-control"
               placeholder="********"
+              value={passwords.oldPassword}
+              onChange={(e) => handleChange(e, "oldPassword")}
             />
-              <i className="icon-show" onClick={() => setShowPassword(!showPassword)}>{showPassword ? <EyeSlashFill/> : <EyeFill/>}</i>
-          </div>  
-        </form>
-        <form className="mt-1">
+              <i
+              className="icon-show"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <EyeSlashFill /> : <EyeFill />}
+            </i>
+          </div>
           <label className="text-label">Masukkan Password Baru</label>
-            <div className="input-form-user">
-              <input
-                type={showPassword2 ? "text" : "password"}
-                className="form-control"
-                placeholder="********"
-              />
-              <i className="icon-show" onClick={() => setShowPassword2(!showPassword2)}>{showPassword2 ? <EyeSlashFill/> : <EyeFill/>}</i>
-            </div>
-        </form>
-        <form className="mt-1">
+          <div className="input-form-user">
+            <input
+              type={showPassword2 ? "text" : "password"}
+              className="form-control"
+              placeholder="********"
+              value={passwords.newPassword}
+              onChange={(e) => handleChange(e, "newPassword")}
+            />
+            <i
+              className="icon-show"
+              onClick={() => setShowPassword2(!showPassword2)}
+            >
+              {showPassword2 ? <EyeSlashFill /> : <EyeFill />}
+            </i>
+          </div>
           <label className="text-label">Ulangi Password Baru</label>
           <div className="input-form-user">
             <input
               type={showPassword3 ? "text" : "password"}
               className="form-control"
               placeholder="********"
+              value={passwords.repeatNewPassword}
+              onChange={(e) => handleChange(e, "repeatNewPassword")}
             />
-              <i className="icon-show" onClick={() => setShowPassword3(!showPassword3)}>{showPassword3 ? <EyeSlashFill/> : <EyeFill/>}</i>
+              <i
+              className="icon-show"
+              onClick={() => setShowPassword3(!showPassword3)}
+              >
+                {showPassword3 ? <EyeSlashFill /> : <EyeFill />}
+              </i>
           </div>
+          <button type="submit" className="btn-profile mt-4">
+            Simpan Password
+          </button>
         </form>
-        <button className="btn-profile mt-4">Simpan Profile Saya</button>
       </div>
     </>
   );

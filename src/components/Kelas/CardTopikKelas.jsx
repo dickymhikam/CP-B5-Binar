@@ -3,7 +3,6 @@ import star from "../../assets/ic_round-star.svg";
 import permata from "../../assets/permata.svg";
 import time from "../../assets/ri_time-fill.svg";
 import badge from "../../assets/mdi_badge-outline.svg";
-import main from "../../assets/image.png";
 import ModalBeliSekarang from "../Modals/ModalBeliSekarang";
 
 import { useState, useEffect } from "react";
@@ -34,7 +33,7 @@ const CardTopikKelas = () => {
                 className="col px-0 d-flex justify-content-center card-kursus-home"
               >
                 <div className="card my-2">
-                  <img src={main} className="card-img-top" alt="..." />
+                <img src={course.imageUrl} className="card-img-top" alt="..." />
                   <div className="card-body">
                     <div className="d-flex justify-content-between ">
                       <h5 className="card-title text-truncate">

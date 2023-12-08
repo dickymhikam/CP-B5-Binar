@@ -42,11 +42,20 @@
 
 .card-img-top {
   border-radius: 15 0 15px 0;
+  height: 8rem;
+  border-top-right-radius: 22px;
+  border-top-left-radius: 22px;
+  object-fit: cover;
 }
 
 .card-title {
   font-weight: 700;
   color: #6148ff !important;
+}
+
+.sticky-top {
+  top: 0.7rem;
+  bottom: 0.7rem;
 }
 
 .card-text {

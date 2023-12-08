@@ -29,12 +29,16 @@ const SideBarAkun = () => {
             <p className="mb-0 list-name ">Riwayat Pembayaran</p>
           </li>
         </Link>
-        <Link to={"/"} className="text-decoration-none">
-          <li className="list-item d-flex align-items-center gap-2">
-            <img src={FiLogOut} alt=""/>
-            <p className="mb-0 list-name ">Log Out</p>
-          </li>
-        </Link>
+        <li className="list-item d-flex align-items-center gap-2">
+          <img src={FiLogOut} alt=""/>
+          <p
+            className="mb-0 list-name"
+            onClick={() => {
+              localStorage.removeItem("token");
+              window.location.href = "/";
+            }}
+          >Log Out</p>
+        </li>
       </ul>
     </>
   );

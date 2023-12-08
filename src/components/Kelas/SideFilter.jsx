@@ -1,6 +1,6 @@
 const SideFilter = () => {
   return (
-    <div className="side-filter">
+    <div className="side-filter sticky-top">
       <div className="container ps-3">
         <h5 className="mb-3 pt-3 filters-tagline">Filter</h5>
         <div className="checkbox-filter gap-2">
