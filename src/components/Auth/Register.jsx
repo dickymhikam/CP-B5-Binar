@@ -26,7 +26,6 @@ const Register = () => {
           telp: telp,
           password: password,
       });
-      response.data.data;
       navigate('/otp',{ state: { email } });
     } catch (error) {
       if (error.response) {
