@@ -102,7 +102,9 @@ const Register = () => {
               </form>
             </div>
           </div>
-          <div className="col-md-5 account-block"></div>
+          <div className="col-md-5 account-block">
+            <div className="navbar-brand" />
+          </div>
         </div>
       </div>
     </>
