@@ -83,7 +83,7 @@
   font-weight: 400;
   line-height: 18px;
 }
-.detail-card-body-stat {
+.detail-card-body-stats {
   display: flex;
   align-items: center;
   gap: 5%;
@@ -92,6 +92,12 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
+}
+.detail-stat {
+  margin-bottom: 13px;
+}
+.detail-stat img {
+  margin-right: 4px;
 }
 .detail-card-body-btn {
   background: var(--Success, #73ca5c);

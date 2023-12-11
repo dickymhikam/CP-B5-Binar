@@ -69,6 +69,7 @@ const FormProfilSaya = () => {
             type="text"
             className="form-control"
             name="nama"
+            placeholder="Masukkan nama"
             value={dataUser.nama}
             onChange={handleInputChange}
           />
@@ -87,20 +88,22 @@ const FormProfilSaya = () => {
             value={dataUser.telp}
             disabled
           />
-          <label className="text-label">Kota</label>
-          <input
-            type="text"
-            className="form-control"
-            name="kota"
-            value={dataUser.kota}
-            onChange={handleInputChange}
-          />
           <label className="text-label">Negara</label>
           <input
             type="text"
             className="form-control"
             name="negara"
+            placeholder="Masukkan negara tempat tinggal"
             value={dataUser.negara}
+            onChange={handleInputChange}
+          />
+          <label className="text-label">Kota</label>
+          <input
+            type="text"
+            className="form-control"
+            name="kota"
+            placeholder="Masukkan kota tempat tinggal"
+            value={dataUser.kota}
             onChange={handleInputChange}
           />
           <button type="submit" className="btn-profile mt-4">

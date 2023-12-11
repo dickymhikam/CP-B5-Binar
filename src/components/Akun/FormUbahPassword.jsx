@@ -55,7 +55,7 @@ const FormUbahPassword = () => {
             <input
               type={showPassword ? "text" : "password"}
               className="form-control"
-              placeholder="********"
+              placeholder="Password Lama"
               value={passwords.oldPassword}
               onChange={(e) => handleChange(e, "oldPassword")}
             />
@@ -71,7 +71,7 @@ const FormUbahPassword = () => {
             <input
               type={showPassword2 ? "text" : "password"}
               className="form-control"
-              placeholder="********"
+              placeholder="Password Baru"
               value={passwords.newPassword}
               onChange={(e) => handleChange(e, "newPassword")}
             />
@@ -87,7 +87,7 @@ const FormUbahPassword = () => {
             <input
               type={showPassword3 ? "text" : "password"}
               className="form-control"
-              placeholder="********"
+              placeholder="Ulangi Password Baru"
               value={passwords.repeatNewPassword}
               onChange={(e) => handleChange(e, "repeatNewPassword")}
             />

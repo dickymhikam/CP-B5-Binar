@@ -45,11 +45,11 @@ const CardKursus = () => {
           <div className="col-sm-12 text-center mt-2">
             <button  onClick={() => HandlerPopular("All")} className="btn-class mt-1 mb-2">All</button>
             <button  onClick={() => HandlerPopular("Data Science")} className="btn-class ">Data Science</button>
-            <button  onClick={() => HandlerPopular("UI/UX")} className="btn-class">UI/UX Design</button>
-            <button  onClick={() => HandlerPopular("Andorid")} className="btn-class">Android Development</button>
-            <button  onClick={() => HandlerPopular("Web")} className="btn-class mb-2">Web Development</button>
-            <button  onClick={() => HandlerPopular("IOS")} className="btn-class">IOS Development</button>
-            <button  onClick={() => HandlerPopular("Business")} className="btn-class">Business Intelligence</button>
+            <button  onClick={() => HandlerPopular("UI/UX Design")} className="btn-class">UI/UX Design</button>
+            <button  onClick={() => HandlerPopular("Andorid Development")} className="btn-class">Android Development</button>
+            <button  onClick={() => HandlerPopular("Web Development")} className="btn-class mb-2">Web Development</button>
+            <button  onClick={() => HandlerPopular("IOS Development")} className="btn-class">IOS Development</button>
+            <button  onClick={() => HandlerPopular("Business Intelligence")} className="btn-class">Business Intelligence</button>
           </div>
         </div>
       </div>

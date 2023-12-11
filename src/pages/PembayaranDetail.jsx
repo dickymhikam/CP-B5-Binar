@@ -70,17 +70,17 @@ const PembayaranDetail = () => {
                       <div className="cardnumber2  ">
                         <p>CVV</p>
                         <input
-                          type="text"
+                          type="number"
                           className="rp"
-                          placeholder="Jhon Doe"
+                          placeholder="000"
                       />
                       </div>
                       <div className="cardnumber2">
                         <p>Expiry Date</p>
                         <input 
-                        type="text"
+                        type="number"
                         className="rp"
-                        placeholder="Jhon Doe"
+                        placeholder="07/24"
                       />
                       </div>
                     </div>
@@ -129,24 +129,24 @@ const PembayaranDetail = () => {
                       <input
                       type="text"
                       className="rp"
-                      placeholder="Jhon Doe"
+                      placeholder="John Doe"
                       />
                     </div>
                     <div className=" kard d-flex gap-3">
                       <div className="cardnumber2  ">
                         <p>CVV</p>
                         <input
-                          type="text"
+                          type="number"
                           className="rp"
-                          placeholder="Jhon Doe"
+                          placeholder="000"
                       />
                       </div>
                       <div className="cardnumber2">
                         <p>Expiry Date</p>
                         <input 
-                        type="text"
+                        type="number"
                         className="rp"
-                        placeholder="Jhon Doe"
+                        placeholder="07/24"
                       />
                       </div>
                     </div>

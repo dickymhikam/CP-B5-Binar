@@ -60,7 +60,7 @@ const Login = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     className="form-control-login"
-                    placeholder="Masukan Password"
+                    placeholder="Masukkan Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />

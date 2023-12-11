@@ -38,27 +38,27 @@ const DetailKelas = () => {
               <h3>Kelas Lainnya</h3>
             </div>
             <div className="detail-card-body">
-              <div className="detail-card-body-title">
+              <div className="detail-card-body-title text-tuncrate">
                 <h5>UI/UX Design</h5>
                 <span className="rate">
                   <img src={star} />
                   5.0
                 </span>
               </div>
-              <h2>Intro to Basic of User Interaction Design</h2>
+              <h2 className="text-tuncrate">Intro to Basic of User Interaction Design</h2>
               <h3>by Simon Doe</h3>
-              <div className="detail-card-body-stat">
-                <p>
+              <div className="detail-card-body-stats">
+                <div className="detail-stat">
                   <img src={badge} />
                   Beginner Level
-                </p>
-                <p>
+                </div>
+                <div className="detail-stat">
                   <img src={book} />5 modul
-                </p>
-                <p>
+                </div>
+                <div className="detail-stat">
                   <img src={time} />
                   45 menit
-                </p>
+                </div>
               </div>
               <div className="d-flex align-items-center gap-3">
                 <Link to={"https://t.me/+ye__8CV4A_s5NzI9"} className="text-decoration-none">
