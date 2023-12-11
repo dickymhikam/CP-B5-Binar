@@ -72,8 +72,14 @@
 }
 
 .writing-learn {
-  font-size: 10px;
+  width: 100% ;
+}
+
+.writing-learn p {
   font-family: "Montserrat", sans-serif;
+  font-size: 8.3px;
+  font-weight: 500;
+  margin-bottom: 6px;
 }
 
 .btn-buy-kelas-modal {
