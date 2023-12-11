@@ -17,7 +17,6 @@ const DetailMateri = () => {
               now={now1}
               label={`${now1}% Complete`}
               className="progress-materi"
-              q
             />
           </div>
         </div>

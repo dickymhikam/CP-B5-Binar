@@ -38,7 +38,7 @@ const FormUbahPassword = () => {
       });
       toast.success("Password berhasil diubah");
     } catch (error) {
-      console.error(error);
+      toast.error(error);
     }
   };
 

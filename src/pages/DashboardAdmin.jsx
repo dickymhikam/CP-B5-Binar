@@ -2,6 +2,7 @@ import CardAdmin from "../components/Admin/CardAdmin";
 import NavAdmin from "../components/Admin/NavAdmin";
 import SideBarAdmin from "../components/Admin/SideBarAdmin";
 import TableAdmin from "../components/Admin/TableAdmin";
+import Footer from "../components/Home/Footer";
 
 import "../styles/Admin.css"
 
@@ -20,6 +21,7 @@ const DashboardAdmin = () => {
                 <div className="p-5">
                     <TableAdmin/>
                 </div>
+                <Footer />
             </div>
         </div>
     </>

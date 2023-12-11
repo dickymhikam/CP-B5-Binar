@@ -31,7 +31,6 @@ const Nav = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      console.log(token);
       setIsLoggedIn(true);
     }
   }, []);
@@ -57,16 +56,14 @@ const Nav = () => {
               <Dropdown>
               <Dropdown.Toggle className="bg-transparent d-flex align-items-center border-0 ">
                 {location.pathname === "/kelas-saya" || location.pathname === "/topik-kelas" ? (
-                  <button className="btn-menu-on">
-                    <img src={btnList}/>
-                    <div className="mx-2">
-                      {buttonText}
-                    </div>
-                  </button>
+                  <div className="btn-menu-on">
+                    <img src={btnList} alt="List" />
+                    <div className="mx-2">{buttonText}</div>
+                  </div>
                 ) : (
-                  <button className="btn-menu-off">
-                    <img src={btnList}/>
-                  </button>
+                  <div className="btn-menu-off">
+                    <img src={btnList} alt="List" />
+                  </div>
                 )}
               </Dropdown.Toggle>
 

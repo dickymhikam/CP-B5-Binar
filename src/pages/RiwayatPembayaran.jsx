@@ -1,6 +1,7 @@
 import Nav from "../components/Home/Nav";
-import CardRiwayat from "../components/Akun/CardRiwayat";
 import HeaderAkun from "../components/Akun/HeaderAkun";
+import CardRiwayat from "../components/Akun/CardRiwayat";
+import Footer from "../components/Home/Footer";
 import NavbarBottom from "../components/Home/NavbarBottom";
 
 const RiwayatPembayaran = () => {
@@ -9,6 +10,7 @@ const RiwayatPembayaran = () => {
       <Nav />
       <HeaderAkun />
       <CardRiwayat />
+      <Footer />
       <NavbarBottom />
     </>
   );

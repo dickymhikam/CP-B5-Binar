@@ -17,6 +17,7 @@ import MateriOffCanvas from "../components/Detail/MateriOffCanvas";
 import Nav from "../components/Home/Nav";
 import DetailAbout from "../components/Detail/DetailAbout";
 import DetailMateri from "../components/Detail/DetailMateri";
+import Footer from "../components/Home/Footer";
 import NavbarBottom from "../components/Home/NavbarBottom";
 
 const DetailKelas = () => {
@@ -86,6 +87,7 @@ const DetailKelas = () => {
           </div>
         </div>
       </div>
+      <Footer />
       <NavbarBottom />
     </>
   );

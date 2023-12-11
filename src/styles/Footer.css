@@ -1,0 +1,14 @@
+.footer-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.footer-wrapper p {
+    color: #6148ff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}

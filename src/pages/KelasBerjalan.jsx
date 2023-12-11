@@ -3,13 +3,13 @@ import "../styles/KelasBerjalan.css";
 import { Form, Row, Col } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 
+import Nav from "../components/Home/Nav";
+import Footer from "../components/Home/Footer";
+import NavbarBottom from "../components/Home/NavbarBottom";
+import FilterKelasOffCanvas from "../components/Kelas/FilterKelasOffCanvas";
 import SideFilter from "../components/Kelas/SideFilter";
 import HorizontalFilter from "../components/Kelas/HorizontalFilter";
 import CardKelas from "../components/Kelas/CardKelas";
-import Nav from "../components/Home/Nav";
-import NavbarBottom from "../components/Home/NavbarBottom";
-import FilterKelasOffCanvas from "../components/Kelas/FilterKelasOffCanvas";
-
 
 const KelasBerjalan = () => {
   return (
@@ -24,7 +24,7 @@ const KelasBerjalan = () => {
             <div className="d-flex">
               <FilterKelasOffCanvas />
               <Form
-                inline
+                inline="true"
                 className="d-flex justify-content-end m-0 search-kelas"
               >
                 <Row>
@@ -33,7 +33,7 @@ const KelasBerjalan = () => {
                       <Form.Control
                         type="text"
                         placeholder="Cari Kelas"
-                        className="pl-5 search-form" // Sesuaikan padding kiri agar ikon tetap terlihat
+                        className="pl-5 search-form"
                       />
                       <div className="d-flex align-items-center position-absolute top-50 end-0 translate-middle-y px-2">
                         <Search />
@@ -60,6 +60,7 @@ const KelasBerjalan = () => {
             </Row>
           </div>
         </div>
+        <Footer />
         <NavbarBottom />
       </div>
     </>

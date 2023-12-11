@@ -1,5 +1,6 @@
 import HeaderAkun from "../components/Akun/HeaderAkun";
 import Nav from "../components/Home/Nav";
+import Footer from "../components/Home/Footer";
 import NavbarBottom from "../components/Home/NavbarBottom";
 
 import "../styles/Notifikasi.css";
@@ -133,6 +134,7 @@ const Notifikasi = () => {
           </div>
         </div>
       </div>
+      <Footer />
       <NavbarBottom />
     </>
   );

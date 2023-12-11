@@ -45,7 +45,7 @@ const ModalOnboardingKelas = (props) => {
       <Modal.Footer className="modal-footer-beli d-flex justify-content-center border-0 ">
         <Link to={"/detail-kelas"} className="text-decoration-none">
         <Button
-          onClick={props}
+          onClick={props.onHide}
           className="btn-onboarding d-flex justify-content-center align-items-center gap-2"
         >
           Ikuti Kelas

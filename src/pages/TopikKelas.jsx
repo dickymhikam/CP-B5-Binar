@@ -3,13 +3,12 @@ import "../styles/TopikKelas.css";
 import { Form, Row, Col } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 
-import SideFilter from "../components/Kelas/SideFilter";
-import HorizontalFilterTopik from "../components/Kelas/HorizontalFilterTopik";
-import CardTopikKelas from "../components/Kelas/CardTopikKelas";
 import Nav from "../components/Home/Nav";
+import Footer from "../components/Home/Footer";
 import NavbarBottom from "../components/Home/NavbarBottom";
 import FilterKelasOffCanvas from "../components/Kelas/FilterKelasOffCanvas";
-
+import SideFilter from "../components/Kelas/SideFilter";
+import HorizontalFilterTopik from "../components/Kelas/HorizontalFilterTopik";
 
 const TopikKelas = () => {
   return (
@@ -22,7 +21,7 @@ const TopikKelas = () => {
             <div className="d-flex">
               <FilterKelasOffCanvas />
               <Form
-                inline
+                inline="true"
                 className="d-flex justify-content-end m-0 search-kelas"
               >
                 <Row>
@@ -51,13 +50,11 @@ const TopikKelas = () => {
 
               <Col md={8}>
                 <HorizontalFilterTopik />
-
-                {/* Card */}
-                <CardTopikKelas />
               </Col>
             </Row>
           </div>
         </div>
+        <Footer />
         <NavbarBottom />
       </div>
     </>

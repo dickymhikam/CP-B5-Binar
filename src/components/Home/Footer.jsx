@@ -1,7 +1,11 @@
+import "../../styles/Footer.css";
+
 const Footer = () => {
     return (
         <>
-            {/* <div>footer</div> */}
+            <div className="footer-wrapper">
+                <p>Kelompok 5 &copy; Binar Academy 2023</p>
+            </div>
         </>
     )
 }
