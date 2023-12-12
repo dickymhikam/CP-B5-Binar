@@ -4,7 +4,12 @@ import { toast } from "react-toastify";
 
 import "../../styles/FormProfilSaya.css";
 
-import { getUser, updateUser} from "../../services/api";
+import {
+  getUser,
+  updateUser,
+  postPicture,
+  getProfilePicture,
+} from "../../services/api";
 
 const FormProfilSaya = () => {
   const [dataUser, setDataUser] = useState({
@@ -14,6 +19,8 @@ const FormProfilSaya = () => {
     kota: "",
     negara: "",
   });
+  const [profileUser, setProfileUser] = useState("");
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     getUser()
@@ -25,11 +32,21 @@ const FormProfilSaya = () => {
       });
   }, []);
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    console.log("File yang diunggah:", file);
+  const handleFileUpload = async (e) => {
+    try {
+      const file = e.target.files[0];
+
+      const formData = new FormData();
+      formData.append("multipartFile", file);
+
+      const imageUrl = await postPicture(formData);
+      setProfileUser(imageUrl);
+      setRefresh(!refresh);
+    } catch (error) {
+    }
   };
 
+  
   const handleInputChange = (e) => {
     setDataUser((prevData) => ({
       ...prevData,
@@ -46,13 +63,24 @@ const FormProfilSaya = () => {
       toast.error(error);
     }
   };
+  
+  useEffect(() => {
+    getProfilePicture()
+      .then((imageUrl) => {
+        setProfileUser(imageUrl);
+      })
+      .catch((error) => {
+        console.error("Error fetching profile picture:", error);
+      });
+  }, [refresh]);
 
   return (
     <>
       <div className="input-profile">
         <form className="mt-2" onSubmit={handleSubmit}>
           <div className="header-border">
-            <div className="border mb-1">
+            <div className="profile-image">
+              <img src={profileUser} alt="Profile" />
               <label htmlFor="upload-input" className="btn-img">
                 <ImageAlt className="icon-img" />
               </label>

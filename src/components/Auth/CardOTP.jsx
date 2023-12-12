@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
+import { verifyOtp, resendOtp } from '../../services/api';
 
 const CardOTP = ({ email }) => {
     const [otpInputs, setOtpInputs] = useState(Array.from({ length: 6 }, () => ''));
@@ -23,44 +21,29 @@ const CardOTP = ({ email }) => {
         }
     };
 
-    const verifyOTP = async (enteredOTP) => {
-        try {
-            const response = await axios.post(
-                `${import.meta.env.VITE_BASE_URL}/users/otp/${enteredOTP}`,  
-            );
-
-            if (response.status === 200) {
-                const successMessage = 'OTP benar. Redirecting...';
-                toast.success(successMessage);
-                localStorage.setItem('token', response.data.data.token);
-                window.location.href = '/';
-            } 
-        } catch (error) {
-            console.error('Error during OTP verification:', error);
-            const errorMessage = 'Otp Salah. Silakan coba lagi.';
-            toast.error(errorMessage);
-            window.location.reload();
-        } 
-    };
-
     const handleVerifyOTP = async () => {
         const enteredOTP = otpInputs.join('');
         setIsFetching(true);
-        await verifyOTP(enteredOTP);
+        try {
+            const verify = await verifyOtp(enteredOTP);
+            if (verify) {
+                localStorage.setItem('token', verify.token);
+                window.location.href = '/';
+            }            
+        } catch (error) {
+            throw(error)
+        } 
+        setIsFetching(false);
     };
 
     const handleResendOTP = async () => {
         try {
-            const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/users/resend-otp/${email}`
-            );
-            console.log('Sukses mengirim ulang OTP.', response.data);
-            toast.success('OTP berhasil dikirim ulang.');
-            setResendTimer(120);
+            const resend = resendOtp(email);
+            if (resend) {
+                setResendTimer(120);
+            }
         } catch (error) {
-            console.error('Error during OTP resend:', error);
-            const errorMessage = 'Gagal mengirim ulang OTP. Silakan coba lagi.';
-            toast.error(errorMessage);
+            throw(error);
         }
     };
     

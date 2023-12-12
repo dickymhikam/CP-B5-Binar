@@ -5,10 +5,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import Home from "./pages/Home";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import OTP from "./pages/OTP";
+import EmailReset from "./components/Auth/EmailReset";
+import ResetPass from "./components/Auth/ResetPass";
 import KelasBerjalan from "./pages/KelasBerjalan";
 import TopikKelas from "./pages/TopikKelas";
+import DetailKelas from "./pages/DetailKelas";
+import PembayaranDetail from "./pages/PembayaranDetail";
 import PaySuccess from "./pages/PembayarnBerhasil";
-import OTP from "./pages/OTP";
 import ProfilSaya from "./pages/ProfilSaya";
 import UbahPassword from "./pages/UbahPassword";
 import RiwayatPembayaran from "./pages/RiwayatPembayaran";
@@ -16,9 +20,6 @@ import Notifikasi from "./pages/Notifikasi";
 import LoginAdmin from "./components/Admin/LoginAdmin";
 import DashboardAdmin from "./pages/DashboardAdmin";
 import KelasAdmin from "./pages/KelasAdmin";
-import DetailKelas from "./pages/DetailKelas";
-import PembayaranDetail from "./pages/PembayaranDetail";
-import ResetPass from "./components/Auth/ResetPass";
 
 function App() {
   return (
@@ -28,8 +29,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/reset-password" element={<ResetPass />} />
           <Route path="/otp" element={<OTP />} />
+          <Route path="/email-reset" element={<EmailReset />}/>
+          <Route path="/reset-password" element={<ResetPass />} />
           <Route path="/kelas-saya" element={<KelasBerjalan />} />
           <Route path="/topik-kelas" element={<TopikKelas />} />
           <Route path="/detail-kelas" element={<DetailKelas />} />

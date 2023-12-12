@@ -19,7 +19,7 @@ const NavAdmin = () => {
             <img src={btnList}/>
           </Button>
 
-          <Offcanvas className="sidebar-offcanvas-body" show={show} onHide={handleClose}>
+          <Offcanvas className="sidebar-offcanvas-body-admin" show={show} onHide={handleClose}>
             <Offcanvas.Header closeButton>
               <Offcanvas.Title>
                 <h1>Hi, Admin!</h1>

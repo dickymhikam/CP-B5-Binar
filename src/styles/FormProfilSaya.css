@@ -24,15 +24,6 @@
   justify-content: center;
   align-items: center;
 }
-.border {
-  width: 90px;
-  height: 91px;
-  border-radius: 50%;
-  border: solid 3px #6148ff !important;
-  display: flex;
-  justify-content: end;
-  align-items: end;
-}
 
 .text-label {
   font-size: 12px;
@@ -57,12 +48,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 .icon-img {
   color: #6148ff;
 }
-
+.profile-image {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+}
+.profile-image img {
+  border: 3px solid #6148ff;
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  position: absolute;
+  object-fit: contain;
+}
 .btn-profile {
   padding: 12px;
   width: 320px;

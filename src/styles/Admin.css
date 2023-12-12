@@ -108,12 +108,12 @@
   display: none;
 }
 
-.sidebar-offcanvas-body {
+.sidebar-offcanvas-body-admin {
   background: var(--Dark-Blue-100, #6148ff);
   width: 40% !important;
 }
 
-.sidebar-offcanvas-body h1 {
+.sidebar-offcanvas-body-admin h1 {
   color: #fff;
   font-family: "Montserrat", sans-serif;
   font-size: 24px;
@@ -121,7 +121,7 @@
   padding-top: 30px;
 }
 
-.sidebar-offcanvas-body p {
+.sidebar-offcanvas-body-admin p {
   color: #fff;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
@@ -132,7 +132,7 @@
   transition: 0.2s ease-in;
 }
 
-.sidebar-offcanvas-body p:hover {
+.sidebar-offcanvas-body-admin p:hover {
   background-color: var(--Light-Blue-100, #489cff);
 }
 

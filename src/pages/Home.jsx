@@ -47,7 +47,9 @@ const Home = () => {
         <div className="category-wrapper">
           <div className="category-header">
             <h2 className="category-tagline">Kategori</h2>
-            <p className="see-all-category">Lihat Semua</p>
+            <Link to={"/topik-kelas"} className="text-decoration-none">
+              <p className="see-all-category">Lihat Semua</p>
+            </Link>
           </div>
           <div className="row category-row">
             {categoryCourse.map((category, index) => (
@@ -63,6 +65,7 @@ const Home = () => {
       <Card />
 
       <Footer />
+      
       <NavbarBottom />
     </>
   );

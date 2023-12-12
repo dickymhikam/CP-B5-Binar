@@ -73,8 +73,7 @@ const DetailKelas = () => {
           </div>
           <div className="detail-header-video mb-2">
             {/* <div className="body-header"> */}
-            <img src={play} alt="" />
-
+              <img src={play} alt="" />
             {/* </div> */}
           </div>
         </div>

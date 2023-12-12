@@ -1,9 +1,9 @@
-import "../../styles/Auth.css";
-
 import { useState } from "react";
 import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
-import axios from "axios";
-import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+
+import "../../styles/Auth.css";
+import { loginUser } from "../../services/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,22 +14,13 @@ const Login = () => {
   const loginHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/users/login`,
-        {
-          email: email,
-          password: password,
-        });
-
-        const { token } = response.data.data;
-        localStorage.setItem("token", token);
-
+      const login = await loginUser(email, password);
+      if(login.token) {
+        localStorage.setItem("token", login.token);
         window.location.href = "/";
-
-    } catch (error) {
-      if (error.response) {
-        toast.error(error.response.data.message);
       }
+    } catch (error) {
+      throw(error);
     }
   }
 
@@ -54,7 +45,9 @@ const Login = () => {
 
                 <div className="d-flex justify-content-between">
                   <label className="mt-3">Password</label>
-                  <label className="body-txt-lupa mt-3">Lupa Kata Sandi</label>
+                  <Link to={"/email-reset"} className="text-decoration-none text-dark">
+                    <label className="body-txt-lupa mt-3">Lupa Kata Sandi</label>
+                  </Link>
                 </div>
                 <div className="input-form-user">
                   <input

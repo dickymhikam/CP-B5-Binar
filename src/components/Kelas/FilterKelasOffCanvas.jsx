@@ -17,7 +17,6 @@ const FilterKelasOffCanvas = () => {
         onClick={handleShow}
       >
         Filter
-        {/* <img src={iconNext} alt="" /> */}
       </Button>
 
       <Offcanvas
@@ -28,7 +27,6 @@ const FilterKelasOffCanvas = () => {
         
       >
         <Offcanvas.Body className="filter-offcanvas">
-          {/* <div className="side-filter-offcanvas"> */}
             <div className="container ps-3">
               <h5 className="mb-3 pt-3 filters-tagline">Filter</h5>
               <div className="checkbox-filter gap-2">
@@ -117,7 +115,6 @@ const FilterKelasOffCanvas = () => {
                 Hapus Filter
               </div>
             </div>
-          {/* </div> */}
         </Offcanvas.Body>
       </Offcanvas>
     </>
