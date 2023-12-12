@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import "../../styles/Auth.css";
 import { registerUser } from "../../services/api";
@@ -15,13 +15,9 @@ const Register = () => {
 
   const registerHandler = async (e) => {
     e.preventDefault();
-    try {
-      const register = await registerUser(name, email, telp, password);
-      if (register) {
-        navigate('/otp', { state: { email } });
-      }
-    } catch (error) {
-      throw(error);
+    const register = await registerUser(name, email, telp, password);
+    if (register) {
+      navigate("/otp", { state: { email } });
     }
   };
 
@@ -31,7 +27,7 @@ const Register = () => {
         <div className="row auth-wrapper ">
           <div className=" col-md-7 my-auto d-flex justify-content-center align-items-center">
             <div className="auth-form-wrapper">
-            <h3 className="txtmasuk font-bold">Daftar</h3>
+              <h3 className="txtmasuk font-bold">Daftar</h3>
               <form onSubmit={registerHandler} className="fm">
                 <label>Nama</label>
                 <div className="input-form-user mb-3 ">
