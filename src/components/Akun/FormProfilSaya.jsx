@@ -33,18 +33,12 @@ const FormProfilSaya = () => {
   }, []);
 
   const handleFileUpload = async (e) => {
-    try {
-      const file = e.target.files[0];
-
-      const formData = new FormData();
-      formData.append("multipartFile", file);
-
-      const imageUrl = await postPicture(formData);
-      setProfileUser(imageUrl);
-      setRefresh(!refresh);
-    } catch (error) {
-      throw(error)
-    }
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("multipartFile", file);
+    const imageUrl = await postPicture(formData);
+    setProfileUser(imageUrl);
+    setRefresh(!refresh);
   };
 
   
