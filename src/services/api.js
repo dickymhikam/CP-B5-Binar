@@ -265,7 +265,7 @@ export const postPicture = async (formData) => {
     toast.success("Gambar Profil Berhasil Diunggah")
     return response.data.url;
   } catch (error) {
-    toast.error("Gambar Profil Gagal Diunggah")
+    toast.error("Gambar profil gagal diunggah")
     throw error;
   }
 };

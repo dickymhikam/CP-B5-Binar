@@ -43,6 +43,7 @@ const FormProfilSaya = () => {
       setProfileUser(imageUrl);
       setRefresh(!refresh);
     } catch (error) {
+      throw(error)
     }
   };
 
