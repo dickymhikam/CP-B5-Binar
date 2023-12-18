@@ -1,14 +1,13 @@
 import { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
+import { PlayCircleFill } from "react-bootstrap-icons";
 
 import check from "../../assets/mdi_progress-check.svg";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import playBtn from "../../assets/playBtn.svg";
-import lockIcon from "../../assets/bxs_lock.svg";
 import iconNext from "../../assets/carbon_next-filled.svg"; 
 
-const MateriOffCanvas = () => {
+const MateriOffCanvas = ({ courseDetail }) => {
   const now1 = 50;
   const [show, setShow] = useState(false);
 
@@ -44,167 +43,32 @@ const MateriOffCanvas = () => {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <div className="materi-wrapper">
-            <div className="materi-gratis py-2">
-              <div className="materi-gratis-header d-flex justify-content-between">
-                <h6 className="tagline-materi">Chapter 1 - Pendahuluan</h6>
-                <h6 className="waktu-materi">60 Menit</h6>
-              </div>
-              <div className="materi-gratis-list">
-                <div className="materi-item d-flex align-items-center justify-content-between gap-2 py-2 border-bottom">
-                  <div className="title-play d-flex align-items-center justify-content-between gap-3">
-                    <div className="nomor-materi d-flex align-items-center justify-content-center">
-                      1
-                    </div>
-                    <div className="title-materi-offcanvas">
-                      Tujuan Mengikuti Kelas Design System
-                    </div>
-                  </div>
-                  <div className="play-btn ">
-                    <img src={playBtn} alt="" />
-                  </div>
-                </div>
-                <div className="materi-item d-flex align-items-center justify-content-between gap-2 py-2 border-bottom">
-                  <div className="title-play d-flex align-items-center justify-content-between gap-3">
-                    <div className="nomor-materi d-flex align-items-center justify-content-center">
-                      2
-                    </div>
-                    <div className="title-materi-offcanvas">
-                      Pengenalan Design System
-                    </div>
-                  </div>
-                  <div className="play-btn ">
-                    <img src={playBtn} alt="" />
-                  </div>
-                </div>
-                <div className="materi-item d-flex align-items-center justify-content-between gap-2 py-2 border-bottom">
-                  <div className="title-play d-flex align-items-center justify-content-between gap-3">
-                    <div className="nomor-materi d-flex align-items-center justify-content-center">
-                      3
-                    </div>
-                    <div className="title-materi-offcanvas">
-                      Contoh Dalam Membangun Design System
-                    </div>
-                  </div>
-                  <div className="play-btn">
-                    <img src={playBtn} alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="materi-premium py-2">
-              <div className="materi-gratis py-3">
+            {courseDetail?.getChapterResponses?.map((chapter, index) => (
+              <div className="materi-gratis py-2" key={index}>
                 <div className="materi-gratis-header d-flex justify-content-between">
-                  <h6 className="tagline-materi">Chapter 2 - Memulai Design</h6>
-                  <h6 className="waktu-materi">120 Menit</h6>
+                  <h6 className="tagline-materi">{`Chapter ${chapter.noChapter} - ${chapter.judulChapter}`}</h6>
+                  <h6 className="waktu-materi">{`${chapter.time} Menit`}</h6>
                 </div>
                 <div className="materi-gratis-list">
-                  <div className="materi-item d-flex align-items-center justify-content-between gap-2 py-2 border-bottom">
+                  {chapter.getVideoResponses?.map((video, videoIndex) => (
+                  <div className="materi-item d-flex align-items-center justify-content-between gap-2 py-2 border-bottom" key={videoIndex}>
                     <div className="title-play d-flex align-items-center justify-content-between gap-3">
                       <div className="nomor-materi d-flex align-items-center justify-content-center">
-                        4
+                        {videoIndex + 1}
                       </div>
                       <div className="title-materi-offcanvas">
-                        Color Palette
+                        {video.judulVideo}
                       </div>
                     </div>
-                    <div className="lock-btn ">
-                      <img src={lockIcon} alt="" />
+                    <div className="play-btn ">
+                      {video.isLocked && <img src={filock} alt="" className="icon-lock" />}
+                      {!video.isLocked && <PlayCircleFill className="icon-play" />}
                     </div>
                   </div>
-                  <div className="materi-item d-flex align-items-center justify-content-between gap-2 py-2 border-bottom">
-                    <div className="title-play d-flex align-items-center justify-content-between gap-3">
-                      <div className="nomor-materi d-flex align-items-center justify-content-center">
-                        5
-                      </div>
-                      <div className="title-materi-offcanvas">
-                        Typography, Layout and Grid
-                      </div>
-                    </div>
-                    <div className="lock-btn ">
-                      <img src={lockIcon} alt="" />
-                    </div>
-                  </div>
-                  <div className="materi-item d-flex align-items-center justify-content-between gap-2 py-2 border-bottom">
-                    <div className="title-play d-flex align-items-center justify-content-between gap-3">
-                      <div className="nomor-materi d-flex align-items-center justify-content-center">
-                        6
-                      </div>
-                      <div className="title-materi-offcanvas">
-                        Membuat Components
-                      </div>
-                    </div>
-                    <div className="lock-btn ">
-                      <img src={lockIcon} alt="" />
-                    </div>
-                  </div>
-                  <div className="materi-item d-flex align-items-center justify-content-between gap-2 py-2 border-bottom">
-                    <div className="title-play d-flex align-items-center justify-content-between gap-3">
-                      <div className="nomor-materi d-flex align-items-center justify-content-center">
-                        7
-                      </div>
-                      <div className="title-materi-offcanvas">
-                        Membuat Components 
-                      </div>
-                    </div>
-                    <div className="lock-btn ">
-                      <img src={lockIcon} alt="" />
-                    </div>
-                  </div>
-                  <div className="materi-item d-flex align-items-center justify-content-between gap-2 py-2 border-bottom">
-                    <div className="title-play d-flex align-items-center justify-content-between gap-3">
-                      <div className="nomor-materi d-flex align-items-center justify-content-center">
-                        8
-                      </div>
-                      <div className="title-materi-offcanvas">
-                        Membuat Components
-                      </div>
-                    </div>
-                    <div className="lock-btn ">
-                      <img src={lockIcon} alt="" />
-                    </div>
-                  </div>
-                  <div className="materi-item d-flex align-items-center justify-content-between gap-2 py-2 border-bottom">
-                    <div className="title-play d-flex align-items-center justify-content-between gap-3">
-                      <div className="nomor-materi d-flex align-items-center justify-content-center">
-                        9
-                      </div>
-                      <div className="title-materi-offcanvas">
-                        Membuat Components
-                      </div>
-                    </div>
-                    <div className="lock-btn ">
-                      <img src={lockIcon} alt="" />
-                    </div>
-                  </div>
-                  <div className="materi-item d-flex align-items-center justify-content-between gap-2 py-2 border-bottom">
-                    <div className="title-play d-flex align-items-center justify-content-between gap-3">
-                      <div className="nomor-materi d-flex align-items-center justify-content-center">
-                        10
-                      </div>
-                      <div className="title-materi-offcanvas">
-                        Membuat Components
-                      </div>
-                    </div>
-                    <div className="lock-btn ">
-                      <img src={lockIcon} alt="" />
-                    </div>
-                  </div>
-                  <div className="materi-item d-flex align-items-center justify-content-between gap-2 py-2 border-bottom">
-                    <div className="title-play d-flex align-items-center justify-content-between gap-3">
-                      <div className="nomor-materi d-flex align-items-center justify-content-center">
-                        11
-                      </div>
-                      <div className="title-materi-offcanvas">
-                        Membuat Asset
-                      </div>
-                    </div>
-                    <div className="lock-btn ">
-                      <img src={lockIcon} alt="" />
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </Offcanvas.Body>
       </Offcanvas>

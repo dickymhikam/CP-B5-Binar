@@ -36,24 +36,7 @@
   flex: 1 0 0;
   text-align: justify;
 }
-.text-ditunjuk {
-  width: 318px;
-  color: var(--Black, #000);
-  font-family: Montserrat, sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 14px;
-}
-.list-text {
-  color: #000000cc;
-  font-family: Montserrat, sans-serif;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
-  flex: 1 0 0;
-}
+
 @media screen and (max-width: 768px) {
   .detail-header-video {
     width: 100%;

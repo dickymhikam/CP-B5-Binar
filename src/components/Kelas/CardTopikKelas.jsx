@@ -9,6 +9,7 @@ import { useState } from "react";
 
 const CardTopikKelas = ({ courses }) => {
   const [modalShowBeli, setModalShowBeli] = useState(false);
+  const [courseDetail, setCourseDetail] = useState(null);
 
   return (
     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 py-3 card-kursus-wrapper">
@@ -49,14 +50,23 @@ const CardTopikKelas = ({ courses }) => {
                 <div className="btn-wrapper">
                   <button
                     className="btn-buy"
-                    onClick={() => setModalShowBeli(true)}
+                    onClick={() => {
+                      setCourseDetail(course);
+                      setModalShowBeli(true);
+                    }}
                   >
                     <img src={permata} /> {`Beli ${course.tipeKelas}`}
                   </button>
-                  <ModalBeliSekarang
-                    show={modalShowBeli}
-                    onHide={() => setModalShowBeli(false)}
-                  />
+                  {modalShowBeli && (
+                    <ModalBeliSekarang
+                      show={modalShowBeli}
+                      onHide={() => {
+                        setCourseDetail(null);
+                        setModalShowBeli(false);
+                      }}
+                      course={courseDetail}
+                    />
+                  )}
                 </div>
               </div>
             </div>

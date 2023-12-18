@@ -14,7 +14,7 @@ const CardKelas = () => {
   return (
     <>
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 py-3 card-kursus-wrapper">
-        <Link to={"/detail-kelas"} className="text-decoration-none text-dark">
+        <Link to={`/detail-kelas/?`} className="text-decoration-none text-dark">
           <div className="col px-0 d-flex justify-content-center card-kursus-home">
             <div className="card my-2">
               <img src={main} className="card-img-top" alt="..." />

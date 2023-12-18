@@ -175,6 +175,24 @@ export const getFreeClass = async () => {
   }
 };
 
+/* ============== */
+/* === DETAIL === */
+/* ============== */
+export const getDetailCourse = async (kode) => {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await axios.get(`${baseUrl}/course/get/${kode}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    // console.log(response);
+    return response.data.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 /* ============ */
 /* === USER === */
 /* ============ */

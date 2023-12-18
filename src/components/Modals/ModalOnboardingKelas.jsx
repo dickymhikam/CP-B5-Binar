@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -43,7 +44,7 @@ const ModalOnboardingKelas = (props) => {
 
       </Modal.Body>
       <Modal.Footer className="modal-footer-beli d-flex justify-content-center border-0 ">
-        <Link to={"/detail-kelas"} className="text-decoration-none">
+        <Link to={`/detail-kelas/${props.kode}`} className="text-decoration-none">
         <Button
           onClick={props.onHide}
           className="btn-onboarding d-flex justify-content-center align-items-center gap-2"
@@ -54,6 +55,12 @@ const ModalOnboardingKelas = (props) => {
       </Modal.Footer>
     </Modal>
   );
+};
+
+ModalOnboardingKelas.propTypes = {
+  show: PropTypes.bool.isRequired,
+  onHide: PropTypes.func.isRequired,
+  kode: PropTypes.string,
 };
 
 export default ModalOnboardingKelas;

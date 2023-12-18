@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 
-import "../styles/DetailKelas.css";
-import "../styles/DetailKelasKonten.css";
-import "../styles/DetailKelasMateri.css";
-import "../styles/DetailKelasOff.css";
+import Nav from "../components/Home/Nav";
+import DetailAbout from "../components/Detail/DetailAbout";
+import DetailMateri from "../components/Detail/DetailMateri";
+import Footer from "../components/Home/Footer";
+import NavbarBottom from "../components/Home/NavbarBottom";
+import MateriOffCanvas from "../components/Detail/MateriOffCanvas";
 
 import btnBack from "../assets/fi_arrow-left-black.svg";
 import book from "../assets/book.svg";
@@ -13,19 +16,29 @@ import time from "../assets/ri_time-fill.svg";
 import badge from "../assets/mdi_badge-outline.svg";
 import play from "../assets/playvideo.svg";
 
-import MateriOffCanvas from "../components/Detail/MateriOffCanvas";
-import Nav from "../components/Home/Nav";
-import DetailAbout from "../components/Detail/DetailAbout";
-import DetailMateri from "../components/Detail/DetailMateri";
-import Footer from "../components/Home/Footer";
-import NavbarBottom from "../components/Home/NavbarBottom";
+import "../styles/DetailKelas.css";
+import "../styles/DetailKelasKonten.css";
+import "../styles/DetailKelasMateri.css";
+import "../styles/DetailKelasOff.css";
+import {getDetailCourse} from "../services/api.js"
 
 const DetailKelas = () => {
+  const {kode} = useParams();
+  const [courseDetail, setCourseDetail] = useState(null);
+
+  useEffect(() => {
+    getDetailCourse(kode)
+      .then((data) => {
+        setCourseDetail(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching course list:", error);
+      });
+  }, [kode]);
+
   return (
     <>
-      {/* Navbar */}
       <Nav />
-      {/* Background */}
       <div className="detail-kelas-bg"></div>
       {/* Detail-kelas */}
       <div className="detail-kelas-wrapper">
@@ -39,25 +52,26 @@ const DetailKelas = () => {
             </div>
             <div className="detail-card-body">
               <div className="detail-card-body-title text-tuncrate">
-                <h5>UI/UX Design</h5>
+                <h5>{courseDetail?.kategori}</h5>
                 <span className="rate">
                   <img src={star} />
-                  5.0
+                    {courseDetail?.rating}
                 </span>
               </div>
-              <h2 className="text-tuncrate">Intro to Basic of User Interaction Design</h2>
-              <h3>by Simon Doe</h3>
+              <h2 className="text-tuncrate">{courseDetail?.namaKelas}</h2>
+              <h3>{`by ${courseDetail?.author}`}</h3>
               <div className="detail-card-body-stats">
                 <div className="detail-stat">
                   <img src={badge} />
-                  Beginner Level
+                  {`${courseDetail?.level} Level`}
                 </div>
                 <div className="detail-stat">
-                  <img src={book} />5 modul
+                  <img src={book} />
+                  {`${courseDetail?.modul} Modul`}
                 </div>
                 <div className="detail-stat">
                   <img src={time} />
-                  45 menit
+                  {`${courseDetail?.time} Menit`}
                 </div>
               </div>
               <div className="d-flex align-items-center gap-3">
@@ -67,7 +81,7 @@ const DetailKelas = () => {
                     <img src={btnJoin} />
                   </button>
                 </Link>
-                <MateriOffCanvas />
+                <MateriOffCanvas courseDetail={courseDetail} />
               </div>
             </div>
           </div>
@@ -79,10 +93,10 @@ const DetailKelas = () => {
         </div>
         <div className="detail-kelas-body">
           <div className="detail-body-about">
-            <DetailAbout />
+            <DetailAbout courseDetail={courseDetail} />
           </div>
           <div className="detail-body-materi ">
-            <DetailMateri />
+            <DetailMateri courseDetail={courseDetail}/>
           </div>
         </div>
       </div>

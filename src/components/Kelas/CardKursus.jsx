@@ -1,22 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import "../../styles/CardKursus.css";
-
 import book from "../../assets/book.svg";
 import star from "../../assets/ic_round-star.svg";
 import permata from "../../assets/permata.svg";
 import time from "../../assets/ri_time-fill.svg";
 import badge from "../../assets/mdi_badge-outline.svg";
 
+import "../../styles/CardKursus.css";
 import ModalBeliSekarang from "../Modals/ModalBeliSekarang";
 import { getPopularCourse } from "../../services/api";
 
 const CardKursus = () => {
   const [coursePopular, setCoursePopular] = useState([]);
   const [modalShowBeli, setModalShowBeli] = useState(false);
-
-  getPopularCourse
+  const [courseDetail, setCourseDetail] = useState(null);
 
   useEffect(() => {
     getPopularCourse("All")
@@ -28,13 +26,22 @@ const CardKursus = () => {
       });
   }, []);
 
+  const formatCurr = (value) => {
+    const formattedValue = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(value);
+    return formattedValue;
+  };
+
   const HandlerPopular = async (q) => {
     setCoursePopular(await getPopularCourse(q))
   }
 
   return (
     <>
-      {/* Header */}
       <div className="type-container">
         <div className="row">
           <div className="type-header">
@@ -55,8 +62,6 @@ const CardKursus = () => {
         </div>
       </div>
 
-      {/* Card */}
-      
       <div className="type-container-card">
         <div className="row row-cols-1 row-cols-md-3 row-cols-lg-3 py-3 card-kursus-wrapper">
           {coursePopular.map((course, index) => ( 
@@ -96,14 +101,23 @@ const CardKursus = () => {
                     <div className="btn-wrapper">
                       <button
                         className="btn-buy"
-                        onClick={() => setModalShowBeli(true)}
+                        onClick={() => {
+                          setCourseDetail(course);
+                          setModalShowBeli(true);
+                        }}
                       >
-                        <img src={permata} /> {`Beli ${course.harga}`}
+                        <img src={permata} />{`Beli ${formatCurr(course.harga)}`}
                       </button>
-                      <ModalBeliSekarang
-                        show={modalShowBeli}
-                        onHide={() => setModalShowBeli(false)}
-                      />
+                      {modalShowBeli && (
+                        <ModalBeliSekarang
+                          show={modalShowBeli}
+                          onHide={() => {
+                            setCourseDetail(null);
+                            setModalShowBeli(false);
+                          }}
+                          course={courseDetail}
+                        />
+                      )}
                     </div>
                   </div>
                 </div>

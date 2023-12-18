@@ -1,6 +1,6 @@
-import "../styles/PembayaranDetail.css";
+import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom"
 
-import Nav from "../components/Home/Nav";
 import master1 from "../assets/mastercard1.svg";
 import visa2 from "../assets/visa2.svg";
 import amek3 from "../assets/amex3.svg";
@@ -8,12 +8,48 @@ import paypal4 from "../assets/paypal4.svg";
 import gambar from "../assets/image.png";
 import arah from "../assets/carbon.svg";
 
+import Nav from "../components/Home/Nav";
 import Footer from "../components/Home/Footer";
 import NavbarBottom from "../components/Home/NavbarBottom";
 
-import { Link } from "react-router-dom"
+import "../styles/PembayaranDetail.css";
+import { getDetailCourse } from "../services/api";
 
 const PembayaranDetail = () => {
+  const [courseDetail, setCourseDetail] = useState(null);
+  const {kode} = useParams();
+
+  useEffect(() => {
+    getDetailCourse(kode)
+        .then((data) => {
+          setCourseDetail(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching course list:", error);
+        });
+  }, [kode]);
+
+  const formatCurr = (value) => {
+    const formattedValue = new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(value);
+    return formattedValue;
+  };
+
+  const calcPPN = (harga) => {
+    const ppn = (11 / 100) * harga;
+    return ppn;
+  };
+
+  const calcTotalPayment = (harga) => {
+    const ppn = calcPPN(harga);
+    const totalPayment = harga + ppn;
+    return totalPayment;
+  };
+
   return (
     <>
       <Nav />
@@ -162,30 +198,30 @@ const PembayaranDetail = () => {
                 <p className="texts-bayar">Pembayaran Kelas</p>
                 <div className="x-image">
                   <img src={gambar} alt="" className="gambar" />
-                  <p className="text-Ui mb-0 ps-3 pt-2">UI/UX Design</p>
+                  <p className="text-Ui mb-0 ps-3 pt-2">{courseDetail?.kategori}</p>
                   <div className="text-Intro ps-3">
-                    Intro to Basic of User Interaction Design
+                    {courseDetail?.namaKelas}
                     <p className="text-tengah fw-normal pb-2 ">
-                      by Simon Doe
+                      {`by ${courseDetail?.author}`}
                     </p>
                   </div>
                 </div>
                 <div className="text-body d-flex">
                   <div className="txt-h1">
                       Harga <br />
-                      <span className="fw-normal"> Rp 349,000 </span>
+                      <span className="fw-normal">{formatCurr(courseDetail?.harga)}</span>
                   </div>
                   <div className="txt-h1">
                       PPN 11% <br />
-                      <span className="fw-normal"> Rp 38,390</span>
+                      <span className="fw-normal">{formatCurr(calcPPN(courseDetail?.harga))}</span>
                   </div>
                   <div className="txt-h1">
                       Total Bayar <br />
-                      <span className="fw-normal"> Rp 387,390</span>
+                      <span className="fw-normal">{formatCurr(calcTotalPayment(courseDetail?.harga))}</span>
                   </div>
                 </div>
               </div>
-              <Link to={"/payment-success"}>
+              <Link to={`/payment-success/${courseDetail?.kodeKelas}`}>
               <button className="btn btn-bayar">
                 Bayar dan Ikuti Kelas Selamanya <img src={arah} alt="" />
               </button>

@@ -21,6 +21,42 @@ const CardOTP = ({ email }) => {
         }
     };
 
+    const handleKeyDown = (e, index) => {
+        if (e.key === 'ArrowLeft' && index > 0) {
+            inputRefs.current[index - 1].current.focus();
+            const input = inputRefs.current[index - 1].current;
+            setTimeout(() => {
+                input.setSelectionRange(input.value.length, input.value.length);
+            }, 0);
+        } else if (e.key === 'ArrowRight' && index < otpInputs.length - 1) {
+            inputRefs.current[index + 1].current.focus();
+        } else if (e.key === 'Backspace') {
+            if (index === 0 && otpInputs[index] === '') {
+                setOtpInputs(prevInputs => {
+                    const newInputs = [''].concat(prevInputs.slice(1));
+                    return newInputs;
+                });
+            } else if (index > 0 && otpInputs[index] === '') {
+                inputRefs.current[index - 1].current.focus();
+                setOtpInputs(prevInputs => {
+                    const newInputs = [...prevInputs];
+                    newInputs[index - 1] = '';
+                    return newInputs;
+                });
+            }
+        }
+    };
+
+    const handlePaste = (e, index) => {
+        e.preventDefault();
+        const pastedData = e.clipboardData.getData('text/plain');
+        const newInputs = [...otpInputs];
+        for (let i = 0; i < pastedData.length && index + i < newInputs.length; i++) {
+          newInputs[index + i] = /^\d$/.test(pastedData[i]) ? pastedData[i] : '';
+        }
+        setOtpInputs(newInputs);
+    };
+
     const handleVerifyOTP = async () => {
         const enteredOTP = otpInputs.join('');
         setIsFetching(true);
@@ -72,6 +108,8 @@ const CardOTP = ({ email }) => {
                             maxLength="1"
                             value={input}
                             onChange={(e) => handleInputChange(e, index)}
+                            onKeyDown={(e) => handleKeyDown(e, index)}
+                            onPaste={(e) => handlePaste(e, index)}
                         />
                     ))}
                 </div>

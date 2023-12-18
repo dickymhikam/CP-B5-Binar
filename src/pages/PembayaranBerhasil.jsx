@@ -1,17 +1,17 @@
 import { useState } from "react";
-// import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 
 import fisuccess from "../assets/payment-success.png";
-
 import Nav from "../components/Home/Nav";
 import NavbarBottom from "../components/Home/NavbarBottom";
+import ModalOnboardingKelas from "../components/Modals/ModalOnboardingKelas";
 
 import "../styles/PaySuccess.css";
 
-import ModalOnboardingKelas from "../components/Modals/ModalOnboardingKelas";
-
 const PaySuccess = () => {
   const [modalShowOnboarding, setModalShowOnboarding] = useState(false);
+  const {kode} = useParams();
   return (
     <>
       <Nav />
@@ -33,6 +33,7 @@ const PaySuccess = () => {
         <ModalOnboardingKelas
           show={modalShowOnboarding}
           onHide={() => setModalShowOnboarding(false)}
+          kode={kode}
         />
         <p className="footer-text">Kembali Ke Beranda</p>
       </div>

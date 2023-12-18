@@ -35,7 +35,7 @@
   width: 135px !important;
 }
 
-.header-chapter1 {
+.header-chapter {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -88,7 +88,7 @@
   width: 228px;
   height: 22px;
   color: #6148ff;
-  font-family: Montserrat, sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 800;
@@ -104,11 +104,12 @@
   width: 76px;
   height: 22px;
   color: #489cff;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 800;
   line-height: 36px;
+  text-align: end;
 }
 
 .text-materi {

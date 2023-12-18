@@ -53,8 +53,6 @@ const KelasBerjalan = () => {
 
               <Col md={8}>
                 <HorizontalFilter />
-
-                {/* Card */}
                 <CardKelas />
               </Col>
             </Row>
