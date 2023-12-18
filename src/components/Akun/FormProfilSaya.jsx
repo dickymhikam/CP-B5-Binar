@@ -93,14 +93,14 @@ const FormProfilSaya = () => {
             className="form-control"
             name="nama"
             placeholder="Masukkan nama"
-            value={dataUser.nama}
+            value={dataUser && dataUser.nama}
             onChange={handleInputChange}
           />
           <label className="text-label">Email</label>
           <input
             type="email"
             className="form-control"
-            value={dataUser.email}
+            value={dataUser && dataUser.email}
             disabled
           />
           <label className="text-label">Nomor Telepon</label>
@@ -108,7 +108,7 @@ const FormProfilSaya = () => {
             type="number"
             className="form-control"
             name="telp"
-            value={dataUser.telp}
+            value={dataUser && dataUser.telp}
             disabled
           />
           <label className="text-label">Negara</label>
@@ -117,7 +117,7 @@ const FormProfilSaya = () => {
             className="form-control"
             name="negara"
             placeholder="Masukkan negara tempat tinggal"
-            value={dataUser.negara}
+            value={dataUser && dataUser.negara}
             onChange={handleInputChange}
           />
           <label className="text-label">Kota</label>
@@ -126,7 +126,7 @@ const FormProfilSaya = () => {
             className="form-control"
             name="kota"
             placeholder="Masukkan kota tempat tinggal"
-            value={dataUser.kota}
+            value={dataUser && dataUser?.kota}
             onChange={handleInputChange}
           />
           <button type="submit" className="btn-profile mt-4">

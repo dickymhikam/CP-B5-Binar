@@ -9,7 +9,6 @@ import NavbarBottom from "../components/Home/NavbarBottom";
 import FilterKelasOffCanvas from "../components/Kelas/FilterKelasOffCanvas";
 import SideFilter from "../components/Kelas/SideFilter";
 import HorizontalFilter from "../components/Kelas/HorizontalFilter";
-import CardKelas from "../components/Kelas/CardKelas";
 
 const KelasBerjalan = () => {
   return (
@@ -53,7 +52,6 @@ const KelasBerjalan = () => {
 
               <Col md={8}>
                 <HorizontalFilter />
-                <CardKelas />
               </Col>
             </Row>
           </div>

@@ -57,18 +57,42 @@
 }
 
 .card-title {
+  color: var(--Dark-Blue-100, #6148FF);
+  font-size: 10px;
   font-weight: 700;
-  color: #6148ff !important;
+  margin:0;
+}
+
+.icon-star {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.icon-star img {
+  width: 14px;
+  height: 14px;
+}
+
+.icon-star p {
+  color: #202244;
+font-family: "Montserrat", sans-serif;
+font-size: 10px;
+font-weight: 600;
+line-height: 14px;
+margin: 0;
 }
 
 .about-class{
   font-size: 10px;
-  font-weight: 700;  
+  font-weight: 700;
+  color: #202244;
 }
 
 .mentor {
   font-weight: 600;
   font-size: 10px;
+  color: var(--Black, #000);
 }
 
 .mentor-center{
@@ -82,11 +106,15 @@
 }
 
 .writing-learn p {
+  color: var(--Black, #000);
   font-size: 8.3px;
   font-weight: 500;
   margin-bottom: 6px;
 }
 
+.writing-level {
+  color: var(--Dark-Blue-100, #6148FF) !important;
+}
 
 .btn-buy {
   padding: 2px 16px 2px 16px;
@@ -95,8 +123,9 @@
   gap: 5px;
   background: #489cff;
   color: #ebf3fc;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 10px !important;
   transition: 0.2s ease-in;
 }
 

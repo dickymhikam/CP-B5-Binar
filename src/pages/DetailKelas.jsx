@@ -74,7 +74,7 @@ const DetailKelas = () => {
                   {`${courseDetail?.time} Menit`}
                 </div>
               </div>
-              <div className="d-flex align-items-center gap-3">
+              <div className="d-flex align-items-center justify-content-between gap-3">
                 <Link to={"https://t.me/+ye__8CV4A_s5NzI9"} className="text-decoration-none">
                   <button className="detail-card-body-btn">
                     <p>Join Grup Telegram</p>

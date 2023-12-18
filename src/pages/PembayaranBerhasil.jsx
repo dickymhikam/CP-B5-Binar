@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-
 import fisuccess from "../assets/payment-success.png";
 import Nav from "../components/Home/Nav";
 import NavbarBottom from "../components/Home/NavbarBottom";

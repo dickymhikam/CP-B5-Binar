@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react";
+// import { Link } from "react-bootstrap-icons";
+
 import "../../styles/Riwayat.css";
 
 import book from "../../assets/book.svg";
@@ -5,9 +8,19 @@ import star from "../../assets/ic_round-star.svg";
 import permata from "../../assets/permata.svg";
 import time from "../../assets/ri_time-fill.svg";
 import badge from "../../assets/mdi_badge-outline.svg";
-import main from "../../assets/image.png";
+
+import { getPaymentHistory } from "../../services/api";
 
 const DetailRiwayatPembayaran = () => {
+  const [paymentHistory, setPaymentHistory] = useState([]);
+
+  useEffect(() => {
+    getPaymentHistory().then((result) => {
+      result.sort((a, b) => (a.completePaid ? 1 : -1));
+      setPaymentHistory(result);
+    });
+  }, []);
+
   return (
     <>
       <div className="detail-riwayat-wrapper">
@@ -16,131 +29,64 @@ const DetailRiwayatPembayaran = () => {
           {/* card */}
           <div className="container d-flex justify-content-center">
             <div className="row row-cols-1 row-cols-md-1 row-cols-lg-1 card-riwayat-wrapper">
-              <div className="col px-0 d-flex justify-content-center">
-                <div className="card ">
-                  <img src={main} className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <div className="d-flex justify-content-between ">
-                      <h5 className="card-title text-truncate">
-                        Business Intelligence
-                      </h5>
-                      <div className="d-flex justify-content-center  align-items-start">
-                        <img src={star} className="icon-star mt-md-1" />
-                        <p className="m-0">4.7</p>
+              {paymentHistory.map((payment, index) => (
+                <div
+                  key={index}
+                  className="col px-0 d-flex justify-content-center"
+                >
+                  <div className="card ">
+                    {/* <Link to={`/detail-kelas/${payment.courseCode}`}> */}
+                      <img
+                      src={payment.imageUrl}
+                      className="card-img-top"
+                      alt="..."
+                      />
+                    {/* </Link> */}
+                    <div className="card-body">
+                      <div className="d-flex justify-content-between ">
+                        <h5 className="card-title text-truncate">
+                          {payment.kategori}
+                        </h5>
+                        <div className="d-flex justify-content-center  align-items-start">
+                          <img src={star} className="icon-star mt-md-1" />
+                          <p className="m-0">{payment.rating}</p>
+                        </div>
                       </div>
-                    </div>
 
-                    <p className="about-class mb-0 text-truncate">
-                      Membuat Wireframe Hingga ke Visual Design
-                    </p>
-                    <div className=" pb-0  w-100">
-                      <p className="mentor mb-md-0">by Angela Doe</p>
-                      <div className="writing-learn d-flex justify-content-between">
-                        <p>
-                          <img src={badge} />
-                          Intermediate Level
-                        </p>
+                      <p className="about-class mb-0 text-truncate">
+                        {payment.namaKelas}
+                      </p>
+                      <div className=" pb-0  w-100">
+                        <p className="mentor mb-md-0">{payment.author}</p>
+                        <div className="writing-learn d-flex justify-content-between">
+                          <p>
+                            <img src={badge} />
+                            {`${payment.level} Level`}
+                          </p>
 
-                        <p>
-                          <img src={book} />
-                          10 modul
-                        </p>
-                        <p>
-                          <img src={time} />
-                          120 menit
-                        </p>
+                          <p>
+                            <img src={book} />
+                            {`${payment.modul} Modul`}
+                          </p>
+                          <p>
+                            <img src={time} />
+                            {`${payment.time} Menit`}
+                          </p>
+                        </div>
+                        {payment.completePaid ? ( 
+                        <button className="btn-buy btn-paid">
+                          <img src={permata} alt="Permata Icon" /> Paid
+                        </button>
+                      ) : (
+                        <button className="btn-buy btn-not-paid">
+                          <img src={permata} alt="Permata Icon" /> Waiting for Payment
+                        </button>
+                      )}
                       </div>
-                      <button className="btn-buy bg-danger">
-                        <img src={permata} /> Waiting for Payment
-                      </button>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="col px-0 d-flex justify-content-center">
-                <div className="card ">
-                  <img src={main} className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <div className="d-flex justify-content-between ">
-                      <h5 className="card-title text-truncate">
-                        Business Intelligence
-                      </h5>
-                      <div className="d-flex justify-content-center  align-items-start">
-                        <img src={star} className="icon-star mt-md-1" />
-                        <p className="m-0">4.7</p>
-                      </div>
-                    </div>
-
-                    <p className="about-class mb-0 text-truncate">
-                      Membuat Wireframe Hingga ke Visual Design
-                    </p>
-                    <div className=" pb-0  w-100">
-                      <p className="mentor mb-md-0">by Angela Doe</p>
-                      <div className="writing-learn d-flex justify-content-between">
-                        <p>
-                          <img src={badge} />
-                          Intermediate Level
-                        </p>
-
-                        <p>
-                          <img src={book} />
-                          10 modul
-                        </p>
-                        <p>
-                          <img src={time} />
-                          120 menit
-                        </p>
-                      </div>
-                      <button className="btn-buy bg-danger">
-                        <img src={permata} /> Waiting for Payment
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col px-0 d-flex justify-content-center">
-                <div className="card ">
-                  <img src={main} className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <div className="d-flex justify-content-between ">
-                      <h5 className="card-title text-truncate">
-                        Business Intelligence
-                      </h5>
-                      <div className="d-flex justify-content-center  align-items-start">
-                        <img src={star} className="icon-star mt-md-1" />
-                        <p className="m-0">4.7</p>
-                      </div>
-                    </div>
-
-                    <p className="about-class mb-0 text-truncate">
-                      Membuat Wireframe Hingga ke Visual Design
-                    </p>
-                    <div className=" pb-0  w-100">
-                      <p className="mentor mb-md-0">by Angela Doe</p>
-                      <div className="writing-learn d-flex justify-content-between">
-                        <p>
-                          <img src={badge} />
-                          Intermediate Level
-                        </p>
-
-                        <p>
-                          <img src={book} />
-                          10 modul
-                        </p>
-                        <p>
-                          <img src={time} />
-                          120 menit
-                        </p>
-                      </div>
-                      <button className="btn-buy bg-success">
-                        <img src={permata} /> Paid
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

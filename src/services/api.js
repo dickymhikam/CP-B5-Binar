@@ -73,7 +73,6 @@ export const resetEmail = async (email) => {
       }
     );
     toast.success(response.data.message);
-    // console.log('response',response)
   } catch (error) {
     if (axios.isAxiosError(error)) {
       toast.error(error.response.data.message);
@@ -89,7 +88,6 @@ export const resetPassword = async (email, code, newPassword) => {
       `${baseUrl}/users/set-forgot-password?email=${email}&code=${code}&newPassword=${newPassword}`
     );
     toast.success(response.data.message);
-    // console.log('response', response);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -106,7 +104,6 @@ export const resetPassword = async (email, code, newPassword) => {
 export const getAllCategory = async () => {
   try {
     const response = await axios.get(`${baseUrl}/category/get`);
-    // console.log(response);
     return response.data.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -122,7 +119,6 @@ export const getPopularCourse = async (q) => {
     const response = await axios.get(
       `${baseUrl}/course/popular-course?category=${q}`
     );
-    // console.log("response:",response);
     return response.data.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -133,10 +129,11 @@ export const getPopularCourse = async (q) => {
   }
 };
 
+/* === TOPIK KELAS === */
+
 export const getCourseList = async () => {
   try {
     const response = await axios.get(`${baseUrl}/course/get-course`);
-    // console.log(response);
     return response.data.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -150,7 +147,6 @@ export const getCourseList = async () => {
 export const getPremiumClass = async () => {
   try {
     const response = await axios.get(`${baseUrl}/course/get-premium`);
-    // console.log("Response:", response.data.data);
     return response.data.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -164,7 +160,6 @@ export const getPremiumClass = async () => {
 export const getFreeClass = async () => {
   try {
     const response = await axios.get(`${baseUrl}/course/get-free`);
-    // console.log("Response :", response.data.data);
     return response.data.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -175,21 +170,56 @@ export const getFreeClass = async () => {
   }
 };
 
-/* ============== */
-/* === DETAIL === */
-/* ============== */
-export const getDetailCourse = async (kode) => {
+/* === KELAS SAYA === */
+
+export const getAllMyClass = async () => {
   try {
     const token = localStorage.getItem("token");
-    const response = await axios.get(`${baseUrl}/course/get/${kode}`, {
+    const response = await axios.get(
+      `
+  ${baseUrl}/course/get/get-progress-finish`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    toast.success(response)
+    return response.data.data
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
+};
+
+export const getMyProgressClass = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await axios.get(`${baseUrl}/course/get/get-in-progress`,
+    {
       headers: {
         Authorization: `Bearer ${token}`,
-      }
-    });
-    // console.log(response);
-    return response.data.data;
+      },
+    }
+    )
+    return response.data.data
   } catch (error) {
-    console.log(error);
+    toast.error(error.response.data.message);
+  }
+}
+
+export const getMyFinishClass = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await axios.get(`${baseUrl}/course/get/get-finished`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+    )
+    return response.data.data
+  } catch (error) {
+    toast.error(error.response.data.message);
   }
 }
 
@@ -204,7 +234,6 @@ export const getUser = async () => {
         Authorization: `Bearer ${token}`,
       },
     });
-    // console.log("response:",response.data);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -223,7 +252,6 @@ export const updateUser = async (dataUser) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    // console.log("response :", response.data);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -249,7 +277,6 @@ export const changePassword = async ({ oldpassword, newpassword }) => {
         },
       }
     );
-    // console.log("response :", response.data);
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -276,7 +303,6 @@ export const postPicture = async (formData) => {
         },
       }
     );
-    // console.log("response :", response);
     toast.success("Gambar Profil Berhasil Diunggah");
     return response.data.url;
   } catch (error) {
@@ -293,6 +319,93 @@ export const getProfilePicture = async () => {
     },
   });
   return response.data.data.imageUrl;
+};
 
-  // throw error;
+/* ============== */
+/* === DETAIL === */
+/* ============== */
+export const getDetailCourse = async (kode) => {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await axios.get(`${baseUrl}/course/get/${kode}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      toast.error(error.response.data.message);
+      return;
+    }
+    toast.error(error.message);
+  }
+};
+
+/* ============ */
+/* === ORDER === */
+/* ============ */
+export const createOrder = async (courseCode) => {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await axios.post(
+      `${baseUrl}/order`,
+      { courseCode: courseCode },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    toast.success(response.message);
+    return response.data.data;
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
+export const payCourse = async (ordercode, cardNumber, cardType) => {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await axios.post(
+      `https://backend-video-course-production.up.railway.app/api/order/payment`,
+      {
+        ordercode: ordercode,
+        cardNumber: cardNumber,
+        cardType: cardType,
+      },
+      {
+        params: {
+          ordercode: ordercode,
+          cardNumber: cardNumber,
+          cardType: cardType,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error(
+      error.response
+        ? error.response.data.message ||
+          "Terjadi kesalahan saat memproses permintaan."
+        : "Terjadi kesalahan, mohon coba lagi nanti."
+    );
+  }
+};
+
+export const getPaymentHistory = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await axios.get(`${baseUrl}/course/payment-history`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data.data;
+  } catch (error) {
+    toast.error(error.message);
+  }
 };

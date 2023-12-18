@@ -38,3 +38,10 @@
   font-weight: 700;
   line-height: 14px;
 }
+
+.btn-paid {
+  background-color: #73CA5C;
+}
+.btn-not-paid {
+  background-color: #FF0000;
+}

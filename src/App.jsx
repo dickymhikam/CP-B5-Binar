@@ -35,7 +35,7 @@ function App() {
           <Route path="/kelas-saya" element={<KelasBerjalan />} />
           <Route path="/topik-kelas" element={<TopikKelas />} />
           <Route path="/detail-kelas/:kode" element={<DetailKelas />} />
-          <Route path="/detail-pembayaran/:kode" element={<PembayaranDetail />} />
+          <Route path="/detail-pembayaran/:kodeKelas/:kodeOrder" element={<PembayaranDetail />} />
           <Route path="/payment-success/:kode" element={<PaySuccess />} />
           <Route path="/profil-saya" element={<ProfilSaya />} />
           <Route path="/ubah-password" element={<UbahPassword />} />

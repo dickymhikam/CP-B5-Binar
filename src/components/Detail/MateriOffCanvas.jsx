@@ -8,7 +8,6 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import iconNext from "../../assets/carbon_next-filled.svg"; 
 
 const MateriOffCanvas = ({ courseDetail }) => {
-  const now1 = 50;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -34,8 +33,8 @@ const MateriOffCanvas = ({ courseDetail }) => {
             <div className="check-progress d-flex justify-content-between gap-1">
               <img src={check} />
               <ProgressBar
-                now={now1}
-                label={`${now1}% `}
+                now={courseDetail?.progress}
+                label={`${courseDetail?.progress}% `}
                 className="progress-belajar w-100"
               />
             </div>
@@ -61,8 +60,11 @@ const MateriOffCanvas = ({ courseDetail }) => {
                       </div>
                     </div>
                     <div className="play-btn ">
-                      {video.isLocked && <img src={filock} alt="" className="icon-lock" />}
-                      {!video.isLocked && <PlayCircleFill className="icon-play" />}
+                      {video.premium ? (
+                        <img src={filock} alt="" className="icon-lock" />
+                        ) : (
+                        <PlayCircleFill className="icon-play" />
+                      )}
                     </div>
                   </div>
                   ))}

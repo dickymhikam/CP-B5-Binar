@@ -1,11 +1,12 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import book from "../../assets/book.svg";
 import star from "../../assets/ic_round-star.svg";
 import permata from "../../assets/permata.svg";
 import time from "../../assets/ri_time-fill.svg";
 import badge from "../../assets/mdi_badge-outline.svg";
 import ModalBeliSekarang from "../Modals/ModalBeliSekarang";
-
-import { useState } from "react";
 
 const CardTopikKelas = ({ courses }) => {
   const [modalShowBeli, setModalShowBeli] = useState(false);
@@ -19,13 +20,15 @@ const CardTopikKelas = ({ courses }) => {
           className="col px-0 d-flex justify-content-center card-kursus-home"
         >
           <div className="card my-2">
-            <img src={course.imageUrl} className="card-img-top" alt="..." />
+            <Link to={`/detail-kelas/${course.kodeKelas}`} className="text-decoration-none">
+              <img src={course.imageUrl} className="card-img-top" alt="..." />
+            </Link>
             <div className="card-body">
               <div className="d-flex justify-content-between ">
                 <h5 className="card-title text-truncate">{course.kategori}</h5>
-                <div className="d-flex justify-content-center  align-items-start">
-                  <img src={star} className="icon-star mt-md-1" />
-                  <p className="m-0">{course.rating}</p>
+                <div className="icon-star">
+                  <img src={star}/>
+                  <p>{course.rating}</p>
                 </div>
               </div>
 
@@ -33,7 +36,7 @@ const CardTopikKelas = ({ courses }) => {
               <div className=" pb-0  w-100">
                 <p className="mentor mb-md-0">{`by ${course.author}`}</p>
                 <div className="writing-learn d-flex justify-content-between">
-                  <p>
+                  <p className="writing-level">
                     <img src={badge} />
                     {` ${course.level} Level`}
                   </p>
