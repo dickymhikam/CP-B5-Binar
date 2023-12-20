@@ -41,7 +41,7 @@ const CardKursus = () => {
   }
 
   return (
-    <>
+    <div>
       <div className="type-container">
         <div className="row">
           <div className="type-header">
@@ -63,7 +63,7 @@ const CardKursus = () => {
       </div>
 
       <div className="type-container-card">
-        <div className="row row-cols-1 row-cols-md-3 row-cols-lg-3 py-3 card-kursus-wrapper">
+        <div className="row row-cols-1 row-cols-md-3 row-cols-lg-3  card-kursus-wrapper">
           {coursePopular && coursePopular.map((course, index) => ( 
             <div key={index} className="col px-0 d-flex justify-content-center card-kursus-home">
               <div className="card ">
@@ -86,7 +86,7 @@ const CardKursus = () => {
                   </p>
                   <div className=" pb-0  w-100">
                     <p className="mentor mb-md-0">{course.author}</p>
-                    <div className="writing-learn d-flex justify-content-between">
+                    <div className="writing-learn d-flex gap-4">
                       <p className="writing-level">
                         <img src={badge} />
                        {`${course.level} Level`}
@@ -128,7 +128,7 @@ const CardKursus = () => {
           ))}
         </div>
       </div>
-      </>
+      </div>
   );
 };
 

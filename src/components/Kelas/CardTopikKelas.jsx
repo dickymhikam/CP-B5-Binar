@@ -35,7 +35,7 @@ const CardTopikKelas = ({ courses }) => {
               <p className="about-class mb-0 text-truncate">{course.namaKelas}</p>
               <div className=" pb-0  w-100">
                 <p className="mentor mb-md-0">{`by ${course.author}`}</p>
-                <div className="writing-learn d-flex justify-content-between">
+                <div className="writing-learn d-flex gap-4">
                   <p className="writing-level">
                     <img src={badge} />
                     {` ${course.level} Level`}

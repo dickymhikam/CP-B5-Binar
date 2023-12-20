@@ -40,8 +40,10 @@ const CardProfilSaya = () => {
             </Row>
           ) : (
             <Link to={"/login"} className="text-decoration-none">
-              <img src={btnLogin} />
-              <p>Masuk</p>
+              <div className="akun-btn-login">
+                <img src={btnLogin} />
+                <p>Masuk</p>
+              </div>
             </Link>
           )}
         </div>

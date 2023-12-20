@@ -14,8 +14,11 @@
   height: 16px;
 }
 .progress-materi {
-  width: 135px !important;
+  background-color: #e0e0e0; 
+  border-radius: 10px;
   border: none;
+  width: 135px !important;
+  position: relative;
 }
 .chapter {
   margin-top: 10px;
@@ -71,4 +74,12 @@
 }
 .icon-play:hover {
   color: #6148ff;
+}
+.icon-lock {
+  width: 18px !important;
+  height: 18px !important;
+}
+.icon-lock button {
+  background-color: transparent;
+  border: none;
 }

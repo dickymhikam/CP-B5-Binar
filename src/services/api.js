@@ -129,8 +129,6 @@ export const getPopularCourse = async (q) => {
   }
 };
 
-/* === TOPIK KELAS === */
-
 export const getCourseList = async () => {
   try {
     const response = await axios.get(`${baseUrl}/course/get-course`);
@@ -170,8 +168,9 @@ export const getFreeClass = async () => {
   }
 };
 
+/* ================== */
 /* === KELAS SAYA === */
-
+/* ================== */
 export const getAllMyClass = async () => {
   try {
     const token = localStorage.getItem("token");
@@ -341,6 +340,19 @@ export const getDetailCourse = async (kode) => {
     toast.error(error.message);
   }
 };
+
+export const videoTrigger = async (kode) => {
+  try {
+    const token = localStorage.getItem("token");
+    await axios.post(`${baseUrl}/course/watched/${kode}`, {}, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    throw(error);
+  }
+}
 
 /* ============ */
 /* === ORDER === */

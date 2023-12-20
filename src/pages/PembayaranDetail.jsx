@@ -102,226 +102,228 @@ const PembayaranDetail = () => {
 
   return (
     <>
-      <Nav />
+      <div className="bg-layar-hp">
+        <Nav />
 
-      <div className="container">
-        <div className="header-card">
-          <div className="body-card my-3">
-            <div className="accordion  " id="accordionExample">
-              <div className="accordion-item mb-3">
-                <h2 className="accordion-header">
-                  <button
-                    className={`accordion-button bg-dark ${
-                      activeAccordion === "BANK_TRANSFER" ? "active" : ""
-                    }`}
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
-                    aria-expanded="false"
-                    aria-controls="collapseOne"
-                    onClick={() => handleAccordionClick("BANK_TRANSFER")}
-                    name="cardType"
+        <div className="container">
+          <div className="header-card">
+            <div className="body-card my-3">
+              <div className="accordion  " id="accordionExample">
+                <div className="accordion-item mb-3">
+                  <h2 className="accordion-header">
+                    <button
+                      className={`accordion-button bg-dark ${
+                        activeAccordion === "BANK_TRANSFER" ? "active" : ""
+                      }`}
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                      aria-expanded="false"
+                      aria-controls="collapseOne"
+                      onClick={() => handleAccordionClick("BANK_TRANSFER")}
+                      name="cardType"
+                    >
+                      Bank Transfer
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseOne"
+                    className="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
                   >
-                    Bank Transfer
-                  </button>
-                </h2>
-                <div
-                  id="collapseOne"
-                  className="accordion-collapse collapse"
-                  data-bs-parent="#accordionExample"
-                >
-                  {selectedCardType === "BANK_TRANSFER" && (
-                    <div className=" accordion-body mb-0">
-                      <div className="logo d-flex gap-5 justify-content-center ">
-                        <img src={master1} alt="" />
-                        <img src={visa2} alt="" />
-                        <img src={amek3} alt="" />
-                        <img src={paypal4} alt="" />
-                      </div>
-                      <form
-                        className="form1"
-                        onSubmit={handleBayarKelas}
-                        ref={formRef}
-                      >
-                        <div className=" cardnumber ">
-                          <p>Card number</p>
-                          <input
-                            type="text"
-                            className="rp"
-                            name="cardNumber"
-                            value={selectedCardNumber}
-                            onChange={handleCardNumberChange}
-                            placeholder="4480 0000 0000 0000"
-                          />
+                    {selectedCardType === "BANK_TRANSFER" && (
+                      <div className=" accordion-body mb-0">
+                        <div className="logo d-flex gap-5 justify-content-center ">
+                          <img src={master1} alt="" />
+                          <img src={visa2} alt="" />
+                          <img src={amek3} alt="" />
+                          <img src={paypal4} alt="" />
                         </div>
-                        <div className="cardnumber ">
-                          <p>Card holder name</p>
+                        <form
+                          className="form1"
+                          onSubmit={handleBayarKelas}
+                          ref={formRef}
+                        >
+                          <div className=" cardnumber ">
+                            <p>Card number</p>
+                            <input
+                              type="text"
+                              className="rp"
+                              name="cardNumber"
+                              value={selectedCardNumber}
+                              onChange={handleCardNumberChange}
+                              placeholder="4480 0000 0000 0000"
+                            />
+                          </div>
+                          <div className="cardnumber ">
+                            <p>Card holder name</p>
 
-                          <input
-                            type="text"
-                            className="rp"
-                            name="cardHolderName"
-                            placeholder="Jhon Doe"
-                          />
-                        </div>
-                        <div className=" kard d-flex gap-3">
-                          <div className="cardnumber2  ">
-                            <p>CVV</p>
                             <input
-                              type="number"
+                              type="text"
                               className="rp"
-                              name="cvv"
-                              placeholder="000"
+                              name="cardHolderName"
+                              placeholder="Jhon Doe"
                             />
                           </div>
-                          <div className="cardnumber2">
-                            <p>Expiry Date</p>
-                            <input
-                              type="number"
-                              className="rp"
-                              name="expiryDate"
-                              placeholder="07/24"
-                            />
+                          <div className=" kard d-flex gap-3">
+                            <div className="cardnumber2  ">
+                              <p>CVV</p>
+                              <input
+                                type="number"
+                                className="rp"
+                                name="cvv"
+                                placeholder="000"
+                              />
+                            </div>
+                            <div className="cardnumber2">
+                              <p>Expiry Date</p>
+                              <input
+                                type="number"
+                                className="rp"
+                                name="expiryDate"
+                                placeholder="07/24"
+                              />
+                            </div>
                           </div>
-                        </div>
-                      </form>
-                    </div>
-                  )}
+                        </form>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div className="accordion-item">
-                <h2 className="accordion-header">
-                  <button
-                    className={`accordion-button ${
-                      activeAccordion === "CREDIT_CARD" ? "active" : ""
-                    }`}
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo"
-                    aria-expanded="true"
-                    aria-controls="collapseTwo"
-                    onClick={() => handleAccordionClick("CREDIT_CARD")}
-                    name="cardType"
+                <div className="accordion-item">
+                  <h2 className="accordion-header">
+                    <button
+                      className={`accordion-button ${
+                        activeAccordion === "CREDIT_CARD" ? "active" : ""
+                      }`}
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo"
+                      aria-expanded="true"
+                      aria-controls="collapseTwo"
+                      onClick={() => handleAccordionClick("CREDIT_CARD")}
+                      name="cardType"
+                    >
+                      Credit Card
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseTwo"
+                    className="accordion-collapse collapse show"
+                    data-bs-parent="#accordionExample"
                   >
-                    Credit Card
-                  </button>
-                </h2>
-                <div
-                  id="collapseTwo"
-                  className="accordion-collapse collapse show"
-                  data-bs-parent="#accordionExample"
-                >
-                  {selectedCardType === "CREDIT_CARD" && (
-                    <div className="accordion-body mb-0">
-                      <div className="logo d-flex gap-5 justify-content-center mt-2 ">
-                        <img src={master1} alt="" />
-                        <img src={visa2} alt="" />
-                        <img src={amek3} alt="" />
-                        <img src={paypal4} alt="" />
+                    {selectedCardType === "CREDIT_CARD" && (
+                      <div className="accordion-body mb-0">
+                        <div className="logo d-flex gap-5 justify-content-center mt-2 ">
+                          <img src={master1} alt="" />
+                          <img src={visa2} alt="" />
+                          <img src={amek3} alt="" />
+                          <img src={paypal4} alt="" />
+                        </div>
+
+                        <form
+                          className="form1"
+                          onSubmit={handleBayarKelas}
+                          ref={formRef}
+                        >
+                          <div className=" cardnumber ">
+                            <p>Card number</p>
+                            <input
+                              type="text"
+                              className="rp"
+                              name="cardNumber"
+                              value={selectedCardNumber}
+                              onChange={handleCardNumberChangeCredit}
+                              placeholder="4480 0000 0000 0000"
+                            />
+                          </div>
+                          <div className="cardnumber ">
+                            <p>Card holder name</p>
+
+                            <input
+                              type="text"
+                              className="rp"
+                              placeholder="John Doe"
+                            />
+                          </div>
+                          <div className=" kard d-flex gap-3">
+                            <div className="cardnumber2  ">
+                              <p>CVV</p>
+                              <input
+                                type="number"
+                                className="rp"
+                                placeholder="000"
+                              />
+                            </div>
+                            <div className="cardnumber2">
+                              <p>Expiry Date</p>
+                              <input
+                                type="number"
+                                className="rp"
+                                placeholder="07/24"
+                              />
+                            </div>
+                          </div>
+                        </form>
                       </div>
-
-                      <form
-                        className="form1"
-                        onSubmit={handleBayarKelas}
-                        ref={formRef}
-                      >
-                        <div className=" cardnumber ">
-                          <p>Card number</p>
-                          <input
-                            type="text"
-                            className="rp"
-                            name="cardNumber"
-                            value={selectedCardNumber}
-                            onChange={handleCardNumberChangeCredit}
-                            placeholder="4480 0000 0000 0000"
-                          />
-                        </div>
-                        <div className="cardnumber ">
-                          <p>Card holder name</p>
-
-                          <input
-                            type="text"
-                            className="rp"
-                            placeholder="John Doe"
-                          />
-                        </div>
-                        <div className=" kard d-flex gap-3">
-                          <div className="cardnumber2  ">
-                            <p>CVV</p>
-                            <input
-                              type="number"
-                              className="rp"
-                              placeholder="000"
-                            />
-                          </div>
-                          <div className="cardnumber2">
-                            <p>Expiry Date</p>
-                            <input
-                              type="number"
-                              className="rp"
-                              placeholder="07/24"
-                            />
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="body-card1 ">
-            <div className="kard-body ">
-              <div className="body-image ">
-                <p className="texts-bayar">Pembayaran Kelas</p>
-                <div className="x-image">
-                  <img src={courseDetail?.imageUrl} alt="" className="gambar" />
-                  <p className="text-Ui mb-0 ps-3 pt-2">
-                    {courseDetail?.kategori}
-                  </p>
-                  <div className="text-Intro ps-3">
-                    {courseDetail?.namaKelas}
-                    <p className="text-tengah fw-normal pb-2 ">
-                      {`by ${courseDetail?.author}`}
+            <div className="body-card1 ">
+              <div className="kard-body ">
+                <div className="body-image ">
+                  <p className="texts-bayar">Pembayaran Kelas</p>
+                  <div className="x-image">
+                    <img src={courseDetail?.imageUrl} alt="" className="gambar" />
+                    <p className="text-Ui mb-0 ps-3 pt-2">
+                      {courseDetail?.kategori}
                     </p>
+                    <div className="text-Intro ps-3">
+                      {courseDetail?.namaKelas}
+                      <p className="text-tengah fw-normal pb-2 ">
+                        {`by ${courseDetail?.author}`}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-body d-flex">
+                    <div className="txt-h1">
+                      Harga <br />
+                      <span className="fw-normal">
+                        {formatCurr(orderDataCourse?.harga)}
+                      </span>
+                    </div>
+                    <div className="txt-h1">
+                      PPN 11% <br />
+                      <span className="fw-normal">
+                        {formatCurr(orderDataCourse?.ppn)}
+                      </span>
+                    </div>
+                    <div className="txt-h1">
+                      Total Bayar <br />
+                      <span className="fw-normal">
+                        {formatCurr(orderDataCourse?.totalBayar)}
+                      </span>
+                    </div>
                   </div>
                 </div>
-                <div className="text-body d-flex">
-                  <div className="txt-h1">
-                    Harga <br />
-                    <span className="fw-normal">
-                      {formatCurr(orderDataCourse?.harga)}
-                    </span>
-                  </div>
-                  <div className="txt-h1">
-                    PPN 11% <br />
-                    <span className="fw-normal">
-                      {formatCurr(orderDataCourse?.ppn)}
-                    </span>
-                  </div>
-                  <div className="txt-h1">
-                    Total Bayar <br />
-                    <span className="fw-normal">
-                      {formatCurr(orderDataCourse?.totalBayar)}
-                    </span>
-                  </div>
-                </div>
+                <Link to={`/payment-success/${courseDetail?.kodeKelas}`}>
+                  <button
+                    className="btn btn-bayar"
+                    type="submit"
+                    onClick={handleBayarKelas}
+                  >
+                    Bayar dan Ikuti Kelas Selamanya <img src={arah} alt="" />
+                  </button>
+                </Link>
               </div>
-              <Link to={`/payment-success/${courseDetail?.kodeKelas}`}>
-                <button
-                  className="btn btn-bayar"
-                  type="submit"
-                  onClick={handleBayarKelas}
-                >
-                  Bayar dan Ikuti Kelas Selamanya <img src={arah} alt="" />
-                </button>
-              </Link>
             </div>
           </div>
         </div>
-      </div>
 
-      <Footer />
+        <Footer />
+      </div>
       <NavbarBottom />
     </>
   );

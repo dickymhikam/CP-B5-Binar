@@ -7,10 +7,12 @@ import NavbarBottom from "../components/Home/NavbarBottom";
 const RiwayatPembayaran = () => {
   return (
     <>
-      <Nav />
-      <HeaderAkun />
-      <CardRiwayat />
-      <Footer />
+      <div className="bg-layar-hp">
+        <Nav />
+        <HeaderAkun />
+        <CardRiwayat />
+        <Footer />
+      </div>
       <NavbarBottom />
     </>
   );

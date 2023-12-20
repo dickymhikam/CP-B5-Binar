@@ -1,6 +1,5 @@
 .type-container {
   padding: 1% 9%;
-  margin-top: 20px;
 }
 .type-container-card{
   padding: 1% 15%;
@@ -137,7 +136,6 @@ margin: 0;
   .type-container {
     background: var(--Light-Blue-5, #EBF3FC);
     padding: 1% 4% 1% 4%;
-    margin-top: 0;
   }
   .type-container-card {
     background: var(--Light-Blue-5, #EBF3FC);

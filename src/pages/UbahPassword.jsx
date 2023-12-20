@@ -9,10 +9,12 @@ import NavbarBottom from "../components/Home/NavbarBottom";
 const UbahPassword = () => {
   return (
     <>
-      <Nav />
-      <HeaderAkun />
-      <CardPassword />
-      <Footer />
+      <div className="bg-layar-hp">
+        <Nav />
+        <HeaderAkun />
+        <CardPassword />
+        <Footer />
+      </div>
       <NavbarBottom />
     </>
   );

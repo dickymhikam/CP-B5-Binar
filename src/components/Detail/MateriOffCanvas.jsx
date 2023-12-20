@@ -3,14 +3,18 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import { PlayCircleFill } from "react-bootstrap-icons";
 
+import filock from "../../assets/fi_lock.svg";
 import check from "../../assets/mdi_progress-check.svg";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import iconNext from "../../assets/carbon_next-filled.svg"; 
+import ModalBeliSekarang from "../Modals/ModalBeliSekarang";
 
 const MateriOffCanvas = ({ courseDetail, onChapterChange, onVideoChange }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [modalShowBeli, setModalShowBeli] = useState(false);
+  const [modalDetail, setModalDetail] = useState(null);
 
   const handleVideoClick = (chapterIdx, videoIdx) => {
     onChapterChange(chapterIdx);
@@ -65,7 +69,27 @@ const MateriOffCanvas = ({ courseDetail, onChapterChange, onVideoChange }) => {
                     </div>
                     <div className="button-materi">
                       {video && video.premium ? (
-                        <img src={filock} className="icon-lock" />
+                        <>
+                          <button
+                            className="bg-transparent border-0"
+                            onClick={() => {
+                              setModalDetail(courseDetail);
+                              setModalShowBeli(true);
+                            }}
+                          >
+                            <img src={filock} className="icon-lock"/>
+                          </button>
+                          {modalShowBeli && (
+                            <ModalBeliSekarang
+                            show={modalShowBeli}
+                            onHide={() => {
+                              setModalDetail(null);
+                              setModalShowBeli(false);
+                            }}
+                            course={modalDetail}
+                            />
+                          )}
+                        </>
                       ) : (
                         <div onClick={() => handleVideoClick(index, videoIndex)}>
                           <PlayCircleFill className="icon-play" />

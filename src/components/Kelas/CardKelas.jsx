@@ -30,7 +30,7 @@ const CardKelas = ({ classes }) => {
                 </p>
                 <div className=" pb-0  w-100">
                   <p className="mentor mb-md-0">{classes.author}</p>
-                  <div className="writing-learn d-flex justify-content-between">
+                  <div className="writing-learn d-flex gap-4">
                     <p>
                       <img src={badge} />
                       {` ${classes.level} Level`}
@@ -47,8 +47,10 @@ const CardKelas = ({ classes }) => {
                   </div>
                   <ProgressBar
                     now={classes.progress}
-                    label={`${classes.progress}% Complete`}
-                    className="border-0"
+                    label={
+                      <span className="progress-label">{`${classes.progress}% Complete`}</span>
+                    }
+                    className="progress-belajar border-0"
                   />
                 </div>
               </div>

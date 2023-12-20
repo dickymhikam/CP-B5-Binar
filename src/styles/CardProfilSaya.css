@@ -13,3 +13,25 @@
   border-top-left-radius: 15px !important;
   border-top-right-radius: 15px !important;
 }
+.akun-btn-login {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin: 0;
+}
+.akun-btn-login img {
+  filter: grayscale(100%) invert(76%) sepia(0%) saturate(208%)
+  hue-rotate(223deg) brightness(90%) contrast(82%);
+}
+.akun-btn-login p {
+  color: var(--Black, #000);
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0;
+  transition: 0.1s ease-in;
+}
+.akun-btn-login p:hover {
+  color: var(--Dark-Blue-100, #6148ff);
+  font-size: 16px;
+  font-weight: 700;
+}

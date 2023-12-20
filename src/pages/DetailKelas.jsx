@@ -48,77 +48,79 @@ const DetailKelas = () => {
 
   return (
     <>
-      <Nav />
-      <div className="detail-kelas-bg"></div>
-      {/* Detail-kelas */}
-      <div className="detail-kelas-wrapper">
-        <div className="detail-kelas-header">
-          <div className="detail-header-card">
-            <Link to={"/kelas-saya"} className="detail-card-text">
-              <img src={btnBack} />
-              <h3>Kelas Lainnya</h3>
-            </Link>
-            <div className="detail-card-body">
-              <div className="detail-card-body-title text-tuncrate">
-                <h5>{courseDetail?.kategori}</h5>
-                <span className="rate">
-                  <img src={star} />
-                    {courseDetail?.rating}
-                </span>
-              </div>
-              <h2 className="text-tuncrate">{courseDetail?.namaKelas}</h2>
-              <h3>{`by ${courseDetail?.author}`}</h3>
-              <div className="detail-card-body-stats">
-                <div className="detail-stat">
-                  <img src={badge} />
-                  {`${courseDetail?.level} Level`}
+      <div className="bg-layar-hp">
+        <Nav />
+        <div className="detail-kelas-bg"></div>
+        {/* Detail-kelas */}
+        <div className="detail-kelas-wrapper">
+          <div className="detail-kelas-header">
+            <div className="detail-header-card">
+              <Link to={"/kelas-saya"} className="detail-card-text">
+                <img src={btnBack} />
+                <h3>Kelas Lainnya</h3>
+              </Link>
+              <div className="detail-card-body">
+                <div className="detail-card-body-title text-tuncrate">
+                  <h5>{courseDetail?.kategori}</h5>
+                  <span className="rate">
+                    <img src={star} />
+                      {courseDetail?.rating}
+                  </span>
                 </div>
-                <div className="detail-stat">
-                  <img src={book} />
-                  {`${courseDetail?.modul} Modul`}
+                <h2 className="text-tuncrate">{courseDetail?.namaKelas}</h2>
+                <h3>{`by ${courseDetail?.author}`}</h3>
+                <div className="detail-card-body-stats">
+                  <div className="detail-stat">
+                    <img src={badge} />
+                    {`${courseDetail?.level} Level`}
+                  </div>
+                  <div className="detail-stat">
+                    <img src={book} />
+                    {`${courseDetail?.modul} Modul`}
+                  </div>
+                  <div className="detail-stat">
+                    <img src={time} />
+                    {`${courseDetail?.time} Menit`}
+                  </div>
                 </div>
-                <div className="detail-stat">
-                  <img src={time} />
-                  {`${courseDetail?.time} Menit`}
+                <div className="d-flex align-items-center justify-content-between gap-3">
+                  <Link to={"https://t.me/+ye__8CV4A_s5NzI9"} className="text-decoration-none">
+                    <button className="detail-card-body-btn">
+                      <p>Join Grup Telegram</p>
+                      <img src={btnJoin} />
+                    </button>
+                  </Link>
+                  <MateriOffCanvas
+                    courseDetail={courseDetail}
+                    onChapterChange={handleChapterChange}
+                    onVideoChange={handleVideoChange}
+                  />
                 </div>
-              </div>
-              <div className="d-flex align-items-center justify-content-between gap-3">
-                <Link to={"https://t.me/+ye__8CV4A_s5NzI9"} className="text-decoration-none">
-                  <button className="detail-card-body-btn">
-                    <p>Join Grup Telegram</p>
-                    <img src={btnJoin} />
-                  </button>
-                </Link>
-                <MateriOffCanvas
-                  courseDetail={courseDetail}
-                  onChapterChange={handleChapterChange}
-                  onVideoChange={handleVideoChange}
-                />
               </div>
             </div>
+            <div className="detail-header-video">
+              <DetailVideo
+                videos={courseDetail?.getChapterResponses}
+                chapter={chapterDetailIndex}
+                videoindex={videoDetailIndex}
+              />
+            </div>
           </div>
-          <div className="detail-header-video">
-            <DetailVideo
-              videos={courseDetail?.getChapterResponses}
-              chapter={chapterDetailIndex}
-              videoindex={videoDetailIndex}
-            />
+          <div className="detail-kelas-body">
+            <div className="detail-body-about">
+              <DetailAbout courseDetail={courseDetail} />
+            </div>
+            <div className="detail-body-materi ">
+              <DetailMateri
+                courseDetail={courseDetail}
+                onChapterChange={handleChapterChange}
+                onVideoChange={handleVideoChange}
+              />
+            </div>
           </div>
         </div>
-        <div className="detail-kelas-body">
-          <div className="detail-body-about">
-            <DetailAbout courseDetail={courseDetail} />
-          </div>
-          <div className="detail-body-materi ">
-            <DetailMateri
-              courseDetail={courseDetail}
-              onChapterChange={handleChapterChange}
-              onVideoChange={handleVideoChange}
-            />
-          </div>
-        </div>
+        <Footer />
       </div>
-      <Footer />
       <NavbarBottom />
     </>
   );

@@ -7,10 +7,12 @@ import NavbarBottom from "../components/Home/NavbarBottom";
 const ProfilSaya = () => {
   return (
     <>
-      <Nav />
-      <HeaderAkun />
-      <CardProfilSaya />
-      <Footer />
+      <div className="bg-layar-hp">
+        <Nav />
+        <HeaderAkun />
+        <CardProfilSaya />
+        <Footer />
+      </div>
       <NavbarBottom />
     </>
   );

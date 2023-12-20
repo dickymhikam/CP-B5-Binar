@@ -111,6 +111,11 @@
   background: #fff;
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.08);
 }
+.x-image img {
+  border-radius: 15px 15px 0 0;
+  height: 80px;
+  object-fit: cover;
+}
 .text-Ui {
   color: var(--Dark-Blue-100, #6148ff);
   font-family: "Montserrat", sans-serif;

@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { PlayCircleFill } from "react-bootstrap-icons";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 import filock from "../../assets/fi_lock.svg";
 import ficheck from "../../assets/fi_check.svg";
+import ModalBeliSekarang from "../Modals/ModalBeliSekarang";
 
 const DetailMateri = ({ courseDetail, onChapterChange, onVideoChange }) => {
+  const [modalShowBeli, setModalShowBeli] = useState(false);
+  const [modalDetail, setModalDetail] = useState(null);
+
   const handleVideoClick = (chapterIdx, videoIdx) => {
     onChapterChange(chapterIdx);
     onVideoChange(videoIdx);
@@ -17,7 +22,13 @@ const DetailMateri = ({ courseDetail, onChapterChange, onVideoChange }) => {
           <p>Materi Belajar</p>
           <div className="d-flex justify-content-between gap-1">
             <img src={ficheck} className="icon-check" />
-            <ProgressBar now={courseDetail?.progress} label={`${courseDetail?.progress}%`} className="progress-materi"/>
+            <ProgressBar
+              now={courseDetail?.progress}
+              label={
+                <span className="progress-label">{`${courseDetail?.progress}% Complete`}</span>
+              }
+              className="progress-materi"
+            />
           </div>
         </div>
 
@@ -40,7 +51,27 @@ const DetailMateri = ({ courseDetail, onChapterChange, onVideoChange }) => {
                 </div>
                 <div className="button-materi">
                   {video && video.premium ? (
-                    <img src={filock} className="icon-lock" />
+                    <>
+                      <button
+                        className="border-0 bg-transparent"
+                        onClick={() => {
+                          setModalDetail(courseDetail);
+                          setModalShowBeli(true);
+                        }}
+                      >
+                        <img src={filock} className="icon-lock"/>
+                      </button>
+                      {modalShowBeli && (
+                        <ModalBeliSekarang
+                        show={modalShowBeli}
+                        onHide={() => {
+                          setModalDetail(null);
+                          setModalShowBeli(false);
+                        }}
+                        course={modalDetail}
+                        />
+                      )}
+                    </>
                   ) : (
                     <div onClick={() => handleVideoClick(index, videoIndex)}>
                       <PlayCircleFill className="icon-play" />

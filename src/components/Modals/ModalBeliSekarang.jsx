@@ -70,7 +70,7 @@ const BeliSekarang = (props) => {
                 {courseDetail?.namaKelas}
               </p>
               <p className="mentor m-0">{`by ${courseDetail?.author}`}</p>
-              <div className="writing-learn d-flex justify-content-between">
+              <div className="writing-learn d-flex gap-3">
                 <p className="writing-level">
                   <img src={badge} />
                   {`${courseDetail?.level} Level`}

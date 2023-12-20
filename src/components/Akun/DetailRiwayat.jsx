@@ -26,7 +26,6 @@ const DetailRiwayatPembayaran = () => {
       <div className="detail-riwayat-wrapper">
         <div className="detail-riwayat-header">Riwayat Pembayaran</div>
         <div className="detail-riwayat-card">
-          {/* card */}
           <div className="container d-flex justify-content-center">
             <div className="row row-cols-1 row-cols-md-1 row-cols-lg-1 card-riwayat-wrapper">
               {paymentHistory.map((payment, index) => (
@@ -58,7 +57,7 @@ const DetailRiwayatPembayaran = () => {
                       </p>
                       <div className=" pb-0  w-100">
                         <p className="mentor mb-md-0">{payment.author}</p>
-                        <div className="writing-learn d-flex justify-content-between">
+                        <div className="writing-learn d-flex gap-4">
                           <p>
                             <img src={badge} />
                             {`${payment.level} Level`}
