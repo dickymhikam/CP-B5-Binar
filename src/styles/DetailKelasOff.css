@@ -9,74 +9,22 @@
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
 }
-.check-progress {
-  min-width: 130px;
-  text-align: center;
-}
-.materi-belajar {
-  font-weight: 700;
-  font-family: "Montserrat", sans-serif;
-}
-.progress-bar {
-  text-align: center;
-  font-size: x-small;
-  padding-left: 5px;
-  background-color: #6148ff;
-  border-radius: 20px;
-}
-.progress {
-  background-color: #d9d9d9 !important;
-  border-radius: 20px;
-}
-.tagline-materi {
-  font-size: 12px;
-  font-weight: 700;
-  font-family: "Montserrat", sans-serif;
-  color: #6148ff;
-}
-.waktu-materi {
-  font-size: 12px;
-  font-weight: 700;
-  font-family: "Montserrat", sans-serif;
-  color: #489cff;
-}
-.title-materi-offcanvas {
-  width: 190px;
-  font-weight: 400;
-  font-family: "Montserrat", sans-serif;
-}
-.nomor-materi {
-  background-color: #ebf3fc;
-  width: 24px !important;
-  height: 24px !important;
-  border-radius: 50%;
-  font-weight: 700;
-  font-family: "Montserrat", sans-serif;
-}
-.materi-item .play-btn {
-  display: flex;
-  align-items: center;
-  justify-content: end !important;
-}
-.play-btn {
-  padding-left: 3px;
-}
 .sidebar-admin-offcanvas {
   visibility: hidden;
 }
 .sidebar-offcanvas-body {
   background: #fff;
-  width: 70% !important;
+  width: 60% !important;
   font-size: 12px !important;
   color: black;
 }
 
 @media screen and (max-width: 768px) {
+  .btn-materi {
+    height: 33px;
+  }
   .sidebar-admin-offcanvas {
     visibility: visible;
     margin-right: 20px;
-  }
-  .btn-materi {
-    height: 33px;
   }
 }

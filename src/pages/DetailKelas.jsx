@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import Nav from "../components/Home/Nav";
-import DetailAbout from "../components/Detail/DetailAbout";
-import DetailMateri from "../components/Detail/DetailMateri";
 import Footer from "../components/Home/Footer";
 import NavbarBottom from "../components/Home/NavbarBottom";
+import DetailAbout from "../components/Detail/DetailAbout";
+import DetailMateri from "../components/Detail/DetailMateri";
 import MateriOffCanvas from "../components/Detail/MateriOffCanvas";
+import DetailVideo from "../components/Detail/DetailVideo";
 
 import btnBack from "../assets/fi_arrow-left-black.svg";
 import book from "../assets/book.svg";
@@ -14,7 +15,6 @@ import star from "../assets/ic_round-star.svg";
 import btnJoin from "../assets/gridicons_chat.svg";
 import time from "../assets/ri_time-fill.svg";
 import badge from "../assets/mdi_badge-outline.svg";
-import play from "../assets/playvideo.svg";
 
 import "../styles/DetailKelas.css";
 import "../styles/DetailKelasKonten.css";
@@ -25,6 +25,8 @@ import {getDetailCourse} from "../services/api.js"
 const DetailKelas = () => {
   const {kode} = useParams();
   const [courseDetail, setCourseDetail] = useState(null);
+  const [chapterDetailIndex, setChapterDetailIndex] = useState(0);
+  const [videoDetailIndex, setVideoDetailIndex] = useState(0);
 
   useEffect(() => {
     getDetailCourse(kode)
@@ -36,6 +38,14 @@ const DetailKelas = () => {
       });
   }, [kode]);
 
+  const handleChapterChange = (index) => {
+    setChapterDetailIndex(index);
+  }
+
+  const handleVideoChange = (index) => {
+    setVideoDetailIndex(index);
+  }
+
   return (
     <>
       <Nav />
@@ -44,12 +54,10 @@ const DetailKelas = () => {
       <div className="detail-kelas-wrapper">
         <div className="detail-kelas-header">
           <div className="detail-header-card">
-            <div className="detail-card-text">
-              <Link to={"/kelas-saya"}>
-                <img src={btnBack} />
-              </Link>
+            <Link to={"/kelas-saya"} className="detail-card-text">
+              <img src={btnBack} />
               <h3>Kelas Lainnya</h3>
-            </div>
+            </Link>
             <div className="detail-card-body">
               <div className="detail-card-body-title text-tuncrate">
                 <h5>{courseDetail?.kategori}</h5>
@@ -81,14 +89,20 @@ const DetailKelas = () => {
                     <img src={btnJoin} />
                   </button>
                 </Link>
-                <MateriOffCanvas courseDetail={courseDetail} />
+                <MateriOffCanvas
+                  courseDetail={courseDetail}
+                  onChapterChange={handleChapterChange}
+                  onVideoChange={handleVideoChange}
+                />
               </div>
             </div>
           </div>
-          <div className="detail-header-video mb-2">
-            {/* <div className="body-header"> */}
-              <img src={play} alt="" />
-            {/* </div> */}
+          <div className="detail-header-video">
+            <DetailVideo
+              videos={courseDetail?.getChapterResponses}
+              chapter={chapterDetailIndex}
+              videoindex={videoDetailIndex}
+            />
           </div>
         </div>
         <div className="detail-kelas-body">
@@ -96,7 +110,11 @@ const DetailKelas = () => {
             <DetailAbout courseDetail={courseDetail} />
           </div>
           <div className="detail-body-materi ">
-            <DetailMateri courseDetail={courseDetail}/>
+            <DetailMateri
+              courseDetail={courseDetail}
+              onChapterChange={handleChapterChange}
+              onVideoChange={handleVideoChange}
+            />
           </div>
         </div>
       </div>

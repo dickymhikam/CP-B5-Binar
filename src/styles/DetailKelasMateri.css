@@ -1,127 +1,74 @@
-/* mas dicky */
-.detail-body-materi {
-  width: 35%;
-  height: auto;
-  top: 160px;
-  left: 60%;
-  padding: 20px 24px 20px 24px;
-  border-radius: 16px;
-  position: absolute;
-  top: 110px;
-  background: #ffffff;
-  margin: 0 5% 0 0;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-}
-
 .header-materi {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
-
 .header-materi p {
   font-size: 16px;
   font-weight: 700;
   line-height: 14px;
+  margin: 0;
 }
-
 .icon-check {
-  margin-right: 3px;
   width: 16px;
   height: 16px;
 }
-
 .progress-materi {
   width: 135px !important;
+  border: none;
 }
-
+.chapter {
+  margin-top: 10px;
+}
 .header-chapter {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  color: #6148ff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
 }
-
+.text-chapter {
+  width: 100%;
+  margin: 0;
+}
+.text-time {
+  width: 50%;
+  color: #489cff !important;
+  text-align: end;
+  margin: 0;
+}
+.body-chapter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: "Montserrat", sans-serif;
+  margin: 5px 0;
+}
 .materi {
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.number-materi {
-  width: 10%;
-  max-width: 30px;
-  max-height: 30px;
-  background: #ebf3fc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 13px;
-  font-weight: 700;
-  margin-right: 8px;
-  margin-top: 2px;
-  border-radius: 50%;
-}
-
-.title-materi {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.title-materi p {
-  font-size: 12px;
-  font-weight: 700;
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.icon-play {
-  color: #73ca5c;
-}
-
-.icon-play:hover {
-  color: #6148ff;
-}
-
-.text-chapter {
-  width: 228px;
-  height: 22px;
-  color: #6148ff;
-  font-family: "Montserrat", sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 36px;
-}
-
-.text-title {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.text-time {
-  width: 76px;
-  height: 22px;
-  color: #489cff;
-  font-family: "Montserrat", sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 36px;
-  text-align: end;
-}
-
-.text-materi {
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  width: 352px;
   align-items: center;
   gap: 10px;
 }
-@media screen and (max-width: 768px) {
-  .detail-kelas-header {
-    flex-direction: column-reverse;
-  }
+.number-materi {
+  color: #202244;
+  font-size: 10px;
+  font-weight: 700;
+}
+.text-title {
+  color: rgba(0, 0, 0, 0.80);
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0;
+}
+.icon-play {
+  color: #73ca5c;
+  width: 18px;
+  height: 18px;
+}
+.icon-play:hover {
+  color: #6148ff;
 }

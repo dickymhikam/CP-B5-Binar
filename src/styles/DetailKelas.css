@@ -20,20 +20,20 @@
   display: flex;
   flex-direction: column;
 }
-.detail-kelas-body {
-  display: flex;
-}
+
 /* detail-card */
 .detail-header-card {
+  height: 250px;
+  width: 55%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 250px;
-  width: 55%;
+  font-family: "Montserrat", sans-serif;
 }
 .detail-card-text {
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 .detail-card-text img {
   width: 24px;
@@ -41,87 +41,111 @@
 }
 .detail-card-text h3 {
   color: var(--Black, #000);
-  font-family: "Montserrat", sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 700;
-  line-height: 24px;
   margin: 0 0 0 20px;
 }
 .detail-card-body {
-  margin-top: 20px;
   padding: 0 5% 0 5%;
 }
 .detail-card-body-title {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 .detail-card-body-title h5 {
   color: var(--Dark-Blue-100, #6148ff);
-  font-family: "Montserrat", sans-serif;
   font-size: 20px;
   font-weight: 700;
-  line-height: 14px;
   margin-bottom: 10px;
 }
 .detail-card-body-title .rate {
-  font-size: 14px;
-  font-weight: 700;
   display: flex;
   align-items: center;
+  font-size: 14px;
+  font-weight: 700;
 }
 .detail-card-body h2 {
   color: #202244;
   font-size: 20px;
   font-weight: 700;
-  line-height: 24px;
   margin-bottom: 5px;
 }
 .detail-card-body h3 {
   color: var(--Black, #000);
   font-size: 14px;
   font-weight: 400;
-  line-height: 18px;
+  margin: 0;
 }
 .detail-card-body-stats {
   display: flex;
   align-items: center;
   gap: 5%;
   color: var(--Black, #000);
-  font-family: "Montserrat", sans-serif;
   font-size: 12px;
   font-weight: 400;
-  line-height: 14px;
-}
-.detail-stat {
+  margin-top: 8px;
   margin-bottom: 13px;
 }
-.detail-stat img {
-  margin-right: 4px;
+.detail-stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
 }
 .detail-card-body-btn {
   background: var(--Success, #73ca5c);
   border-radius: 25px;
   border: none;
   box-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.1);
-  display: flex;
   width: 15rem;
   height: 2.1rem;
-  padding: 1% 5% 1% 5%;
+  display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  padding: 1% 5% 1% 5%;
 }
 .detail-card-body-btn p {
   color: var(--neutral-01, #fff);
   text-align: center;
-  font-family: "Montserrat", sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 700;
-  line-height: 24px;
   margin: 0;
 }
+
+/* detail-video */
+.detail-header-video {
+  width: 55%;
+  margin-top: 34px;
+  margin-bottom: 10px;
+}
+
+/* detail-body */
+.detail-kelas-body {
+  display: flex;
+}
+.detail-body-about {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.detail-body-materi {
+  width: 35%;
+  height: auto;
+  top: 160px;
+  left: 60%;
+  padding: 20px 24px 20px 24px;
+  border-radius: 16px;
+  position: absolute;
+  top: 110px;
+  background: #ffffff;
+  margin: 0 5% 0 0;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
 @media screen and (max-width: 768px) {
   .detail-kelas-bg {
     display: none;
@@ -138,6 +162,14 @@
   .detail-header-card {
     width: 100%;
     height: 200px;
+  }
+  .detail-header-video {
+    width: 100%;
+    margin-top: 0;
+  }
+  .detail-body-about {
+    width: 100%;
+    padding: 0 5% 0 5%;
   }
   .detail-body-materi {
     display: none;

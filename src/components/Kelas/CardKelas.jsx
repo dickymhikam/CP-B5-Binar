@@ -13,9 +13,7 @@ const CardKelas = ({ classes }) => {
         <Link to={`/detail-kelas/${classes.kodeKelas}`} key={index} className="text-decoration-none text-dark">
           <div  className="col px-0 d-flex justify-content-center card-kursus-home">
             <div className="card my-2">
-              <Link to={`/detail-kelas/${classes.kodeKelas}`} className="text-decoration-none">
-                <img src={classes.imageUrl} className="card-img-top" alt="..." />
-              </Link>
+              <img src={classes.imageUrl} className="card-img-top" alt="..." />
               <div className="card-body">
                 <div className="d-flex justify-content-between ">
                   <h5 className="card-title text-truncate">
@@ -50,7 +48,7 @@ const CardKelas = ({ classes }) => {
                   <ProgressBar
                     now={classes.progress}
                     label={`${classes.progress}% Complete`}
-                    className="progress-belajar"
+                    className="border-0"
                   />
                 </div>
               </div>
