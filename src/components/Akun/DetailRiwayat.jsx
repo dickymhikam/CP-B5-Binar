@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-// import { Link } from "react-bootstrap-icons";
-
-import "../../styles/Riwayat.css";
+import { Link } from "react-router-dom";
 
 import book from "../../assets/book.svg";
 import star from "../../assets/ic_round-star.svg";
@@ -9,6 +7,7 @@ import permata from "../../assets/permata.svg";
 import time from "../../assets/ri_time-fill.svg";
 import badge from "../../assets/mdi_badge-outline.svg";
 
+import "../../styles/Riwayat.css";
 import { getPaymentHistory } from "../../services/api";
 
 const DetailRiwayatPembayaran = () => {
@@ -31,23 +30,22 @@ const DetailRiwayatPembayaran = () => {
               {paymentHistory.map((payment, index) => (
                 <div
                   key={index}
-                  className="col px-0 d-flex justify-content-center"
-                >
+                  className="col px-0 d-flex justify-content-center">
                   <div className="card ">
-                    {/* <Link to={`/detail-kelas/${payment.courseCode}`}> */}
+                    <Link to={`/detail-kelas/${payment.kodeKelas}`}>
                       <img
-                      src={payment.imageUrl}
-                      className="card-img-top"
-                      alt="..."
-                      />
-                    {/* </Link> */}
+                        src={payment.imageUrl}
+                        className="card-img-top"
+                        alt="..."
+                        />
+                    </Link>
                     <div className="card-body">
                       <div className="d-flex justify-content-between ">
                         <h5 className="card-title text-truncate">
                           {payment.kategori}
                         </h5>
-                        <div className="d-flex justify-content-center  align-items-start">
-                          <img src={star} className="icon-star mt-md-1" />
+                        <div className="icon-star">
+                          <img src={star}/>
                           <p className="m-0">{payment.rating}</p>
                         </div>
                       </div>
@@ -72,15 +70,21 @@ const DetailRiwayatPembayaran = () => {
                             {`${payment.time} Menit`}
                           </p>
                         </div>
-                        {payment.completePaid ? ( 
-                        <button className="btn-buy btn-paid">
-                          <img src={permata} alt="Permata Icon" /> Paid
-                        </button>
-                      ) : (
-                        <button className="btn-buy btn-not-paid">
-                          <img src={permata} alt="Permata Icon" /> Waiting for Payment
-                        </button>
-                      )}
+                        {payment.completePaid ? (
+                          
+                            <button className="btn-buy btn-paid">
+                              <img src={permata} alt="Permata Icon" /> Paid
+                            </button>
+                        ) : (
+                          <Link
+                            to={`/detail-pembayaran/${payment.kodeKelas}/${payment.orderCode}`}
+                          >
+                            <button className="btn-buy btn-not-paid">
+                              <img src={permata} alt="Permata Icon" /> Waiting
+                              for Payment
+                            </button>
+                          </Link>
+                        )}
                       </div>
                     </div>
                   </div>

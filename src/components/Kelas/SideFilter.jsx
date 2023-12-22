@@ -1,8 +1,7 @@
-
 import { useEffect, useState } from "react";
 import { getFilter } from "../../services/api";
 
-const SideFilter = ({filter,click}) => {
+const SideFilter = ({filter, click, initFilter}) => {
   const [checkboxState, setCheckboxState] = useState({
     newest: false,
     popular: false,
@@ -15,23 +14,38 @@ const SideFilter = ({filter,click}) => {
     beginner_level: false,
     intermediate_level: false,
     advanced_level: false,
-    });
+  });
 
   const handle = (checkbox) => {
-    setCheckboxState((prevState) => ({
-      ...prevState,
-      [checkbox]: !prevState[checkbox],
-    }));
+    setCheckboxState((prevState) => {
+      const updatedState = { ...prevState };
+      Object.keys(updatedState).forEach((key) => {
+        updatedState[key] = false;
+      });
+      updatedState[checkbox] = !prevState[checkbox];
+      return updatedState;
+    });
   };
 
   const [isClick, setIsClick] = useState(false)
+
+  const handleClick = (newest, popular, category, level) => {
+    if (newest === true || popular === true || category !== '' || level !== '') {
+      setIsClick(true);
+      click(isClick);
+    }
+  };
   
+  const handleRemoveFilter = () =>{
+    window.location.reload();
+  }
+
   useEffect(() => {
     if (checkboxState.newest) {
      getFilter(true,false,"","","")
       .then((data) => {
         filter(data)
-        handleClick(true,false,"","","")    
+        handleClick(true,false,"","","")
     })
     }
     if (checkboxState.popular) {
@@ -107,22 +121,7 @@ const SideFilter = ({filter,click}) => {
     }
   }, [checkboxState]);
 
-  const handleClick =(isNewest,isPopular,category,level) => {
-    if (isNewest === true) {
-      setIsClick(true);
-     } else if (isPopular === true) {
-      setIsClick(true);
-     } else if (category !== '') {
-      setIsClick(true);
-     } else if (level !== '') {
-      setIsClick(true);
-     }
-     click(isClick);     
-    }
-
-  const handleRemoveFilter = () =>{
-    window.location.reload()
-  }
+  // console.log(initFilter);
 
   return (
     <div className="side-filter sticky-top">
@@ -130,13 +129,23 @@ const SideFilter = ({filter,click}) => {
         <h5 className="mb-3 pt-3 filters-tagline">Filter</h5>
         <div className="checkbox-filter gap-2">
           <div className="mb-2 d-flex align-items-center">
-            <input onChange={() => handle("newest")} checked={checkboxState.newest} type="checkbox" id="checkbox1" />
+            <input
+              onChange={() => handle("newest")}
+              checked={checkboxState.newest}
+              type="checkbox"
+              id="checkbox1"
+            />
             <label htmlFor="checkbox1" className="checkbox-label">
               Paling Baru
             </label>
           </div>
           <div className="mb-2 d-flex align-items-center">
-            <input onChange={() => handle("popular")} checked={checkboxState.popular} type="checkbox" id="checkbox2" />
+            <input
+              onChange={() => handle("popular")}
+              checked={checkboxState.popular}
+              type="checkbox"
+              id="checkbox2"
+            />
             <label htmlFor="checkbox2" className="checkbox-label">
               Paling Populer
             </label>
@@ -145,59 +154,104 @@ const SideFilter = ({filter,click}) => {
         <h5 className="mt-4 mb-3 filters-tagline">Kategori</h5>
         <div className="checkbox-kategori gap-2">
           <div className="mb-2 d-flex align-items-center">
-            <input onChange={() => handle("uiux")} checked={checkboxState.uiux} type="checkbox" id="checkbox3" />
+            <input
+              onChange={() => handle("uiux")}
+              checked={checkboxState.uiux}
+              type="checkbox"
+              id="checkbox3"
+            />
             <label htmlFor="checkbox3" className="checkbox-label">
               UI / UX Design
             </label>
           </div>
           <div className="mb-2 d-flex align-items-center">
-            <input onChange={() => handle("web")} checked={checkboxState.web} type="checkbox" id="checkbox4" />
+            <input
+              onChange={() => handle("web")}
+              checked={checkboxState.web}
+              type="checkbox"
+              id="checkbox4"
+            />
             <label htmlFor="checkbox4" className="checkbox-label">
               Web Development
             </label>
           </div>
           <div className="mb-2 d-flex align-items-center">
-            <input onChange={() => handle("android")} checked={checkboxState.android} type="checkbox" id="checkbox5" />
+            <input
+              onChange={() => handle("android")}
+              checked={checkboxState.android}
+              type="checkbox"
+              id="checkbox5"
+            />
             <label htmlFor="checkbox5" className="checkbox-label">
               Android Development
             </label>
           </div>
           <div className="mb-2 d-flex align-items-center">
-            <input onChange={() => handle("data")}checked={checkboxState.data} type="checkbox" id="checkbox6" />
+            <input
+              onChange={() => handle("data")}
+              checked={checkboxState.data}
+              type="checkbox"
+              id="checkbox6"
+            />
             <label htmlFor="checkbox6" className="checkbox-label">
               Data Science
             </label>
           </div>
           <div className="mb-2 d-flex align-items-center">
-            <input onChange={() => handle("business")} checked={checkboxState.business} type="checkbox" id="checkbox7" />
+            <input
+              onChange={() => handle("business")}
+              checked={checkboxState.business}
+              type="checkbox"
+              id="checkbox7"
+            />
             <label htmlFor="checkbox7" className="checkbox-label">
               Business Intelligence
             </label>
           </div>
         </div>
 
-        <h5 className="mt-4 mb-3 filters-tagline">Level Kesulitas</h5>
+        <h5 className="mt-4 mb-3 filters-tagline">Level Kesulitan</h5>
         <div className="checkbox-level gap-2">
           <div className="mb-2 d-flex align-items-center">
-          <input onChange={() => handle("semua_level")} checked={checkboxState.semua_level} type="checkbox" id="checkbox8" />
+            <input
+              onChange={() => handle("semua_level")}
+              checked={checkboxState.semua_level}
+              type="checkbox"
+              id="checkbox8"
+            />
             <label htmlFor="checkbox8" className="checkbox-label">
               Semua Level
             </label>
           </div>
           <div className="mb-2 d-flex align-items-center">
-            <input onChange={() => handle("beginner_level")} checked={checkboxState.beginner_level} type="checkbox" id="checkbox9" />
+            <input
+              onChange={() => handle("beginner_level")}
+              checked={checkboxState.beginner_level}
+              type="checkbox"
+              id="checkbox9"
+            />
             <label htmlFor="checkbox9" className="checkbox-label">
               Beginner Level
             </label>
           </div>
           <div className="mb-2 d-flex align-items-center">
-            <input onChange={() => handle("intermediate_level")} checked={checkboxState.intermediate_level} type="checkbox" id="checkbox10" />
+            <input
+              onChange={() => handle("intermediate_level")}
+              checked={checkboxState.intermediate_level}
+              type="checkbox"
+              id="checkbox10"
+            />
             <label htmlFor="checkbox10" className="checkbox-label">
               Intermediate Level
             </label>
           </div>
           <div className="mb-2 d-flex align-items-center">
-            <input onChange={() => handle("advanced_level")} checked={checkboxState.advanced_level} type="checkbox" id="checkbox11" />
+            <input
+              onChange={() => handle("advanced_level")}
+              checked={checkboxState.advanced_level}
+              type="checkbox"
+              id="checkbox11"
+            />
             <label htmlFor="checkbox11" className="checkbox-label">
               Advanced Level
             </label>

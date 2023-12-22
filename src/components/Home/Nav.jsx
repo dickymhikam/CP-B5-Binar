@@ -9,7 +9,7 @@ import btnUser from "../../assets/fi_user.svg";
 import btnList from "../../assets/fi_list.svg";
 import btnLogin from "../../assets/fi_log-in.svg";
 
-const Nav = ({setnavtxt}) => {
+const Nav = () => {
   const location = useLocation();
   const getButtonText = () => {
     if (location.pathname === "/profil-saya") {
@@ -36,9 +36,9 @@ const Nav = ({setnavtxt}) => {
 
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
-  const handleSearchClick = () => {
-    setnavtxt(searchInput);
-    setSearchInput(searchInput || "");
+
+  const handleSearchClick = (navtxt) => {
+    localStorage.setItem("searchInput", navtxt);
     navigate("/topik-kelas");
   };
 
@@ -53,10 +53,10 @@ const Nav = ({setnavtxt}) => {
             className="input-search"
             type="text"
             placeholder="Cari Kursus terbaik..."
-            value={searchInput}  
+            value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <button className="button-search" onClick={handleSearchClick}>
+          <button className="button-search" onClick={() => handleSearchClick(searchInput)}>
             <img src={btnsearch} alt="Search" />
           </button>
         </div>

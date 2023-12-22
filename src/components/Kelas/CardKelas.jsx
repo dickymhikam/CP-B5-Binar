@@ -8,7 +8,7 @@ import badge from "../../assets/mdi_badge-outline.svg";
 
 const CardKelas = ({ classes }) => {
   return (
-    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 py-3 card-kursus-wrapper">
+    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 mt-3 card-kursus-wrapper">
       {classes && classes.map((classes, index) =>(
         <Link to={`/detail-kelas/${classes.kodeKelas}`} key={index} className="text-decoration-none text-dark">
           <div  className="col px-0 d-flex justify-content-center card-kursus-home">
@@ -19,8 +19,8 @@ const CardKelas = ({ classes }) => {
                   <h5 className="card-title text-truncate">
                     {classes.kategori}
                   </h5>
-                  <div className="d-flex justify-content-center  align-items-start">
-                    <img src={star} className="icon-star mt-md-1" />
+                  <div className="icon-star">
+                    <img src={star}/>
                     <p className="m-0">{classes.rating}</p>
                   </div>
                 </div>

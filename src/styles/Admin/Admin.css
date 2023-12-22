@@ -4,9 +4,15 @@
 }
 
 .admin-header {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 300px;
+  height: 100vh; 
 }
+
 .admin-body {
+  margin-left: 300px; 
   width: 100%;
 }
 
@@ -49,6 +55,10 @@
   font-weight: 700;
   line-height: 24px;
   padding: 13px 0 13px 40px;
+}
+
+.sidebar-texts {
+  background: var(--Light-Blue-100, #489cff);
 }
 
 .navbar-admin-wrapper {
@@ -156,5 +166,8 @@
   .sidebar-admin-offcanvas {
     display: block;
     margin-right: 20px;
+  }
+  .admin-body {
+    margin-left: 0px;
   }
 }

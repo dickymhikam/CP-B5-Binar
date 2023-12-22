@@ -1,8 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
-
 import "../../styles/FilterKelasOffCanvas.css";
 import { getFilterClassBerjalan } from "../../services/api";
 import ProgressContext from "../../context/ProgressClass";
@@ -13,7 +11,7 @@ const FilterKelasOffCanvas = ({filterBerjalan,click}) => {
   const handleClose = () => setShowFilter(false);
   const handleShow = () => setShowFilter(true);
 
-  const {progress} = useContext(ProgressContext);
+  const { progress } = useContext(ProgressContext);
 
   const [checkboxStateBerjalan, setCheckboxStateBerjalan] = useState({
     newest: false,
@@ -23,115 +21,26 @@ const FilterKelasOffCanvas = ({filterBerjalan,click}) => {
     android: false,
     data: false,
     business: false,
-    semua_level : false,
+    semua_level: false,
     beginner_level: false,
     intermediate_level: false,
     advanced_level: false,
+  });
+
+  const handleBerjalan = (checkbox) => {
+    setCheckboxStateBerjalan((prevState) => {
+      const newState = { ...prevState, [checkbox]: !prevState[checkbox] };
+      Object.keys(newState).forEach((key) => {
+        if (key !== checkbox) {
+          newState[key] = false;
+        }
+      });
+      return newState;
     });
-
-    const handleBerjalan = (checkbox) => {
-      setCheckboxStateBerjalan((prevState) => ({
-        ...prevState,
-        [checkbox]: !prevState[checkbox],
-      }));
-    };
-
+  };
+  
   const [filterCourseClass, setFilterCourseClass] = useState([]);
   const [isClick, setIsClick] = useState(false)
-
-  useEffect(() => {
-    if (checkboxStateBerjalan.newest) {
-     getFilterClassBerjalan(true,false,progress,"","")
-     .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(true,false,progress,"","")    
-        console.log("data",data);
-    })
-    }
-    if (checkboxStateBerjalan.popular) {
-     getFilterClassBerjalan(false,true,progress,"","")
-     .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,true,progress,"","");
-    })
-    }
-    if (checkboxStateBerjalan.uiux) {
-     getFilterClassBerjalan(false,false,progress,"UI/UX Design","")
-     .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"UI/UX Design","");
-    })
-    }
-    if (checkboxStateBerjalan.web) {
-     getFilterClassBerjalan(false,false,progress,"Web Development","")
-     .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"Web Development","");
-    })
-    }
-    if (checkboxStateBerjalan.android) {
-     getFilterClassBerjalan(false,false,progress,"Android Development","")
-     .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"Android Development","");
-    })
-    }
-    if (checkboxStateBerjalan.data) {
-     getFilterClassBerjalan(false,false,progress,"Data Science","")
-     .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"Data Science","");
-    })
-    }
-    if (checkboxStateBerjalan.business) {
-     getFilterClassBerjalan(false,false,progress,"Business Intelligence","")
-     .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"Business Intelligence","");
-    })
-    }
-    if (checkboxStateBerjalan.semua_level) {
-      getFilterClassBerjalan(false,false,progress,"",["BEGINNER","INTERMEDIATE","ADVANCED"],"")
-      .then((data) => {
-        setFilterCourseClass(data)
-         filterBerjalan(data);
-         handleClick(false,false,progress,"",["BEGINNER","INTERMEDIATE","ADVENCED"],"");
-     })
-    }
-    if (checkboxStateBerjalan.beginner_level) {
-     getFilterClassBerjalan(false,false,progress,"","BEGINNER")
-     .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"","BEGINNER");
-    })
-    }
-    if (checkboxStateBerjalan.intermediate_level) {
-     getFilterClassBerjalan(false,false,progress,"","INTERMEDIATE")
-     .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"","INTERMEDIATE");
-    })
-    }
-    if (checkboxStateBerjalan.advanced_level) {
-     getFilterClassBerjalan(false,false,progress,"","ADVANCED",)
-     .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"","ADVANCED");
-    })
-    }
-
-
-  }, [checkboxStateBerjalan,progress]);
 
   const handleClick =(isNewest,isPopular,category,level,type) => {
     if (isNewest === true) {
@@ -151,6 +60,96 @@ const FilterKelasOffCanvas = ({filterBerjalan,click}) => {
   const handleRemoveFilter = () =>{
     window.location.reload()
   }
+
+  useEffect(() => {
+    if (checkboxStateBerjalan.newest) {
+      getFilterClassBerjalan(true, false, progress, "", "")
+        .then((data) => {
+          setFilterCourseClass(data);
+          filterBerjalan(data);
+          handleClick(true, false, progress, "", "");
+        });
+    }
+    if (checkboxStateBerjalan.popular) {
+      getFilterClassBerjalan(false, true, progress, "", "")
+        .then((data) => {
+          setFilterCourseClass(data);
+          filterBerjalan(data);
+          handleClick(false, true, progress, "", "");
+        });
+    }
+    if (checkboxStateBerjalan.uiux) {
+      getFilterClassBerjalan(false, false, progress, "UI/UX Design", "")
+        .then((data) => {
+          setFilterCourseClass(data);
+          filterBerjalan(data);
+          handleClick(false, false, progress, "UI/UX Design", "");
+        });
+    }
+    if (checkboxStateBerjalan.web) {
+      getFilterClassBerjalan(false, false, progress, "Web Development", "")
+        .then((data) => {setFilterCourseClass(data);
+          filterBerjalan(data);
+          handleClick(false, false, progress, "Web Development", "");
+        });
+    }
+    if (checkboxStateBerjalan.android) {
+      getFilterClassBerjalan(false, false, progress, "Android Development", "")
+        .then((data) => {
+          setFilterCourseClass(data);
+          filterBerjalan(data);
+          handleClick(false, false, progress, "Android Development", "");
+        });
+    }
+    if (checkboxStateBerjalan.data) {
+      getFilterClassBerjalan(false, false, progress, "Data Science", "")
+        .then((data) => {
+          setFilterCourseClass(data);
+          filterBerjalan(data);
+          handleClick(false, false, progress, "Data Science", "");
+        });
+    }
+    if (checkboxStateBerjalan.business) {
+      getFilterClassBerjalan(false, false, progress, "Business Intelligence", "")
+        .then((data) => {
+          setFilterCourseClass(data);
+          filterBerjalan(data);
+          handleClick(false, false, progress, "Business Intelligence", "");
+        });
+    }
+    if (checkboxStateBerjalan.semua_level) {
+      getFilterClassBerjalan(false, false, progress, "", ["BEGINNER", "INTERMEDIATE", "ADVANCED"], "")
+        .then((data) => {
+          setFilterCourseClass(data);
+          filterBerjalan(data);
+          handleClick(false, false, progress, "", ["BEGINNER", "INTERMEDIATE", "ADVANCED"], "");
+        });
+    }
+    if (checkboxStateBerjalan.beginner_level) {
+      getFilterClassBerjalan(false, false, progress, "", "BEGINNER")
+        .then((data) => {
+          setFilterCourseClass(data);
+          filterBerjalan(data);
+          handleClick(false, false, progress, "", "BEGINNER");
+        });
+    }
+    if (checkboxStateBerjalan.intermediate_level) {
+      getFilterClassBerjalan(false, false, progress, "", "INTERMEDIATE")
+        .then((data) => {
+          setFilterCourseClass(data);
+          filterBerjalan(data);
+          handleClick(false, false, progress, "", "INTERMEDIATE");
+        });
+    }
+    if (checkboxStateBerjalan.advanced_level) {
+      getFilterClassBerjalan(false, false, progress, "", "ADVANCED")
+        .then((data) => {
+          setFilterCourseClass(data);
+          filterBerjalan(data);
+          handleClick(false, false, progress, "", "ADVANCED");
+        });
+    }
+  }, [checkboxStateBerjalan, progress]);
 
   return (
     <>
@@ -241,7 +240,7 @@ const FilterKelasOffCanvas = ({filterBerjalan,click}) => {
                   </label>
                 </div>
                 <div className="mb-2 d-flex align-items-center">
-                  <input onChange={() => handleBerjalan("advanced_")} checked={checkboxStateBerjalan.advanced_level} type="checkbox" id="checkbox11" />
+                  <input onChange={() => handleBerjalan("advanced_level")} checked={checkboxStateBerjalan.advanced_level} type="checkbox" id="checkbox11" />
                   <label htmlFor="checkbox11" className="checkbox-label">
                     Advanced Level
                   </label>

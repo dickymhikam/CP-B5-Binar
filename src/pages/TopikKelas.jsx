@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 
@@ -11,20 +12,25 @@ import SideFilter from "../components/Kelas/SideFilter";
 import HorizontalFilterTopik from "../components/Kelas/HorizontalFilterTopik";
 
 const TopikKelas = () => {
-  const [sideFilter, setSideFilter] = useState([])
-  const [isClick, setIsClick] = useState(false)
-  const handle = (q) => {
-        setSideFilter(q)
-  
-  };
+  const location = useLocation();
+  const textNav = localStorage.getItem("searchInput") || "";
+  const filterState = (location.state && location.state.filterCategoryHome) || "";
   const [keyword, setkeyword] = useState('');
-  const [navtxt, setnavtxt] =  useState('');
-  const result = navtxt || keyword;
+  const result = keyword || textNav;
+  const [isClick, setIsClick] = useState(false)
+  const [sideFilter, setSideFilter] = useState([])
+  const handle = (q) => {
+    setSideFilter(q)
+  };
+
+  useEffect(() => {
+    localStorage.removeItem("searchInput");
+  }, [])
 
   return (
     <>
       <div className="bg-layar-hp">
-        <Nav setnavtxt={setnavtxt}/>
+        <Nav />
         <div className="bg-topik-kelas">
           <div className="container py-md-4">
             <div className="kelas-header d-flex justify-content-between align-items-center py-md-4 gap-5">
@@ -53,11 +59,11 @@ const TopikKelas = () => {
             <div className="konten-kelas my-2">
               <Row>
                 <Col md={4}>
-                  <SideFilter filter={handle} click={setIsClick}/>      
+                  <SideFilter filter={handle} click={setIsClick} initFilter={filterState}/>      
                 </Col>
           
                 <Col md={8}>
-                  <HorizontalFilterTopik filtered={sideFilter} clicked={isClick}  keyword={result}/>  
+                  <HorizontalFilterTopik filtered={sideFilter} clicked={isClick} keyword={result}/>  
                 </Col>
               </Row>
             </div>
@@ -65,9 +71,7 @@ const TopikKelas = () => {
           <Footer />
         </div>
       </div>
-      <div className="bg-navbarbot">
-        <NavbarBottom />
-      </div>
+      <NavbarBottom />
     </>
   );
 };

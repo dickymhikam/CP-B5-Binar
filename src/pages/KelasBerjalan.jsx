@@ -64,9 +64,7 @@ const KelasBerjalan = () => {
           <Footer />
         </div>
       </div>
-      <div className="bg-navbarbot">
-        <NavbarBottom />
-      </div>
+      <NavbarBottom />
     </>
   );
 };

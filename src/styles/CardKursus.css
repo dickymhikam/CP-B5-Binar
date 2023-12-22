@@ -146,5 +146,8 @@ margin: 0;
   .card-kursus-wrapper {
     gap: 20px;
   }
+  .btn-class { 
+    background: #FFF !important;
+  }
 }
 

@@ -1,14 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
 
-.bg-navbarbot {
-  background-color: #ebf3fc;
-}
 .navbar-bottom-wrapper {
-  background: #fff;
-  height: 4.2rem;
+  position: absolute;
   visibility: hidden;
-  bottom: -0.1rem;
-  box-shadow: rgba(0, 0, 0, 0.45) 0px -5px 20px -10px;
 }
 .text-link {
   text-decoration: none !important;
@@ -51,5 +45,11 @@
 @media (max-width: 768px) {
   .navbar-bottom-wrapper {
     visibility: visible;
+    background: #fff;
+    width: 100%;
+    height: 4.2rem;
+    bottom: -0.1rem;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px -5px 20px -10px;
+    position: fixed !important;
   }
 }

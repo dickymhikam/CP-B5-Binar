@@ -102,9 +102,8 @@
 .txt-tampil{
   font-family: "Montserrat", sans-serif;
   font-size: 15px;
-  font-style: normal;
   font-weight: 600;
-  line-height: 14px; 
+  margin: 8px 0 0 0;
 }
 .txt-keyword{
   color: var(--Dark-Blue-100, #6148FF);
@@ -116,5 +115,8 @@
   }
   .class-search {
     display: none;
+  }
+  .txt-tampil {
+    padding: 0 5%;
   }
 }

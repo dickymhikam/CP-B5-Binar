@@ -15,6 +15,7 @@ const CardKursus = () => {
   const [coursePopular, setCoursePopular] = useState([]);
   const [modalShowBeli, setModalShowBeli] = useState(false);
   const [courseDetail, setCourseDetail] = useState(null);
+  const [activeCategory, setActiveCategory] = useState("All");
 
   useEffect(() => {
     getPopularCourse("All")
@@ -37,7 +38,8 @@ const CardKursus = () => {
   };
 
   const HandlerPopular = async (q) => {
-    setCoursePopular(await getPopularCourse(q))
+    setCoursePopular(await getPopularCourse(q));
+    setActiveCategory(q);
   }
 
   return (
@@ -51,13 +53,48 @@ const CardKursus = () => {
             </Link>
           </div>
           <div className="col-sm-12 text-center mt-2">
-            <button  onClick={() => HandlerPopular("All")} className="btn-class mt-1 mb-2">All</button>
-            <button  onClick={() => HandlerPopular("Data Science")} className="btn-class ">Data Science</button>
-            <button  onClick={() => HandlerPopular("UI/UX Design")} className="btn-class">UI/UX Design</button>
-            <button  onClick={() => HandlerPopular("Android Development")} className="btn-class">Android Development</button>
-            <button  onClick={() => HandlerPopular("Web Development")} className="btn-class mb-2">Web Development</button>
-            <button  onClick={() => HandlerPopular("IOS Development")} className="btn-class">IOS Development</button>
-            <button  onClick={() => HandlerPopular("Business Intelligence")} className="btn-class">Business Intelligence</button>
+            <button
+              onClick={() => HandlerPopular("All")}
+              className={`btn-class mt-1 mb-2 ${
+                activeCategory === "All" ? "btn-active" : "btn"
+              }`}
+            >All</button>
+            <button
+              onClick={() => HandlerPopular("Data Science")}
+              className={`btn-class mt-1 mb-2 ${
+                activeCategory === "Data Science" ? "btn-active" : "btn"
+              }`}
+            >Data Science</button>
+            <button
+              onClick={() => HandlerPopular("UI/UX Design")}
+              className={`btn-class mt-1 mb-2 ${
+                activeCategory === "UI/UX Design" ? "btn-active" : "btn"
+              }`}
+            >UI/UX Design</button>
+            <button
+              onClick={() => HandlerPopular("Android Development")}
+              className={`btn-class mt-1 mb-2 ${
+                activeCategory === "Android Development" ? "btn-active" : "btn"
+              }`}
+            >Android Development</button>
+            <button
+              onClick={() => HandlerPopular("Web Development")}
+              className={`btn-class mt-1 mb-2 ${
+                activeCategory === "Web Development" ? "btn-active" : "btn"
+              }`}
+            >Web Development</button>
+            <button
+              onClick={() => HandlerPopular("IOS Development")}
+              className={`btn-class mt-1 mb-2 ${
+                activeCategory === "IOS Development" ? "btn-active" : "btn"
+              }`}
+            >IOS Development</button>
+            <button
+              onClick={() => HandlerPopular("Business Intelligence")}
+              className={`btn-class mt-1 mb-2 ${
+                activeCategory === "Business Intelligence" ? "btn-active" : "btn"
+              }`}
+            >Business Intelligence</button>
           </div>
         </div>
       </div>
@@ -65,7 +102,7 @@ const CardKursus = () => {
       <div className="type-container-card">
         <div className="row row-cols-1 row-cols-md-3 row-cols-lg-3  card-kursus-wrapper">
           {coursePopular && coursePopular.map((course, index) => ( 
-            <div key={index} className="col px-0 d-flex justify-content-center card-kursus-home">
+            <div key={index} className="col px-0 d-flex justify-content-center my-2 card-kursus-home">
               <div className="card ">
                 <Link to={`detail-kelas/${course?.kodeKelas}`} className="text-decoration-none">
                   <img src={course.imageUrl} className="card-img-top" alt="..." />

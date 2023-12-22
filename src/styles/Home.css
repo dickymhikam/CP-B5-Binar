@@ -61,10 +61,6 @@
 .button-banner:hover {
   filter: brightness(150%);
 }
-.section-home {
-  display: flex;
-  flex-direction: column;
-}
 .category-wrapper{
   background-color: #ebf3fc;
  padding: 1% 15%;
@@ -122,9 +118,6 @@
     display: block;
     align-items: center;
     justify-content: center;
-  }
-  .section-home {
-    flex-direction: column-reverse;
   }
   .category-image {
     width: 100%;

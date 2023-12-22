@@ -13,7 +13,7 @@ const CardTopikKelas = ({ courses }) => {
   const [courseDetail, setCourseDetail] = useState(null);
 
   return (
-    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 py-3 card-kursus-wrapper">
+    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 mt-3 card-kursus-wrapper">
       {courses && courses.map((course, index) => (
         <div
           key={index}

@@ -35,7 +35,7 @@ const DetailMateri = ({ courseDetail, onChapterChange, onVideoChange }) => {
         {courseDetail && courseDetail?.getChapterResponses?.map((chapter, index) => (
           <div className="chapter" key={index}>
             <div className="header-chapter">
-              <p className="text-chapter">{`Chapter ${chapter.noChapter} - ${chapter.judulChapter}`}</p>
+              <p className="text-chapter">{`Chapter ${index + 1} - ${chapter.judulChapter}`}</p>
               <p className="text-time">{`${chapter.time} Menit`}</p>
             </div>
             {chapter && chapter.getVideoResponses?.map((video, videoIndex) => (

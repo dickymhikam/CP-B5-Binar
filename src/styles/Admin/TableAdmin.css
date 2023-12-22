@@ -17,6 +17,7 @@
 .btn-filter {
   padding: 0px 4px 0px 4px;
   border: 1px solid #6148ff;
+  background-color: #fff;
   border-radius: 16px;
   width: 91px;
   height: 32px;
@@ -58,11 +59,9 @@
 }
 
 /* Table */
-
 .bg-table {
   background: #489cff;
 }
-
 .header-table {
   font-size: 14px;
   text-align: start;
@@ -74,38 +73,36 @@
   font-weight: 550;
   line-height: 20px;
 }
-
 .text-class {
   font-weight: 700;
   line-height: 20px;
 }
-
 .text-lunas {
   font-size: 12px;
   font-weight: 700;
   color: #73ca5c;
 }
-
 .text-belum {
   font-size: 12px;
   font-weight: 700;
   color: #ff0000;
 }
-
 .text-payment {
   font-weight: 700;
   line-height: 20px;
 }
-
 .text-date {
   font-weight: 600;
   line-height: 20px;
 }
-
 .empty {
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
+}
+.btn-search-filter {
+  background: transparent;
+  border: none;
 }
 
 @media (max-width: 768px) {

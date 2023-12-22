@@ -23,7 +23,7 @@ export const loginUser = async (email, password) => {
 
 export const registerUser = async (name, email, telp, password) => {
   try {
-    await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, {
+    await axios.post(`${baseUrl}/users/register`, {
       nama: name,
       email: email,
       telp: telp,
@@ -53,7 +53,7 @@ export const verifyOtp = async (otp) => {
 export const resendOtp = async (email) => {
   try {
     await axios.post(
-      `${import.meta.env.VITE_BASE_URL}/users/resend-otp/${email}`
+      `${baseUrl}/users/resend-otp/${email}`
     );
     toast.success("OTP berhasil dikirim ulang.");
     return true;
@@ -214,8 +214,7 @@ export const getAllMyClass = async () => {
   try {
     const token = localStorage.getItem("token");
     const response = await axios.get(
-      `
-  ${baseUrl}/course/get/get-progress-finish`,
+      `${baseUrl}/course/get/get-progress-finish`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -478,7 +477,7 @@ export const payCourse = async (ordercode, cardNumber, cardType) => {
   try {
     const token = localStorage.getItem("token");
     const response = await axios.post(
-      `https://backend-video-course-production.up.railway.app/api/order/payment`,
+      `${baseUrl}/order/payment`,
       {
         ordercode: ordercode,
         cardNumber: cardNumber,

@@ -16,7 +16,7 @@ import "../styles/PembayaranDetail.css";
 import { getDetailCourse, payCourse, createOrder } from "../services/api";
 
 const PembayaranDetail = () => {
-  const [activeAccordion, setActiveAccordion] = useState("null");
+  const [activeAccordion, setActiveAccordion] = useState("CREDIT_CARD");
   const { kodeKelas } = useParams();
   const [courseDetail, setCourseDetail] = useState(null);
   const [selectedCardNumber, setSelectedCardNumber] = useState("");
@@ -46,15 +46,20 @@ const PembayaranDetail = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const courseData = await getDetailCourse(kodeKelas);
-        setCourseDetail(courseData);
-
-        const orderData = await createOrder(kodeKelas);
-        setOrderCode(orderData.orderCode);
-        setOrderDataCourse(orderData);
-      } catch (error) {
-        console.error("Error fetching course details:", error);
+      if (!(localStorage.getItem("token"))) {
+        window.location.href="/";
+      } else {
+        try {
+          const courseData = await getDetailCourse(kodeKelas);
+          setCourseDetail(courseData);
+          
+          const orderData = await createOrder(kodeKelas);
+          setOrderCode(orderData.orderCode);
+          setOrderDataCourse(orderData);
+          handleAccordionClick("CREDIT_CARD");
+        } catch (error) {
+          console.error("Error fetching course details:", error);
+        }
       }
     };
 
@@ -113,12 +118,14 @@ const PembayaranDetail = () => {
                   <h2 className="accordion-header">
                     <button
                       className={`accordion-button bg-dark ${
-                        activeAccordion === "BANK_TRANSFER" ? "active" : ""
+                        activeAccordion === "BANK_TRANSFER" ? "" : "collapsed"
                       }`}
                       type="button"
                       data-bs-toggle="collapse"
                       data-bs-target="#collapseOne"
-                      aria-expanded="false"
+                      aria-expanded={
+                        activeAccordion === "BANK_TRANSFER" ? "true" : "false"
+                      }
                       aria-controls="collapseOne"
                       onClick={() => handleAccordionClick("BANK_TRANSFER")}
                       name="cardType"
@@ -128,8 +135,11 @@ const PembayaranDetail = () => {
                   </h2>
                   <div
                     id="collapseOne"
-                    className="accordion-collapse collapse"
+                    className={`accordion-collapse collapse ${
+                      activeAccordion === "BANK_TRANSFER" ? "show" : ""
+                    }`}
                     data-bs-parent="#accordionExample"
+                    aria-labelledby="headingOne"
                   >
                     {selectedCardType === "BANK_TRANSFER" && (
                       <div className=" accordion-body mb-0">
@@ -194,12 +204,14 @@ const PembayaranDetail = () => {
                   <h2 className="accordion-header">
                     <button
                       className={`accordion-button ${
-                        activeAccordion === "CREDIT_CARD" ? "active" : ""
+                        activeAccordion === "CREDIT_CARD" ? "" : "collapsed"
                       }`}
                       type="button"
                       data-bs-toggle="collapse"
                       data-bs-target="#collapseTwo"
-                      aria-expanded="true"
+                      aria-expanded={
+                        activeAccordion === "CREDIT_CARD" ? "true" : "false"
+                      }
                       aria-controls="collapseTwo"
                       onClick={() => handleAccordionClick("CREDIT_CARD")}
                       name="cardType"
@@ -209,8 +221,11 @@ const PembayaranDetail = () => {
                   </h2>
                   <div
                     id="collapseTwo"
-                    className="accordion-collapse collapse show"
+                    className={`accordion-collapse collapse ${
+                      activeAccordion === "CREDIT_CARD" ? "show" : ""
+                    }`}
                     data-bs-parent="#accordionExample"
+                    aria-labelledby="headingTwo"
                   >
                     {selectedCardType === "CREDIT_CARD" && (
                       <div className="accordion-body mb-0">

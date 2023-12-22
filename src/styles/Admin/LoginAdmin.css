@@ -55,7 +55,7 @@
   margin-top: 16px;
 }
 
-.admin-form-item input {
+.input-pass-admin {
   display: flex;
   height: 48px;
   padding: 12px 16px;
@@ -65,6 +65,11 @@
   border-radius: 16px;
   border: 1px solid var(--neutral-02, #d0d0d0);
   background: #fff;
+  justify-content: space-between;
+}
+.input-pass-admin input {
+  outline: none;
+  border: none;
 }
 
 .admin-form-item input::placeholder {

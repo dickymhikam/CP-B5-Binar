@@ -9,7 +9,7 @@ import {
   getFreeSearchTopik, } from "../../services/api";
 import CardTopikKelas from "./CardTopikKelas";
 
-const HorizontalFilter = (props) => {
+const HorizontalFilterTopik = (props) => {
   const [activeButton, setActiveButton] = useState("All");
   const [courses, setCourses] = useState([]);
 
@@ -115,8 +115,8 @@ const HorizontalFilter = (props) => {
         </button>
       </div>
       {props.keyword.trim() !== "" && (
-      <p className="txt-tampil mt-4">
-        Menampilkan<span className="txt-keyword ms-1">{props.keyword}</span>
+      <p className="txt-tampil">
+        Menampilkan<span className="txt-keyword ms-1">{`"${props.keyword}"`}</span>
       </p>
     )}
       <CardTopikKelas courses={courses} />
@@ -124,11 +124,10 @@ const HorizontalFilter = (props) => {
   );
 };
 
-HorizontalFilter.propTypes={
+HorizontalFilterTopik.propTypes={
   filtered:PropTypes.array,
   clicked:PropTypes.bool,
   keyword:PropTypes.string
-
 }
 
-export default HorizontalFilter;
+export default HorizontalFilterTopik;

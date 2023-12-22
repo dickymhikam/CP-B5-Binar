@@ -104,8 +104,8 @@ const HorizontalFilter = (props) => {
         </button>
       </div>
       {props.query.trim() !== "" && (
-      <p className="txt-tampil mt-4">
-        Menampilkan<span className="txt-keyword ms-1">{props.query}</span>
+      <p className="txt-tampil">
+        Menampilkan<span className="txt-keyword ms-1">{`"${props.query}"`}</span>
       </p>
       )}
       <CardKelas classes={classes}/>

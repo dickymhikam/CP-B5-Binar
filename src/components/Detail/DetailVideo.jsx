@@ -83,6 +83,9 @@ const DetailVideo = ({ videos, chapter, videoindex }) => {
             </div>
             )}
         </div>
+        <div className="detail-judul-video">
+            {`"${selectedVideo?.judulVideo.toUpperCase()}"`}
+        </div>
     </>
   );
 };

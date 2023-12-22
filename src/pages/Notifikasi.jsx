@@ -21,7 +21,6 @@ const Notifikasi = () => {
               Notifikasi
             </div>
             <div className="card-body">
-              {/* here */}
               <div className="container notif-container">
                 <div className="notif-wrapper mx-4 d-flex gap-2 align-items-start">
                   <img src={bellIcon} alt="" />

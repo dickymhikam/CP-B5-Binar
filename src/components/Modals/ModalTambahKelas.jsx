@@ -1,103 +1,177 @@
 import { useState } from "react";
+
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Accordion from "react-bootstrap/Accordion";
+import { TrashFill } from "react-bootstrap-icons";
 
-import "../../styles/ModalTambahKelas.css";
+import "../../styles/Admin/ModalTambahKelas.css";
+
+import { createCourse } from "../../services/apiAdmin";
 
 const ModalTambahKelas = (props) => {
-  const [accordionItems, setAccordionItems] = useState([
+  const [chapters, setChapters] = useState([
     {
-      id: 0,
-      header: "Video 1",
-      body: (
-        <Accordion.Body className="mb-0">
-          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
-            <Form.Label>Judul Video</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Judul Video"
-              autoFocus
-              className="form-modal-admin"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
-            <Form.Label>Link Video</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Link Video"
-              autoFocus
-              className="form-modal-admin"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
-            <Form.Label>Chapter</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Chapter"
-              autoFocus
-              className="form-modal-admin"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlSelect1">
-            <Form.Label>Premium</Form.Label>
-            <Form.Control as="select" autoFocus className="form-modal-admin">
-              <option value="premium">Premium</option>
-              <option value="gratis">Gratis</option>
-            </Form.Control>
-          </Form.Group>
-        </Accordion.Body>
-      ),
+      chaptertitle: "",
+      insertVideoRequests: [
+        { judulVideo: "", linkVideo: "", isPremium: false },
+      ],
     },
   ]);
 
-  const addAccordionItem = () => {
-    const newId = accordionItems.length;
-    const newAccordion = {
-      id: newId,
-      header: `Video ${newId + 1}`,
-      body: (
-        <Accordion.Body className="mb-0">
-          <Form.Group className="mb-3 " controlId={`judulVideo${newId}`}>
-            <Form.Label>Judul Video</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Judul Video"
-              autoFocus
-              className="form-modal-admin"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
-            <Form.Label>Link Video</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Link Video"
-              autoFocus
-              className="form-modal-admin"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
-            <Form.Label>Chapter</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Chapter"
-              autoFocus
-              className="form-modal-admin"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlSelect1">
-            <Form.Label>Premium</Form.Label>
-            <Form.Control as="select" autoFocus className="form-modal-admin">
-              <option value="premium">Premium</option>
-              <option value="gratis">Gratis</option>
-            </Form.Control>
-          </Form.Group>
-        </Accordion.Body>
-      ),
-    };
-    setAccordionItems([...accordionItems, newAccordion]);
+  const [chapterForms, setChapterForms] = useState([
+    {
+      chaptertitle: "",
+      insertVideoRequests: [
+        { judulVideo: "", linkVideo: "", isPremium: false },
+      ],
+    },
+  ]);
+
+  const [formData, setFormData] = useState({
+    namaKelas: "",
+    kategori: "",
+    kodeKelas: "",
+    tipeKelas: "",
+    level: "",
+    harga: 0,
+    materi: "",
+  });
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      // console.log("uploaded file :", file);
+    } catch (error) {
+      console.error("error uploading file", error);
+    }
   };
+
+  const handleChapterInputChange = (event, chapterIndex) => {
+    const { name, value } = event.target;
+    const newChapterForms = [...chapterForms];
+    newChapterForms[chapterIndex] = {
+      ...newChapterForms[chapterIndex],
+      [name]: value,
+    };
+    setChapterForms(newChapterForms);
+  };
+
+  const handleVideoInputChange = (event, chapterIndex, videoIndex) => {
+    const { name, value } = event.target;
+    const newValue =
+      name === "isPremium" ? event.target.value === "true" : value;
+
+    const newChapterForms = [...chapterForms];
+    newChapterForms[chapterIndex].insertVideoRequests[videoIndex] = {
+      ...newChapterForms[chapterIndex].insertVideoRequests[videoIndex],
+      [name]: newValue,
+    };
+    setChapterForms(newChapterForms);
+  };
+
+  const addChapter = () => {
+    setChapters([
+      ...chapters,
+      {
+        chaptertitle: "",
+        insertVideoRequests: [
+          { judulVideo: "", linkVideo: "", isPremium: false },
+        ],
+      },
+    ]);
+
+    setChapterForms([
+      ...chapterForms,
+      {
+        chaptertitle: "",
+        insertVideoRequests: [
+          { judulVideo: "", linkVideo: "", isPremium: false },
+        ],
+      },
+    ]);
+  };
+
+  // console.log(chapterForms);
+
+  const addVideo = (chapterIndex) => {
+    const newChapters = [...chapters];
+    const newChapterForms = [...chapterForms];
+    const updatedChapter = { ...newChapters[chapterIndex] };
+
+    updatedChapter.insertVideoRequests.push({
+      judulVideo: "",
+      linkVideo: "",
+      isPremium: false,
+    });
+
+    newChapters[chapterIndex] = updatedChapter;
+
+    const updatedChapterForm = { ...newChapterForms[chapterIndex] };
+
+    updatedChapterForm.insertVideoRequests.push({
+      judulVideo: "",
+      linkVideo: "",
+      isPremium: false,
+    });
+
+    newChapterForms[chapterIndex] = updatedChapterForm;
+
+    setChapters(newChapters);
+    setChapterForms(newChapterForms);
+  };
+
+  const removeVideo = (chapterIndex, videoIndex) => {
+    const newChapters = [...chapters];
+    newChapters[chapterIndex].insertVideoRequests.splice(videoIndex, 1);
+    setChapters(newChapters);
+  };
+
+  const removeChapter = (chapterIndex) => {
+    const newChapters = chapters.filter((_, index) => index !== chapterIndex);
+    setChapters(newChapters);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const formDataToSend = new FormData();
+
+      if (selectedFile) {
+        formDataToSend.append("file", selectedFile);
+      }
+
+      const course = {
+        namaKelas: formData.namaKelas,
+        kategori: formData.kategori,
+        kodeKelas: formData.kodeKelas,
+        tipeKelas: formData.tipeKelas,
+        level: formData.level,
+        harga: parseInt(formData.harga),
+        materi: formData.materi,
+        chapterInsertRequests: chapterForms,
+      };
+
+      await createCourse(formDataToSend, course);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  // console.log(formData);
 
   return (
     <Modal
@@ -116,87 +190,259 @@ const ModalTambahKelas = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="modal-body-admin">
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="namaKelas">
             <Form.Label>Nama Kelas</Form.Label>
             <Form.Control
               type="text"
               placeholder="Nama Kelas"
               autoFocus
+              name="namaKelas"
               className="form-modal-admin"
+              value={formData.namaKelas}
+              onChange={handleInputChange}
             />
           </Form.Group>
-          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
+          <Form.Group className="mb-3 " controlId="exampleForm.ControlSelect1">
             <Form.Label>Kategori</Form.Label>
             <Form.Control
-              type="text"
+              as="select"
               placeholder="Kategori"
               autoFocus
+              name="kategori"
               className="form-modal-admin"
+              value={formData.kategori}
+              onChange={handleInputChange}
+            >
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Android Development">Android Development</option>
+              <option value="Data Science">Data Science</option>
+              <option value="Business Intelligence">
+                Business Intelligence
+              </option>
+              <option value="IOS Development">IOS Development</option>
+            </Form.Control>
+          </Form.Group>
+          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput2">
+            <Form.Label>Upload Gambar Kelas</Form.Label>
+            <Form.Control
+              key={formData.file}
+              type="file"
+              placeholder="Kategori"
+              autoFocus
+              name="file"
+              className="form-modal-admin"
+              onChange={handleFileUpload}
             />
           </Form.Group>
-          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
+          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput3">
             <Form.Label>Kode Kelas</Form.Label>
             <Form.Control
               type="text"
               placeholder="Kode Kelas"
               autoFocus
+              name="kodeKelas"
               className="form-modal-admin"
+              value={formData.kodeKelas}
+              onChange={handleInputChange}
             />
           </Form.Group>
-          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
+          <Form.Group className="mb-3 " controlId="exampleForm.ControlSelect2">
             <Form.Label>Tipe Kelas</Form.Label>
             <Form.Control
-              type="text"
+              as="select"
               placeholder="Tipe Kelas"
               autoFocus
+              name="tipeKelas"
               className="form-modal-admin"
-            />
+              value={formData.tipeKelas}
+              onChange={handleInputChange}
+            >
+              <option value="PREMIUM">Premium</option>
+              <option value="GRATIS">Gratis</option>
+            </Form.Control>
           </Form.Group>
-          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
+          <Form.Group className="mb-3" controlId="exampleForm.ControlSelect3">
             <Form.Label>Level</Form.Label>
             <Form.Control
-              type="text"
-              placeholder="Level"
+              as="select"
+              placeholder="Level Kelas"
               autoFocus
+              name="level"
               className="form-modal-admin"
-            />
+              value={formData.level}
+              onChange={handleInputChange}
+            >
+              <option value="BEGINNER">Beginner</option>
+              <option value="INTERMEDIATE">Intermediate</option>
+              <option value="ADVANCED">Advanced</option>
+            </Form.Control>
           </Form.Group>
-          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
+          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput4">
             <Form.Label>Harga</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               placeholder="Harga"
               autoFocus
+              name="harga"
               className="form-modal-admin"
+              value={formData.harga}
+              onChange={handleInputChange}
             />
           </Form.Group>
           <Form.Group
             className="mb-3 "
             controlId="exampleForm.ControlTextarea1"
           >
-            <Form.Label>Materi</Form.Label>
+            <Form.Label>Detail</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
-              placeholder="Materi"
+              placeholder="Tentang Kelas"
+              name="materi"
               className="form-modal-admin-materi"
+              value={formData.materi}
+              onChange={handleInputChange}
             />
           </Form.Group>
-          <Accordion className="mb-4">
-            {accordionItems.map((item) => (
-              <Accordion.Item key={item.id} eventKey={String(item.id)}>
-                <Accordion.Header>{item.header}</Accordion.Header>
-                {item.body}
-              </Accordion.Item>
-            ))}
-          </Accordion>
-
+          {chapters.map((chapter, chapterIndex) => (
+            <div className="chapter-wrapper mb-3" key={chapterIndex}>
+              <div className="container p-4">
+                <div className="d-flex justify-content-end">
+                  <TrashFill
+                    className="text-danger me-0"
+                    onClick={() => removeChapter(chapterIndex)}
+                  />
+                </div>
+                <Form.Group
+                  className="mb-3"
+                  controlId="exampleForm.ControlInput5"
+                >
+                  <Form.Label>Chapter Title</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder={`Chapter ${chapterIndex + 1} - Title`}
+                    autoFocus
+                    name="chaptertitle"
+                    className="form-modal-admin"
+                    value={chapterForms[chapterIndex].chaptertitle}
+                    onChange={(event) =>
+                      handleChapterInputChange(event, chapterIndex)
+                    }
+                  />
+                </Form.Group>
+                <Accordion defaultActiveKey="0">
+                  {chapter.insertVideoRequests.map((video, videoIndex) => (
+                    <Accordion.Item
+                      key={videoIndex}
+                      eventKey={videoIndex.toString()}
+                    >
+                      <Accordion.Header>{`Video ${
+                        videoIndex + 1
+                      }`}</Accordion.Header>
+                      <Accordion.Body className="mb-0">
+                        <Form.Group
+                          className="mb-3"
+                          controlId="exampleForm.ControlInput6"
+                        >
+                          <Form.Label>Judul Video</Form.Label>
+                          <Form.Control
+                            type="text"
+                            placeholder={`Judul Video`}
+                            autoFocus
+                            name="judulVideo"
+                            className="form-modal-admin"
+                            value={
+                              chapterForms[chapterIndex].insertVideoRequests[
+                                videoIndex
+                              ].judulVideo
+                            }
+                            onChange={(event) =>
+                              handleVideoInputChange(
+                                event,
+                                chapterIndex,
+                                videoIndex
+                              )
+                            }
+                          />
+                        </Form.Group>
+                        <Form.Group
+                          className="mb-3"
+                          controlId="exampleForm.ControlInput7"
+                        >
+                          <Form.Label>Link Video</Form.Label>
+                          <Form.Control
+                            type="text"
+                            placeholder={`Link Video`}
+                            autoFocus
+                            name="linkVideo"
+                            className="form-modal-admin"
+                            value={
+                              chapterForms[chapterIndex].insertVideoRequests[
+                                videoIndex
+                              ].linkVideo
+                            }
+                            onChange={(event) =>
+                              handleVideoInputChange(
+                                event,
+                                chapterIndex,
+                                videoIndex
+                              )
+                            }
+                          />
+                        </Form.Group>
+                        <Form.Group
+                          className="mb-3"
+                          controlId="exampleForm.ControlSelect4"
+                        >
+                          <Form.Label>Premium</Form.Label>
+                          <Form.Control
+                            as="select"
+                            autoFocus
+                            name="isPremium"
+                            className="form-modal-admin"
+                            value={
+                              chapterForms[chapterIndex].insertVideoRequests[
+                                videoIndex
+                              ].isPremium
+                            }
+                            onChange={(event) =>
+                              handleVideoInputChange(
+                                event,
+                                chapterIndex,
+                                videoIndex
+                              )
+                            }
+                          >
+                            <option value={false}>Free</option>
+                            <option value={true}>Premium</option>
+                          </Form.Control>
+                        </Form.Group>
+                        <Button
+                          className="btn-hapus-video mx-auto"
+                          onClick={() => removeVideo(chapterIndex, videoIndex)}
+                        >
+                          Hapus Video
+                        </Button>
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  ))}
+                </Accordion>
+                <Button
+                  className="btn-video mx-auto"
+                  onClick={() => addVideo(chapterIndex)}
+                >
+                  Tambah Video
+                </Button>
+              </div>
+            </div>
+          ))}
           <div className="d-flex justify-content-between gap-2">
-            <Button onClick={addAccordionItem} className="btn-upload">
-              Tambah Video
+            <Button className="btn-chapter" onClick={addChapter}>
+              Tambah Chapter
             </Button>
-            <Button onClick={props.onHide} className="btn-simpan">
+            <Button onClick={props.onHide} className="btn-simpan" type="submit">
               Simpan
             </Button>
           </div>

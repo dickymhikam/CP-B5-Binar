@@ -43,7 +43,7 @@
 }
 .txt-kelass {
   width: 318px;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -53,7 +53,7 @@
 }
 .txt-design-all {
   color: #000000cc;
-  font-family: Montserrat, sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
@@ -61,9 +61,20 @@
   flex: 1 0 0;
   text-align: justify;
 }
+.detail-judul-video {
+  display: flex;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  padding-top: 20px;
+}
 
 @media screen and (max-width: 768px) {
   .detail-video {
     border-radius: 0;
+  }
+  .detail-judul-video {
+    padding: 7% 5% 0 5%;
   }
 }

@@ -29,13 +29,17 @@ const DetailKelas = () => {
   const [videoDetailIndex, setVideoDetailIndex] = useState(0);
 
   useEffect(() => {
-    getDetailCourse(kode)
+    if (!(localStorage.getItem("token"))) {
+      window.location.href = "/";
+    } else {
+      getDetailCourse(kode)
       .then((data) => {
         setCourseDetail(data);
       })
       .catch((error) => {
         console.error("Error fetching course list:", error);
       });
+    }
   }, [kode]);
 
   const handleChapterChange = (index) => {
@@ -61,13 +65,13 @@ const DetailKelas = () => {
               </Link>
               <div className="detail-card-body">
                 <div className="detail-card-body-title text-tuncrate">
-                  <h5>{courseDetail?.kategori}</h5>
+                  <h5 className="m-0">{courseDetail?.kategori}</h5>
                   <span className="rate">
                     <img src={star} />
                       {courseDetail?.rating}
                   </span>
                 </div>
-                <h2 className="text-tuncrate">{courseDetail?.namaKelas}</h2>
+                <h2 className="text-tuncrate mt-2">{courseDetail?.namaKelas}</h2>
                 <h3>{`by ${courseDetail?.author}`}</h3>
                 <div className="detail-card-body-stats">
                   <div className="detail-stat">
@@ -108,7 +112,8 @@ const DetailKelas = () => {
           </div>
           <div className="detail-kelas-body">
             <div className="detail-body-about">
-              <DetailAbout courseDetail={courseDetail} />
+              <DetailAbout
+                courseDetail={courseDetail}/>
             </div>
             <div className="detail-body-materi ">
               <DetailMateri
