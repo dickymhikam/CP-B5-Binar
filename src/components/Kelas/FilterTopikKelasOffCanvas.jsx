@@ -1,21 +1,18 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 
 import "../../styles/FilterKelasOffCanvas.css";
-import { getFilterClassBerjalan } from "../../services/api";
-import ProgressContext from "../../context/ProgressClass";
+import { getFilter } from "../../services/api";
 
-const FilterKelasOffCanvas = ({filterBerjalan,click}) => {
+const FilterTopikKelasOffCanvas = ({filter,click}) => {
   const [showFilter, setShowFilter] = useState(false);
 
   const handleClose = () => setShowFilter(false);
   const handleShow = () => setShowFilter(true);
 
-  const {progress} = useContext(ProgressContext);
-
-  const [checkboxStateBerjalan, setCheckboxStateBerjalan] = useState({
+  const [checkboxState, setCheckboxState] = useState({
     newest: false,
     popular: false,
     uiux: false,
@@ -29,109 +26,109 @@ const FilterKelasOffCanvas = ({filterBerjalan,click}) => {
     advanced_level: false,
     });
 
-    const handleBerjalan = (checkbox) => {
-      setCheckboxStateBerjalan((prevState) => ({
+    const handle = (checkbox) => {
+      setCheckboxState((prevState) => ({
         ...prevState,
         [checkbox]: !prevState[checkbox],
       }));
     };
 
-  const [filterCourseClass, setFilterCourseClass] = useState([]);
+  const [filterCourse, setFilterCourse] = useState([]);
   const [isClick, setIsClick] = useState(false)
 
   useEffect(() => {
-    if (checkboxStateBerjalan.newest) {
-     getFilterClassBerjalan(true,false,progress,"","")
+    if (checkboxState.newest) {
+     getFilter(true,false,"","","")
      .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(true,false,progress,"","")    
-        console.log("data",data);
+       setFilterCourse(data)
+        filter(data)
+        handleClick(true,false,"","","")    
     })
     }
-    if (checkboxStateBerjalan.popular) {
-     getFilterClassBerjalan(false,true,progress,"","")
+    if (checkboxState.popular) {
+     getFilter(false,true,"","","")
      .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,true,progress,"","");
+       setFilterCourse(data)
+        filter(data)
+        handleClick(false,true,"","","");
+    })
+
+    }
+    if (checkboxState.uiux) {
+     getFilter(false,false,"UI/UX Design","","")
+     .then((data) => {
+       setFilterCourse(data)
+        filter(data)
+        handleClick(false,false,"UI/UX Design","","");
     })
     }
-    if (checkboxStateBerjalan.uiux) {
-     getFilterClassBerjalan(false,false,progress,"UI/UX Design","")
+    if (checkboxState.web) {
+     getFilter(false,false,"Web Development","","")
      .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"UI/UX Design","");
+       setFilterCourse(data)
+        filter(data)
+        handleClick(false,false,"Web Development","","");
     })
     }
-    if (checkboxStateBerjalan.web) {
-     getFilterClassBerjalan(false,false,progress,"Web Development","")
+    if (checkboxState.android) {
+     getFilter(false,false,"Android Development","","")
      .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"Web Development","");
+       setFilterCourse(data)
+        filter(data)
+        handleClick(false,false,"Android Development","","");
     })
     }
-    if (checkboxStateBerjalan.android) {
-     getFilterClassBerjalan(false,false,progress,"Android Development","")
+    if (checkboxState.data) {
+     getFilter(false,false,"Data Science","","")
      .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"Android Development","");
+       setFilterCourse(data)
+        filter(data)
+        handleClick(false,false,"Data Science","","");
     })
     }
-    if (checkboxStateBerjalan.data) {
-     getFilterClassBerjalan(false,false,progress,"Data Science","")
+    if (checkboxState.business) {
+     getFilter(false,false,"Business Intelligence","","")
      .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"Data Science","");
+       setFilterCourse(data)
+        filter(data)
+        handleClick(false,false,"Business Intelligence","","");
     })
     }
-    if (checkboxStateBerjalan.business) {
-     getFilterClassBerjalan(false,false,progress,"Business Intelligence","")
-     .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"Business Intelligence","");
-    })
-    }
-    if (checkboxStateBerjalan.semua_level) {
-      getFilterClassBerjalan(false,false,progress,"",["BEGINNER","INTERMEDIATE","ADVANCED"],"")
+    if (checkboxState.semua_level) {
+      getFilter(false,false,"",["BEGINNER","INTERMEDIATE","ADVANCED"],"")
       .then((data) => {
-        setFilterCourseClass(data)
-         filterBerjalan(data);
-         handleClick(false,false,progress,"",["BEGINNER","INTERMEDIATE","ADVENCED"],"");
+        setFilterCourse(data)
+         filter(data);
+         handleClick(false,false,"",["BEGINNER","INTERMEDIATE","ADVENCED"],"");
      })
     }
-    if (checkboxStateBerjalan.beginner_level) {
-     getFilterClassBerjalan(false,false,progress,"","BEGINNER")
+    if (checkboxState.beginner_level) {
+     getFilter(false,false,"","BEGINNER","")
      .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"","BEGINNER");
+       setFilterCourse(data)
+        filter(data)
+        handleClick(false,false,"","BEGINNER","");
     })
     }
-    if (checkboxStateBerjalan.intermediate_level) {
-     getFilterClassBerjalan(false,false,progress,"","INTERMEDIATE")
+    if (checkboxState.intermediate_level) {
+     getFilter(false,false,"","INTERMEDIATE","")
      .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"","INTERMEDIATE");
+       setFilterCourse(data)
+        filter(data)
+        handleClick(false,false,"","INTERMEDIATE","");
     })
     }
-    if (checkboxStateBerjalan.advanced_level) {
-     getFilterClassBerjalan(false,false,progress,"","ADVANCED",)
+    if (checkboxState.advanced_level) {
+     getFilter(false,false,"","ADVANCED","")
      .then((data) => {
-       setFilterCourseClass(data)
-        filterBerjalan(data)
-        handleClick(false,false,progress,"","ADVANCED");
+       setFilterCourse(data)
+        filter(data)
+        handleClick(false,false,"","ADVANCED","");
     })
     }
 
 
-  }, [checkboxStateBerjalan,progress]);
+  }, [checkboxState]);
 
   const handleClick =(isNewest,isPopular,category,level,type) => {
     if (isNewest === true) {
@@ -166,20 +163,20 @@ const FilterKelasOffCanvas = ({filterBerjalan,click}) => {
         show={showFilter}
         onHide={handleClose}
         placement="bottom"
-        
+
       >
         <Offcanvas.Body className="filter-offcanvas">
             <div className="container ps-3">
               <h5 className="mb-3 pt-3 filters-tagline">Filter</h5>
               <div className="checkbox-filter gap-2">
                 <div className="mb-2 d-flex align-items-center">
-                  <input onChange={() => handleBerjalan("newest")} checked={checkboxStateBerjalan.newest} type="checkbox" id="checkbox1" />
+                  <input onChange={() => handle("newest")} checked={checkboxState.newest} type="checkbox" id="checkbox1" />
                   <label htmlFor="checkbox1" className="checkbox-label">
                     Paling Baru
                   </label>
                 </div>
                 <div className="mb-2 d-flex align-items-center">
-                  <input onChange={() => handleBerjalan("popular")} checked={checkboxStateBerjalan.popular} type="checkbox" id="checkbox2" />
+                  <input onChange={() => handle("popular")} checked={checkboxState.popular} type="checkbox" id="checkbox2" />
                   <label htmlFor="checkbox2" className="checkbox-label">
                     Paling Populer
                   </label>
@@ -189,31 +186,31 @@ const FilterKelasOffCanvas = ({filterBerjalan,click}) => {
               <h5 className="mt-4 mb-3 filters-tagline">Kategori</h5>
               <div className="checkbox-kategori gap-2">
                 <div className="mb-2 d-flex align-items-center">
-                  <input onChange={() => handleBerjalan("uiux")} checked={checkboxStateBerjalan.uiux} type="checkbox" id="checkbox3" />
+                  <input onChange={() => handle("uiux")} checked={checkboxState.uiux} type="checkbox" id="checkbox3" />
                   <label htmlFor="checkbox3" className="checkbox-label">
                     UI / UX Design
                   </label>
                 </div>
                 <div className="mb-2 d-flex align-items-center">
-                  <input onChange={() => handleBerjalan("web")} checked={checkboxStateBerjalan.web} type="checkbox" id="checkbox4" />
+                  <input onChange={() => handle("web")} checked={checkboxState.web} type="checkbox" id="checkbox4" />
                   <label htmlFor="checkbox4" className="checkbox-label">
                     Web Development
                   </label>
                 </div>
                 <div className="mb-2 d-flex align-items-center">
-                  <input onChange={() => handleBerjalan("android")} checked={checkboxStateBerjalan.android} type="checkbox" id="checkbox5" />
+                  <input onChange={() => handle("android")} checked={checkboxState.android} type="checkbox" id="checkbox5" />
                   <label htmlFor="checkbox5" className="checkbox-label">
                     Android Development
                   </label>
                 </div>
                 <div className="mb-2 d-flex align-items-center">
-                  <input onChange={() => handleBerjalan("data")} checked={checkboxStateBerjalan.data} type="checkbox" id="checkbox6" />
+                  <input onChange={() => handle("data")} checked={checkboxState.data} type="checkbox" id="checkbox6" />
                   <label htmlFor="checkbox6" className="checkbox-label">
                     Data Science
                   </label>
                 </div>
                 <div className="mb-2 d-flex align-items-center">
-                  <input onChange={() => handleBerjalan("business")} checked={checkboxStateBerjalan.business} type="checkbox" id="checkbox7" />
+                  <input onChange={() => handle("business")} checked={checkboxState.business} type="checkbox" id="checkbox7" />
                   <label htmlFor="checkbox7" className="checkbox-label">
                     Business Intelligence
                   </label>
@@ -223,25 +220,25 @@ const FilterKelasOffCanvas = ({filterBerjalan,click}) => {
               <h5 className="mt-4 mb-3 filters-tagline">Level Kesulitas</h5>
               <div className="checkbox-level gap-2">
                 <div className="mb-2 d-flex align-items-center">
-                  <input onChange={() => handleBerjalan("semua_level")} checked={checkboxStateBerjalan.semua_level} type="checkbox" id="checkbox8" />
+                <input onChange={() => handle("semua_level")} checked={checkboxState.semua_level} type="checkbox" id="checkbox8" />
                   <label htmlFor="checkbox8" className="checkbox-label">
                     Semua Level
                   </label>
                 </div>
                 <div className="mb-2 d-flex align-items-center">
-                  <input onChange={() => handleBerjalan("beginner_level")} checked={checkboxStateBerjalan.beginner_level} type="checkbox" id="checkbox9" />
+                  <input onChange={() => handle("beginner_level")} checked={checkboxState.beginner_level} type="checkbox" id="checkbox9" />
                   <label htmlFor="checkbox9" className="checkbox-label">
                     Beginner Level
                   </label>
                 </div>
                 <div className="mb-2 d-flex align-items-center">
-                  <input onChange={() => handleBerjalan("intermediate_level")} checked={checkboxStateBerjalan.intermediate_level} type="checkbox" id="checkbox10" />
+                  <input onChange={() => handle("intermediate_level")} checked={checkboxState.intermediate_level} type="checkbox" id="checkbox10" />
                   <label htmlFor="checkbox1" className="checkbox-label">
                     Intermediate Level
                   </label>
                 </div>
                 <div className="mb-2 d-flex align-items-center">
-                  <input onChange={() => handleBerjalan("advanced_")} checked={checkboxStateBerjalan.advanced_level} type="checkbox" id="checkbox11" />
+                  <input onChange={() => handle("advanced_")} checked={checkboxState.advanced_level} type="checkbox" id="checkbox11" />
                   <label htmlFor="checkbox11" className="checkbox-label">
                     Advanced Level
                   </label>
@@ -257,4 +254,4 @@ const FilterKelasOffCanvas = ({filterBerjalan,click}) => {
   );
 };
 
-export default FilterKelasOffCanvas;
+export default FilterTopikKelasOffCanvas;

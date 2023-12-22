@@ -1,16 +1,23 @@
-import "../styles/KelasBerjalan.css";
-
-import { Form, Row, Col } from "react-bootstrap";
+import { useState } from "react";
+import { Row, Col } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 
+import "../styles/KelasBerjalan.css";
 import Nav from "../components/Home/Nav";
 import Footer from "../components/Home/Footer";
 import NavbarBottom from "../components/Home/NavbarBottom";
 import FilterKelasOffCanvas from "../components/Kelas/FilterKelasOffCanvas";
-import SideFilter from "../components/Kelas/SideFilter";
 import HorizontalFilter from "../components/Kelas/HorizontalFilter";
+import SideFilterClass from "../components/Kelas/SideFilterClass";
 
 const KelasBerjalan = () => {
+  const [sideFilterClass, setSideFilterClass] = useState([]);
+  const [isClick, setIsClick] = useState(false);
+  const [query, setquery] =  useState('');
+  const handleFilterClass = (q) => {
+    setSideFilterClass(q);
+  }
+
   return (
     <>
       <div className="bg-layar-hp">
@@ -22,37 +29,34 @@ const KelasBerjalan = () => {
                 Kelas Berjalan
               </h3>
               <div className="d-flex">
-                <FilterKelasOffCanvas />
-                <Form
-                  inline="true"
-                  className="d-flex justify-content-end m-0 search-kelas"
-                >
-                  <Row>
-                    <Col>
-                      <div className="position-relative form">
-                        <Form.Control
-                          type="text"
-                          placeholder="Cari Kelas"
-                          className="pl-5 search-form"
-                        />
-                        <div className="d-flex align-items-center position-absolute top-50 end-0 translate-middle-y px-2">
-                          <Search />
-                        </div>
+                <FilterKelasOffCanvas filterBerjalan={handleFilterClass} click={setIsClick}/>
+                <Row>
+                  <Col>
+                    <div className="class-search ">
+                      <input
+                        type="text"
+                        placeholder="Cari Kelas"
+                        className="pl-5 search-form"
+                        value={query}
+                        onChange={(e) => setquery(e.target.value)}
+                      />
+                      <div className="d-flex align-items-center position-absolute top-50 end-0 translate-middle-y px-2">
+                        <Search />
                       </div>
-                    </Col>
-                  </Row>
-                </Form>
+                    </div>
+                  </Col>
+                </Row>
               </div>
             </div>
 
             <div className="konten-kelas my-2">
               <Row>
                 <Col md={4}>
-                  <SideFilter />
+                  <SideFilterClass filterBerjalan={handleFilterClass} click={setIsClick} />
                 </Col>
 
                 <Col md={8}>
-                  <HorizontalFilter />
+                  <HorizontalFilter filteredClass={sideFilterClass} clicked={isClick} query={query} />
                 </Col>
               </Row>
             </div>

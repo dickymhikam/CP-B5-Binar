@@ -14,7 +14,7 @@ const CardTopikKelas = ({ courses }) => {
 
   return (
     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 py-3 card-kursus-wrapper">
-      {courses.map((course, index) => (
+      {courses && courses.map((course, index) => (
         <div
           key={index}
           className="col px-0 d-flex justify-content-center card-kursus-home"

@@ -1,41 +1,79 @@
 import { useState, useEffect } from "react";
-
-import {
+import PropTypes from "prop-types";
+import { 
   getCourseList,
-  getPremiumClass,
-  getFreeClass,
-} from "../../services/api";
-
+  getPremiumClass, 
+  getFreeClass, 
+  getAllSearchTopik,
+  getPremiumSearchTopik,
+  getFreeSearchTopik, } from "../../services/api";
 import CardTopikKelas from "./CardTopikKelas";
 
-const HorizontalFilter = () => {
+const HorizontalFilter = (props) => {
   const [activeButton, setActiveButton] = useState("All");
   const [courses, setCourses] = useState([]);
 
   const fetchDataTopFilter = async (buttonName) => {
     setActiveButton(buttonName);
-    if (buttonName === "All") {
-      try {
-        const allCoursesData = await getCourseList();
-        setCourses(allCoursesData);
-      } catch (error) {
-        console.error("Error fetching all courses:", error);
-      }
-    } else if (buttonName === "Kelas Premium") {
-      try {
-        const premiumCourseData = await getPremiumClass();
-        setCourses(premiumCourseData);
-      } catch (error) {
-        console.error("Error fetching premium classes:", error);
-      }
-    } else if (buttonName === "Kelas Gratis") {
-      try {
-        const freeCoursesData = await getFreeClass();
-        setCourses(freeCoursesData);
-      } catch (error) {
-        console.error("Error fetching free courses:", error);
+    let fetchedData;
+
+    if (props.clicked) {
+      fetchedData = props.filtered;
+    } else {
+      if (buttonName === "All") {
+        (async () => {
+          try {
+            if (props.filtered && props.filtered.length) {
+              fetchedData = props.filtered;
+              setCourses(fetchedData);
+            }else if (props.keyword.trim() !== "") {
+              fetchedData = await getAllSearchTopik(props.keyword);
+              setCourses(fetchedData);
+            } else {
+              fetchedData = await getCourseList();
+              setCourses(fetchedData);
+            }
+          } catch (error) {
+            console.error("Error fetching courses:", error);
+          }
+        })();
+      } else if (buttonName === "Kelas Premium") {
+        (async () => {
+          try {
+            if (props.filtered && props.filtered.length) {
+              fetchedData = props.filtered.filter((courses) => courses.tipeKelas === "PREMIUM");
+              setCourses(fetchedData);
+            } else if (props.keyword.trim() !== "") {
+              fetchedData = await getPremiumSearchTopik(props.keyword);
+              setCourses(fetchedData);
+            } else {
+              fetchedData = await getPremiumClass();
+              setCourses(fetchedData);
+            }
+          } catch (error) {
+            console.error("Error fetching courses:", error);
+          }
+        })();
+      } else if (buttonName === "Kelas Gratis") {
+        (async () => {
+          try {
+            if (props.filtered && props.filtered.length) {
+              fetchedData = props.filtered.filter((courses) => courses.tipeKelas === "FREE");
+              setCourses(fetchedData);
+            } else if (props.keyword.trim() !== "") {
+              fetchedData = await getFreeSearchTopik(props.keyword);
+              setCourses(fetchedData);
+            } else {
+              fetchedData = await getFreeClass();
+              setCourses(fetchedData);
+            }
+          } catch (error) {
+            console.error("Error fetching courses:", error);
+          }
+        })();
       }
     }
+    setCourses(fetchedData);
   };
 
   const handleClick = (buttonName) => {
@@ -44,7 +82,7 @@ const HorizontalFilter = () => {
 
   useEffect(() => {
     fetchDataTopFilter(activeButton);
-  }, [activeButton]);
+  }, [activeButton, props.clicked, props.filtered, props.keyword]);
 
   return (
     <>
@@ -76,9 +114,21 @@ const HorizontalFilter = () => {
           Kelas Gratis
         </button>
       </div>
+      {props.keyword.trim() !== "" && (
+      <p className="txt-tampil mt-4">
+        Menampilkan<span className="txt-keyword ms-1">{props.keyword}</span>
+      </p>
+    )}
       <CardTopikKelas courses={courses} />
     </>
   );
 };
+
+HorizontalFilter.propTypes={
+  filtered:PropTypes.array,
+  clicked:PropTypes.bool,
+  keyword:PropTypes.string
+
+}
 
 export default HorizontalFilter;

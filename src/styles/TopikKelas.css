@@ -99,11 +99,22 @@
   background-color: #6148ff !important;
   color: white !important;
 }
+.txt-tampil{
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 14px; 
+}
+.txt-keyword{
+  color: var(--Dark-Blue-100, #6148FF);
+  font-weight: bold;
+}
 @media (max-width: 768px) {
   .horizontal-filter {
     gap: 10px;
   }
-  .form {
+  .class-search {
     display: none;
   }
 }

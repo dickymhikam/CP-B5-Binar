@@ -1,16 +1,15 @@
-import "../../styles/Nav.css";
-
-import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 
+import "../../styles/Nav.css";
 import btnsearch from "../../assets/bx_search-alt.svg";
 import btnNotif from "../../assets/fi_bell.svg";
 import btnUser from "../../assets/fi_user.svg";
 import btnList from "../../assets/fi_list.svg";
 import btnLogin from "../../assets/fi_log-in.svg";
 
-const Nav = () => {
+const Nav = ({setnavtxt}) => {
   const location = useLocation();
   const getButtonText = () => {
     if (location.pathname === "/profil-saya") {
@@ -35,6 +34,14 @@ const Nav = () => {
     }
   }, []);
 
+  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
+  const handleSearchClick = () => {
+    setnavtxt(searchInput);
+    setSearchInput(searchInput || "");
+    navigate("/topik-kelas");
+  };
+
   return (
     <>
       <nav className="navbar-wrapper">
@@ -46,8 +53,10 @@ const Nav = () => {
             className="input-search"
             type="text"
             placeholder="Cari Kursus terbaik..."
+            value={searchInput}  
+            onChange={(e) => setSearchInput(e.target.value)}
           />
-          <button className="button-search">
+          <button className="button-search" onClick={handleSearchClick}>
             <img src={btnsearch} alt="Search" />
           </button>
         </div>

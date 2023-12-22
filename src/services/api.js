@@ -168,6 +168,45 @@ export const getFreeClass = async () => {
   }
 };
 
+export const getFilter = async (isNewest,isPopular,category,level,type) => {
+  try{
+    const response = await axios.get(`${baseUrl}/course/filter?isNewest=${isNewest}&isPopular=${isPopular}&category=${category}&level=${level}&classType=${type}`)
+    return response.data.data;
+  } catch (error) {
+    return;
+  }
+}
+
+/* ==================== */
+/* === Search Topik === */
+/* ==================== */
+export const getAllSearchTopik = async (keyword) => {
+  try {
+    const response = await axios.get(`${baseUrl}/course/search/${keyword}`);
+    return response.data.data;
+  } catch (error) {
+    return;
+  }
+};
+
+export const getPremiumSearchTopik = async (keyword) => {
+  try {
+    const response = await axios.get(`${baseUrl}/course/search-premium/${keyword}`);
+    return response.data.data;
+  } catch (error) {
+    return;
+  }
+};
+
+export const getFreeSearchTopik = async (keyword) => {
+  try {
+    const response = await axios.get(`${baseUrl}/course/search-free/${keyword}`);
+    return response.data.data;
+  } catch (error) {
+    return;
+  }
+};
+
 /* ================== */
 /* === KELAS SAYA === */
 /* ================== */
@@ -221,6 +260,65 @@ export const getMyFinishClass = async () => {
     toast.error(error.response.data.message);
   }
 }
+
+export const getFilterClassBerjalan = async (newest,popular,progress,category,level) => {
+  try{
+  const token = localStorage.getItem("token");
+  const response = await axios.get(`${baseUrl}/course/filter-porgress?isNewest=${newest}&isPopular=${popular}&progressType=${progress}&category=${category}&level=${level}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  })
+    return response.data.data
+  } catch (error){
+    return;
+  }
+}
+
+/* ==================== */
+/* === Kelas Search === */
+/* ==================== */
+export const searchAllMyClass = async (query) => {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await axios.get(`${baseUrl}/course/search/search-progress-finish/${query}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data.data;
+  } catch (error) {
+    return;
+  }
+};
+export const searchMyProgressClass = async (query) => {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await axios.get(`${baseUrl}/course/search/search-progress/${query}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data.data;
+  } catch (error) {
+    return;
+  }
+};
+
+export const searchMyFinishClass  = async (query) => {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await axios.get(`${baseUrl}/course/search/search-finished/${query}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data.data;
+  } catch (error) {
+    return;
+  }
+};
 
 /* ============ */
 /* === USER === */
