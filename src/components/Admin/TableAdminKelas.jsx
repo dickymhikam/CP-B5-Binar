@@ -5,12 +5,15 @@ import "../../styles/Admin/TableAdmin.css";
 import addBtn from "../../assets/gala_add.svg";
 import ModalTambahKelas from "../Modals/ModalTambahKelas";
 import ModalUbahKelas from "../Modals/ModalUbahKelas";
-import { deleteCourse } from "../../services/apiAdmin";
+import ModalHapusKelas from "../Modals/ModalHapusKelas";
 
 const TableAdminKelas = ({ searchResults }) => {
   const [modalShowTambah, setModalShowTambah] = useState(false);
   const [modalShowUbah, setModalShowUbah] = useState(false);
+  const [modalShowHapus, setModalShowHapus] = useState(false);
   const [dataTable, setDataTable] = useState(null);
+  const [kodeKelas, setKodeKelas] = useState(null);
+  const [namaKelas, setNamaKelas] = useState("");
 
   const formatCurr = (value) => {
     const formattedValue = new Intl.NumberFormat("id-ID", {
@@ -22,19 +25,11 @@ const TableAdminKelas = ({ searchResults }) => {
     return formattedValue;
   };
 
-  const handleDeleteCourse = async (idCourse) => {
-    const validate = window.confirm(
-      "Are you sure you want to delete this Course?"
-    );
-    if (validate) {
-      try {
-        await deleteCourse(idCourse);
-        window.location.reload();
-      } catch (error) {
-        console.error("error deleting course", error);
-      }
-    }
-  };
+  function refreshModalUbah() {
+    setTimeout(function () {
+      location.reload();
+    }, 2500);
+  }
 
   return (
     <>
@@ -98,10 +93,12 @@ const TableAdminKelas = ({ searchResults }) => {
                           Ubah
                         </button>
                         <button
-                          className=" btn btn-delete"
-                          onClick={() =>
-                            handleDeleteCourse(classData.kodeKelas)
-                          }
+                          className=" btn btn-delete "
+                          onClick={() => {
+                            setModalShowHapus(true);
+                            setKodeKelas(classData.kodeKelas);
+                            setNamaKelas(classData.namaKelas);
+                          }}
                         >
                           Hapus
                         </button>
@@ -123,13 +120,19 @@ const TableAdminKelas = ({ searchResults }) => {
         onHide={() => {
           setModalShowUbah(false);
           setDataTable(null);
-          window.location.reload();
+          refreshModalUbah();
         }}
         data={dataTable}
       />
       <ModalTambahKelas
         show={modalShowTambah}
         onHide={() => setModalShowTambah(false)}
+      />
+      <ModalHapusKelas
+        show={modalShowHapus}
+        onHide={() => setModalShowHapus(false)}
+        kode={kodeKelas}
+        namakelas={namaKelas}
       />
     </>
   );

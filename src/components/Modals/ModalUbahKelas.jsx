@@ -173,12 +173,6 @@ const ModalUbahKelas = (props) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  function refreshModalUbah() {
-    setTimeout(function () {
-      location.reload();
-    }, 15000);
-  }
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -194,7 +188,6 @@ const ModalUbahKelas = (props) => {
         chapterResponses: chapterForms,
       };
       await updateCourse(token, kodeKelas, courseData);
-      refreshModalUbah();
     } catch (error) {
       console.error("Error:", error);
     }

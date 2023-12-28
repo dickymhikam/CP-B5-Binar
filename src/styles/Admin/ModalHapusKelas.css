@@ -1,0 +1,19 @@
+.icon-warning {
+  width: 70px;
+}
+.btn-modal-delete {
+  background: #f00;
+  border: #f00;
+  height: 2.5rem;
+}
+.btn-modal-delete:hover {
+  background: #f00;
+  border: #f00;
+}
+.text-validate {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  padding: 1rem 0 1rem 0;
+}
