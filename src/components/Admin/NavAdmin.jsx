@@ -25,7 +25,7 @@ const NavAdmin = ({ query, setQuery, setSearchResults }) => {
 
   const handleSearchClick = () => {
     setQuery(searchInput);
-    setSearchInput("");
+    setSearchInput(searchInput || "");
   };
 
   const handleSearchInputChange = (e) => {
@@ -54,7 +54,7 @@ const NavAdmin = ({ query, setQuery, setSearchResults }) => {
               <Link to={"/admin"} className="offcanvas-body-item">
                 {location.pathname === "/admin" ? (
                   <div className="sidebar-texts">
-                    <p >{buttonText}</p>
+                    <p>{buttonText}</p>
                   </div>
                 ) : (
                   <p>Dashboard</p>
@@ -83,6 +83,11 @@ const NavAdmin = ({ query, setQuery, setSearchResults }) => {
             placeholder="Cari"
             value={searchInput}
             onChange={handleSearchInputChange}
+            onKeyPress={(event) => {
+              if (event.key === "Enter") {
+                handleSearchClick(searchInput);
+              }
+            }}
           />
           <button className="btn-admin-search" onClick={handleSearchClick}>
             <img src={btnsearch} />

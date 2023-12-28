@@ -118,41 +118,78 @@ export const searchManageClass = async (keyword) => {
 /* ========================================= */
 /* === CREATE, UPDATE, AND DELETE COURSE === */
 /* ========================================= */
-export const createCourse = async (file, course) => {
+export const createCourse = async (token, courseData) => {
   try {
-    const token = localStorage.getItem("tokenAdmin");
-    await axios.post(
-      `${baseUrl}/course/create`,
-      file,
+    const response = await axios.post(
+      `${baseUrl}/course/v2/create-course`,
+      courseData,
       {
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
         },
       }
     );
-    const response = await axios.post(
-      `${baseUrl}/course/create`,
-      course,
+    console.log(response);
+    toast.success("Successfully created course");
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getClassForUpdate = async (idCourse) => {
+  try {
+    const token = localStorage.getItem("tokenAdmin");
+    const response = await axios.get(
+      `${baseUrl}/course/get-class-data/${idCourse}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
         },
       }
     );
     return response.data.data;
   } catch (error) {
-    if (error.response) {
-      console.error("Error Response Data:", error.response.data);
-      toast.error(error.response.data.message || "Server error");
-    } else if (error.request) {
-      console.error("Request made but no response received:", error.request);
-      toast.error("No response from server");
-    } else {
-      console.error("Error setting up the request:", error.message);
-      toast.error("Request setup error");
-    }
+    console.error(error);
+  }
+};
+
+export const updateCourse = async (token, idCourse, courseData) => {
+  try {
+    const response = await axios.put(
+      `${baseUrl}/course/v2/update-class-new/${idCourse}`,
+      courseData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    toast.success("Successfully Update course");
+    return response.data;
+  } catch (error) {
+    console.error("Error updating course:", error);
     throw error;
+  }
+};
+
+export const deleteCourse = async (idCourse) => {
+  try {
+    const token = localStorage.getItem("tokenAdmin");
+    const response = await axios.delete(
+      `${baseUrl}/course/delete-course/${idCourse}`,
+      {
+        idCourse: idCourse,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    toast.success("Course deleted successfully");
+    return response.data.data;
+  } catch (error) {
+    if (error.response) {
+      toast.error(error.response.data.message);
+    }
   }
 };

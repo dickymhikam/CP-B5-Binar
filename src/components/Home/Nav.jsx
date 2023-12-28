@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 
 import "../../styles/Nav.css";
+import brand from "../../assets/brand.svg";
 import btnsearch from "../../assets/bx_search-alt.svg";
 import btnNotif from "../../assets/fi_bell.svg";
 import btnUser from "../../assets/fi_user.svg";
@@ -46,7 +47,10 @@ const Nav = () => {
     <>
       <nav className="navbar-wrapper">
         <Link to={"/"} className="text-decoration-none">
-          <div className="navbar-brand"></div>
+          <div className="navbar-brand gap-2">
+            <img src={brand} alt="" />
+            <h5 className="title-brand">LearnX</h5>
+          </div>
         </Link>
         <div className="navbar-search">
           <input

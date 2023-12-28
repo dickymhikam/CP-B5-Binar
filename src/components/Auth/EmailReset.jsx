@@ -1,14 +1,16 @@
 import { useState } from "react";
 
+import { resetEmail } from "../../services/api";
+
 import "../../styles/Auth.css";
-import { resetEmail } from "../../services/api"
+import brand from "../../assets/brand.svg";
 
 const EmailReset = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const handleEmailReset = async (e) => {
     e.preventDefault();
-    resetEmail(email)
+    resetEmail(email);
   };
 
   return (
@@ -37,7 +39,12 @@ const EmailReset = () => {
               </form>
             </div>
           </div>
-          <div className="col-md-5 account-block"></div>
+          <div className="col-md-5 account-block">
+            <div className="navbar-brand gap-2">
+              <img src={brand} alt="" />
+              <h5 className="title-brand">LearnX</h5>
+            </div>
+          </div>
         </div>
       </div>
     </>

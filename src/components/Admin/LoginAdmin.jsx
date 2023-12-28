@@ -3,6 +3,7 @@ import { loginAdmin } from "../../services/apiAdmin";
 import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
 
 import "../../styles/Admin/LoginAdmin.css";
+import brand from "../../assets/brand.svg";
 
 const LoginAdmin = () => {
   const [email, setEmail] = useState("");
@@ -27,7 +28,10 @@ const LoginAdmin = () => {
     <>
       <div className="login-admin-wrapper">
         <div className="login-admin-brand">
-          <div className="navbar-brand"></div>
+          <div className="navbar-brand gap-2">
+            <img src={brand} alt="" />
+            <h5 className="title-brand">LearnX</h5>
+          </div>
         </div>
         <div className="login-admin-body">
           <div className="login-admin-input">

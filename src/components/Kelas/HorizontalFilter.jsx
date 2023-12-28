@@ -15,7 +15,7 @@ import ProgressContext from "../../context/ProgressClass";
 
 const HorizontalFilter = (props) => {
   const [classes, setClasses] = useState([]);
-  const {progress, changeProgress} = useContext(ProgressContext);
+  const { progress, changeProgress } = useContext(ProgressContext);
 
   const fetchDataTopFilter = async (progress) => {
     let fetchedData;
@@ -28,10 +28,10 @@ const HorizontalFilter = (props) => {
           if (props.filteredClass && props.filteredClass.length) {
             fetchedData = props.filteredClass;
             setClasses(fetchedData);
-          }else if (props.query.trim() !== "") {
-            fetchedData = await searchAllMyClass(props.query); 
+          } else if (props.query.trim() !== "") {
+            fetchedData = await searchAllMyClass(props.query);
             setClasses(fetchedData);
-          }else {
+          } else {
             fetchedData = await getAllMyClass();
             setClasses(fetchedData);
           }
@@ -41,9 +41,11 @@ const HorizontalFilter = (props) => {
       } else if (progress === "PROGRESS") {
         try {
           if (props.filteredClass && props.filteredClass.length) {
-            fetchedData = props.filteredClass.filter((classes) => classes.progress === "PROGRESS");
+            fetchedData = props.filteredClass.filter(
+              (classes) => classes.progress === "PROGRESS"
+            );
             setClasses(fetchedData);
-          }else if (props.query.trim() !== "") {
+          } else if (props.query.trim() !== "") {
             fetchedData = await searchMyProgressClass(props.query);
             setClasses(fetchedData);
           } else {
@@ -55,7 +57,9 @@ const HorizontalFilter = (props) => {
         }
       } else if (progress === "FINISH") {
         if (props.filteredClass && props.filteredClass.length) {
-          fetchedData = props.filteredClass.filter((classes) => classes.progress === "FINISH");
+          fetchedData = props.filteredClass.filter(
+            (classes) => classes.progress === "FINISH"
+          );
           setClasses(fetchedData);
         } else if (props.query.trim() !== "") {
           fetchedData = await searchMyFinishClass(props.query);
@@ -66,27 +70,25 @@ const HorizontalFilter = (props) => {
         }
       }
     }
-    setClasses(fetchedData)
-  }
+    setClasses(fetchedData);
+  };
 
   useEffect(() => {
     fetchDataTopFilter(progress);
-  }, [progress, props.clicked, props.filteredClass,props.query]);
+  }, [progress, props.clicked, props.filteredClass, props.query]);
 
   return (
     <>
       <div className="horizontal-filter d-flex align-items-center justify-content-between">
         <button
-          className={`btn ${
-           progress === "ALL" ? "btn-primary all" : "btn"
-          }`}
+          className={`btn ${progress === "ALL" ? "btn-primary all" : "btn"}`}
           onClick={() => changeProgress("ALL")}
         >
           All
         </button>
         <button
           className={`btn ${
-           progress === "PROGRESS"
+            progress === "PROGRESS"
               ? "btn-active w-50 align-items-center text-center"
               : "btn w-50"
           }`}
@@ -96,7 +98,7 @@ const HorizontalFilter = (props) => {
         </button>
         <button
           className={`btn ${
-           progress === "FINISH" ? "btn-primary selesai" : "btn"
+            progress === "FINISH" ? "btn-primary selesai" : "btn"
           }`}
           onClick={() => changeProgress("FINISH")}
         >
@@ -104,20 +106,20 @@ const HorizontalFilter = (props) => {
         </button>
       </div>
       {props.query.trim() !== "" && (
-      <p className="txt-tampil">
-        Menampilkan<span className="txt-keyword ms-1">{`"${props.query}"`}</span>
-      </p>
+        <p className="txt-tampil">
+          Menampilkan
+          <span className="txt-keyword ms-1">{`"${props.query}"`}</span>
+        </p>
       )}
-      <CardKelas classes={classes}/>
+      <CardKelas classes={classes} />
     </>
   );
 };
 
-HorizontalFilter.propTypes={
-  filteredClass:PropTypes.array,
-  clicked:PropTypes.bool,
-  query:PropTypes.string,
+HorizontalFilter.propTypes = {
+  filteredClass: PropTypes.array,
+  clicked: PropTypes.bool,
+  query: PropTypes.string,
 };
-
 
 export default HorizontalFilter;

@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import brand from "../../assets/brand.svg";
 
 const SideBarAdmin = () => {
   const location = useLocation();
@@ -16,7 +17,10 @@ const SideBarAdmin = () => {
   return (
     <>
       <div className="sidebar-admin-wrapper">
-        <div className="navbar-brand"></div>
+        <div className="navbar-brand gap-2">
+          <img src={brand} alt="" />
+          <h5 className="title-brand">LearnX</h5>
+        </div>
         <div className="sidebar-admin-menu">
           <Link to={"/admin"} className="sidebar-admin-item">
             {location.pathname === "/admin" ? (

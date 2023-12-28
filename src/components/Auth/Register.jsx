@@ -2,6 +2,8 @@ import { useState } from "react";
 import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
 
+import brand from "../../assets/brand.svg";
+
 import "../../styles/Auth.css";
 import { registerUser } from "../../services/api";
 
@@ -94,7 +96,10 @@ const Register = () => {
             </div>
           </div>
           <div className="col-md-5 account-block">
-            <div className="navbar-brand" />
+            <div className="navbar-brand gap-2">
+              <img src={brand} alt="" />
+              <h5 className="title-brand">LearnX</h5>
+            </div>
           </div>
         </div>
       </div>

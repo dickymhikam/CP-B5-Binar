@@ -7,7 +7,6 @@ import Accordion from "react-bootstrap/Accordion";
 import { TrashFill } from "react-bootstrap-icons";
 
 import "../../styles/Admin/ModalTambahKelas.css";
-
 import { createCourse } from "../../services/apiAdmin";
 
 const ModalTambahKelas = (props) => {
@@ -38,22 +37,6 @@ const ModalTambahKelas = (props) => {
     harga: 0,
     materi: "",
   });
-
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
-    setSelectedFile(file);
-
-    const formData = new FormData();
-    formData.append("file", file);
-
-    try {
-      // console.log("uploaded file :", file);
-    } catch (error) {
-      console.error("error uploading file", error);
-    }
-  };
 
   const handleChapterInputChange = (event, chapterIndex) => {
     const { name, value } = event.target;
@@ -99,8 +82,6 @@ const ModalTambahKelas = (props) => {
       },
     ]);
   };
-
-  // console.log(chapterForms);
 
   const addVideo = (chapterIndex) => {
     const newChapters = [...chapters];
@@ -148,30 +129,24 @@ const ModalTambahKelas = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const formDataToSend = new FormData();
+      const token = localStorage.getItem("tokenAdmin");
 
-      if (selectedFile) {
-        formDataToSend.append("file", selectedFile);
-      }
-
-      const course = {
+      const courseData = {
         namaKelas: formData.namaKelas,
         kategori: formData.kategori,
         kodeKelas: formData.kodeKelas,
         tipeKelas: formData.tipeKelas,
         level: formData.level,
-        harga: parseInt(formData.harga),
+        harga: formData.harga,
         materi: formData.materi,
         chapterInsertRequests: chapterForms,
       };
-
-      await createCourse(formDataToSend, course);
+      await createCourse(token, courseData);
+      window.location.reload();
     } catch (error) {
       console.error("Error:", error);
     }
   };
-
-  // console.log(formData);
 
   return (
     <Modal
@@ -201,6 +176,7 @@ const ModalTambahKelas = (props) => {
               className="form-modal-admin"
               value={formData.namaKelas}
               onChange={handleInputChange}
+              maxLength={100}
             />
           </Form.Group>
           <Form.Group className="mb-3 " controlId="exampleForm.ControlSelect1">
@@ -212,7 +188,7 @@ const ModalTambahKelas = (props) => {
               name="kategori"
               className="form-modal-admin"
               value={formData.kategori}
-              onChange={handleInputChange}
+              onChange={(event) => handleInputChange(event)}
             >
               <option value="UI/UX Design">UI/UX Design</option>
               <option value="Web Development">Web Development</option>
@@ -224,18 +200,6 @@ const ModalTambahKelas = (props) => {
               <option value="IOS Development">IOS Development</option>
             </Form.Control>
           </Form.Group>
-          <Form.Group className="mb-3 " controlId="exampleForm.ControlInput2">
-            <Form.Label>Upload Gambar Kelas</Form.Label>
-            <Form.Control
-              key={formData.file}
-              type="file"
-              placeholder="Kategori"
-              autoFocus
-              name="file"
-              className="form-modal-admin"
-              onChange={handleFileUpload}
-            />
-          </Form.Group>
           <Form.Group className="mb-3 " controlId="exampleForm.ControlInput3">
             <Form.Label>Kode Kelas</Form.Label>
             <Form.Control
@@ -246,6 +210,7 @@ const ModalTambahKelas = (props) => {
               className="form-modal-admin"
               value={formData.kodeKelas}
               onChange={handleInputChange}
+              maxLength={10}
             />
           </Form.Group>
           <Form.Group className="mb-3 " controlId="exampleForm.ControlSelect2">
@@ -257,10 +222,10 @@ const ModalTambahKelas = (props) => {
               name="tipeKelas"
               className="form-modal-admin"
               value={formData.tipeKelas}
-              onChange={handleInputChange}
+              onChange={(event) => handleInputChange(event)}
             >
               <option value="PREMIUM">Premium</option>
-              <option value="GRATIS">Gratis</option>
+              <option value="FREE">Gratis</option>
             </Form.Control>
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlSelect3">
@@ -272,7 +237,7 @@ const ModalTambahKelas = (props) => {
               name="level"
               className="form-modal-admin"
               value={formData.level}
-              onChange={handleInputChange}
+              onChange={(event) => handleInputChange(event)}
             >
               <option value="BEGINNER">Beginner</option>
               <option value="INTERMEDIATE">Intermediate</option>
@@ -304,6 +269,7 @@ const ModalTambahKelas = (props) => {
               className="form-modal-admin-materi"
               value={formData.materi}
               onChange={handleInputChange}
+              maxLength={1000}
             />
           </Form.Group>
           {chapters.map((chapter, chapterIndex) => (
@@ -330,6 +296,7 @@ const ModalTambahKelas = (props) => {
                     onChange={(event) =>
                       handleChapterInputChange(event, chapterIndex)
                     }
+                    maxLength={30}
                   />
                 </Form.Group>
                 <Accordion defaultActiveKey="0">
@@ -365,6 +332,7 @@ const ModalTambahKelas = (props) => {
                                 videoIndex
                               )
                             }
+                            maxLength={40}
                           />
                         </Form.Group>
                         <Form.Group

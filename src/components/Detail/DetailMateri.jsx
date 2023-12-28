@@ -50,7 +50,11 @@ const DetailMateri = ({ courseDetail, onChapterChange, onVideoChange }) => {
                   <p className="text-title">{video.judulVideo}</p>
                 </div>
                 <div className="button-materi">
-                  {video && video.premium ? (
+                  {video && video.linkVideo ? (
+                    <div onClick={() => handleVideoClick(index, videoIndex)}>
+                      <PlayCircleFill className="icon-play" />
+                    </div>
+                  ) : (
                     <>
                       <button
                         className="border-0 bg-transparent"
@@ -72,10 +76,6 @@ const DetailMateri = ({ courseDetail, onChapterChange, onVideoChange }) => {
                         />
                       )}
                     </>
-                  ) : (
-                    <div onClick={() => handleVideoClick(index, videoIndex)}>
-                      <PlayCircleFill className="icon-play" />
-                    </div>
                   )}
                 </div>
               </div>

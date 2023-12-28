@@ -70,7 +70,11 @@ const MateriOffCanvas = ({ courseDetail, onChapterChange, onVideoChange }) => {
                       <p className="text-title">{video.judulVideo}</p>
                     </div>
                     <div className="button-materi">
-                      {video && video.premium ? (
+                      {video && video.linkVideo ? (
+                        <div onClick={() => handleVideoClick(index, videoIndex)}>
+                          <PlayCircleFill className="icon-play" />
+                        </div>
+                      ) : (
                         <>
                           <button
                             className="bg-transparent border-0"
@@ -92,10 +96,6 @@ const MateriOffCanvas = ({ courseDetail, onChapterChange, onVideoChange }) => {
                             />
                           )}
                         </>
-                      ) : (
-                        <div onClick={() => handleVideoClick(index, videoIndex)}>
-                          <PlayCircleFill className="icon-play" />
-                        </div>
                       )}
                     </div>
                   </div>

@@ -5,10 +5,12 @@ import "../../styles/Admin/TableAdmin.css";
 import addBtn from "../../assets/gala_add.svg";
 import ModalTambahKelas from "../Modals/ModalTambahKelas";
 import ModalUbahKelas from "../Modals/ModalUbahKelas";
+import { deleteCourse } from "../../services/apiAdmin";
 
 const TableAdminKelas = ({ searchResults }) => {
   const [modalShowTambah, setModalShowTambah] = useState(false);
   const [modalShowUbah, setModalShowUbah] = useState(false);
+  const [dataTable, setDataTable] = useState(null);
 
   const formatCurr = (value) => {
     const formattedValue = new Intl.NumberFormat("id-ID", {
@@ -18,6 +20,20 @@ const TableAdminKelas = ({ searchResults }) => {
       maximumFractionDigits: 0,
     }).format(value);
     return formattedValue;
+  };
+
+  const handleDeleteCourse = async (idCourse) => {
+    const validate = window.confirm(
+      "Are you sure you want to delete this Course?"
+    );
+    if (validate) {
+      try {
+        await deleteCourse(idCourse);
+        window.location.reload();
+      } catch (error) {
+        console.error("error deleting course", error);
+      }
+    }
   };
 
   return (
@@ -74,11 +90,21 @@ const TableAdminKelas = ({ searchResults }) => {
                       <div className="btn-wrapper d-flex gap-2">
                         <button
                           className=" btn btn-create "
-                          onClick={() => setModalShowUbah(true)}
+                          onClick={() => {
+                            setModalShowUbah(true);
+                            setDataTable(searchResults[index].kodeKelas);
+                          }}
                         >
                           Ubah
                         </button>
-                        <button className=" btn btn-delete">Hapus</button>
+                        <button
+                          className=" btn btn-delete"
+                          onClick={() =>
+                            handleDeleteCourse(classData.kodeKelas)
+                          }
+                        >
+                          Hapus
+                        </button>
                       </div>
                     </td>
                   </tr>
@@ -94,7 +120,12 @@ const TableAdminKelas = ({ searchResults }) => {
       </div>
       <ModalUbahKelas
         show={modalShowUbah}
-        onHide={() => setModalShowUbah(false)}
+        onHide={() => {
+          setModalShowUbah(false);
+          setDataTable(null);
+          window.location.reload();
+        }}
+        data={dataTable}
       />
       <ModalTambahKelas
         show={modalShowTambah}
