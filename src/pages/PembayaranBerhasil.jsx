@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import fisuccess from "../assets/payment-success.png";
 import Nav from "../components/Home/Nav";
@@ -35,7 +35,9 @@ const PaySuccess = () => {
             onHide={() => setModalShowOnboarding(false)}
             kode={kode}
           />
-          <p className="footer-text">Kembali Ke Beranda</p>
+          <p className="footer-text">
+            <Link to={"/"} className="text-decoration-none">Kembali Ke Beranda</Link>
+          </p>
         </div>
       </div>
       <NavbarBottom />

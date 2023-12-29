@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import master1 from "../assets/mastercard1.svg";
@@ -17,16 +17,15 @@ import { getDetailCourse, payCourse, createOrder } from "../services/api";
 
 const PembayaranDetail = () => {
   const [activeAccordion, setActiveAccordion] = useState("CREDIT_CARD");
-  const { kodeKelas } = useParams();
   const [courseDetail, setCourseDetail] = useState(null);
   const [selectedCardNumber, setSelectedCardNumber] = useState("");
   const [selectedCardType, setSelectedCardType] = useState("");
   const [isCardNumberFilled, setIsCardNumberFilled] = useState(false);
-  const [orderCode, setOrderCode] = useState(null);
   const [orderDataCourse, setOrderDataCourse] = useState(null);
-
+  const [orderCode, setOrderCode] = useState(null);
+  
+  const { kodeKelas, kodeOrder } = useParams();
   const navigate = useNavigate();
-
   const formRef = useRef(null);
 
   const handleCardNumberChange = (event) => {
@@ -54,7 +53,7 @@ const PembayaranDetail = () => {
           setCourseDetail(courseData);
           
           const orderData = await createOrder(kodeKelas);
-          setOrderCode(orderData.orderCode);
+          setOrderCode(kodeOrder);
           setOrderDataCourse(orderData);
           handleAccordionClick("CREDIT_CARD");
         } catch (error) {
@@ -65,7 +64,7 @@ const PembayaranDetail = () => {
 
     fetchData();
   }, [kodeKelas]);
-
+  
   const handleBayarKelas = async (event) => {
     event.preventDefault();
 
@@ -323,15 +322,13 @@ const PembayaranDetail = () => {
                     </div>
                   </div>
                 </div>
-                <Link to={`/payment-success/${courseDetail?.kodeKelas}`}>
-                  <button
-                    className="btn btn-bayar"
-                    type="submit"
-                    onClick={handleBayarKelas}
+                <button
+                  className="btn btn-bayar"
+                  type="submit"
+                  onClick={handleBayarKelas}
                   >
-                    Bayar dan Ikuti Kelas Selamanya <img src={arah} alt="" />
-                  </button>
-                </Link>
+                  Bayar dan Ikuti Kelas Selamanya<img src={arah} alt="" />
+                </button>
               </div>
             </div>
           </div>

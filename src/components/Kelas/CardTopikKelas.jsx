@@ -58,7 +58,7 @@ const CardTopikKelas = ({ courses }) => {
                       setModalShowBeli(true);
                     }}
                   >
-                    <img src={permata} /> {`Beli ${course.tipeKelas}`}
+                    <img src={permata} /> {course.tipeKelas}
                   </button>
                   {modalShowBeli && (
                     <ModalBeliSekarang

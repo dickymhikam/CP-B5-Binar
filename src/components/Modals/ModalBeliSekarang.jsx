@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import PropTypes from "prop-types";
 
 import book from "../../assets/clarity_book-line.svg";
 import star from "../../assets/ic_round-star.svg";
@@ -11,16 +11,22 @@ import badge from "../../assets/mdi_badge-outline.svg";
 import arrow from "../../assets/carbon_next-filled.svg";
 
 import "../../styles/ModalBeliSekarang.css";
-
-import { createOrder } from "../../services/api";
+import { getPaymentHistory, createOrder, payCourse } from "../../services/api";
 
 const BeliSekarang = (props) => {
   const [courseDetail, setCourseDetail] = useState(null);
-  const [orderCode, setOrderCode] = useState(null);
-
+  const [paymentHistory, setPaymentHistory] = useState([]);
+  const navigate = useNavigate();
+  
   useEffect(() => {
     setCourseDetail(props.course);
   }, [props.course]);
+
+  useEffect(() => {
+    getPaymentHistory().then((result) => {
+      setPaymentHistory(result);
+    });
+  }, []);
 
   const formatCurr = (value) => {
     const formattedValue = new Intl.NumberFormat("id-ID", {
@@ -32,10 +38,49 @@ const BeliSekarang = (props) => {
     return formattedValue;
   };
 
-  const handleBeliKelas = async (kode) => {
-    setOrderCode(await createOrder(kode));
+  const isCoursePaid = () => {
+    return (
+      paymentHistory.find(
+        (payment) =>
+          payment.kodeKelas === courseDetail?.kodeKelas &&
+          payment.completePaid === true
+      ) !== undefined
+    );
   };
 
+  const handlePaid = () => {
+    navigate(`/detail-kelas/${courseDetail?.kodeKelas}`);
+  }
+
+  const handleBeliKelas = async (kode) => {
+    try {
+      const order = await createOrder(kode);
+      if (order) {
+        navigate(`/detail-pembayaran/${courseDetail?.kodeKelas}/${order.orderCode}`)
+      }
+    } catch (error) {
+      throw error
+    }
+  };
+
+  const handleMulaiBelajar = async (kode) => {
+    try {
+      const orderFree = await createOrder(kode);
+      if (orderFree) {
+        const paymentResponse = await payCourse(
+          orderFree.orderCode,
+          2132131321312,
+          "BANK_TRANSFER"
+        );
+        if (paymentResponse) {
+          navigate(`/onboarding/${courseDetail?.kodeKelas}`)
+        }
+      }
+    } catch (error) {
+      throw error
+    }
+  };
+  
   return (
     <Modal
       {...props}
@@ -92,20 +137,37 @@ const BeliSekarang = (props) => {
         </div>
       </Modal.Body>
       <Modal.Footer className="modal-footer-beli d-flex justify-content-center border-0 ">
-        <Link
-          to={`/detail-pembayaran/${courseDetail?.kodeKelas}/${orderCode}`}
-          className="text-decoration-none"
-        >
+        {isCoursePaid() ? (
           <Button
-            onClick={() => {
-              props.onHide();
-              handleBeliKelas(courseDetail?.kodeKelas);
-            }}
+            onClick={handlePaid}
             className="btn-buy-kelas-modal d-flex justify-content-center align-items-center gap-2"
           >
-            Beli Sekarang <img src={arrow} alt="" />
+            Kelas
           </Button>
-        </Link>
+        ) : (
+          <>
+            {courseDetail && courseDetail.tipeKelas === "FREE" ? (
+              <Button
+                onClick={() => {
+                  handleMulaiBelajar(courseDetail?.kodeKelas);
+                }}
+                className="btn-buy-kelas-modal d-flex justify-content-center align-items-center gap-2"
+              >
+                Mulai Belajar
+              </Button>
+            ) : (
+              <Button
+                onClick={() => {
+                  props.onHide();
+                  handleBeliKelas(courseDetail?.kodeKelas);
+                }}
+                className="btn-buy-kelas-modal d-flex justify-content-center align-items-center gap-2"
+              >
+                Beli Sekarang <img src={arrow} alt="" />
+              </Button>
+            )}
+          </>
+        )}
       </Modal.Footer>
     </Modal>
   );

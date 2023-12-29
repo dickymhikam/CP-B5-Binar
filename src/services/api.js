@@ -487,7 +487,6 @@ export const createOrder = async (courseCode) => {
         },
       }
     );
-    toast.success(response.message);
     return response.data.data;
   } catch (error) {
     toast.error(error.message);

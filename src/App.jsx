@@ -13,6 +13,7 @@ import TopikKelas from "./pages/TopikKelas";
 import DetailKelas from "./pages/DetailKelas";
 import PembayaranDetail from "./pages/PembayaranDetail";
 import PaySuccess from "./pages/PembayaranBerhasil";
+import OnboardingFree from "./pages/OnboardingFree";
 import ProfilSaya from "./pages/ProfilSaya";
 import UbahPassword from "./pages/UbahPassword";
 import RiwayatPembayaran from "./pages/RiwayatPembayaran";
@@ -38,6 +39,7 @@ function App() {
           <Route path="/detail-kelas/:kode" element={<DetailKelas />} />
           <Route path="/detail-pembayaran/:kodeKelas/:kodeOrder" element={<PembayaranDetail />} />
           <Route path="/payment-success/:kode" element={<PaySuccess />} />
+          <Route path="/onboarding/:kodeKelas" element={<OnboardingFree />} />
           <Route path="/profil-saya" element={<ProfilSaya />} />
           <Route path="/ubah-password" element={<UbahPassword />} />
           <Route path="/riwayat-pembayaran" element={<RiwayatPembayaran />} />
