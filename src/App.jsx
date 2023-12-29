@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
+/* User */
 import Home from "./pages/Home";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
@@ -19,6 +20,7 @@ import UbahPassword from "./pages/UbahPassword";
 import RiwayatPembayaran from "./pages/RiwayatPembayaran";
 import Notifikasi from "./pages/Notifikasi";
 
+/* Admin */
 import LoginAdmin from "./components/Admin/LoginAdmin";
 import DashboardAdmin from "./pages/Admin/DashboardAdmin";
 import KelasAdmin from "./pages/Admin/KelasAdmin";
