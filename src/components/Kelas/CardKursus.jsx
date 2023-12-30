@@ -10,12 +10,14 @@ import badge from "../../assets/mdi_badge-outline.svg";
 import "../../styles/CardKursus.css";
 import ModalBeliSekarang from "../Modals/ModalBeliSekarang";
 import { getPopularCourse } from "../../services/api";
+import { toast } from "react-toastify";
 
 const CardKursus = () => {
   const [coursePopular, setCoursePopular] = useState([]);
   const [modalShowBeli, setModalShowBeli] = useState(false);
   const [courseDetail, setCourseDetail] = useState(null);
   const [activeCategory, setActiveCategory] = useState("All");
+  const [userHasToken, setUserHasToken] = useState(null);
 
   useEffect(() => {
     getPopularCourse("All")
@@ -25,7 +27,23 @@ const CardKursus = () => {
       .catch((error) => {
         console.error("Error fetching course list:", error);
       });
+
+    const token = localStorage.getItem("token");
+    if (token) {
+      setUserHasToken(true);
+    } else {
+      setUserHasToken(false);
+    }
   }, []);
+  
+  const handleBuyButtonClick = (course) => {
+    if (!userHasToken) {
+      toast.error("Silahkan Login Terlebih dahulu");
+    } else {
+      setCourseDetail(course);
+      setModalShowBeli(true);
+    }
+  };
 
   const formatCurr = (value) => {
     const formattedValue = new Intl.NumberFormat('id-ID', {
@@ -140,10 +158,7 @@ const CardKursus = () => {
                     <div className="btn-wrapper">
                       <button
                         className="btn-buy"
-                        onClick={() => {
-                          setCourseDetail(course);
-                          setModalShowBeli(true);
-                        }}
+                        onClick={() => handleBuyButtonClick(course)}
                       >
                         <img src={permata} />{`Beli ${formatCurr(course.harga)}`}
                       </button>

@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import book from "../../assets/book.svg";
 import star from "../../assets/ic_round-star.svg";
@@ -8,9 +9,25 @@ import time from "../../assets/ri_time-fill.svg";
 import badge from "../../assets/mdi_badge-outline.svg";
 import ModalBeliSekarang from "../Modals/ModalBeliSekarang";
 
+
 const CardTopikKelas = ({ courses }) => {
   const [modalShowBeli, setModalShowBeli] = useState(false);
   const [courseDetail, setCourseDetail] = useState(null);
+  const [userHasToken, setUserHasToken] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setUserHasToken(token);
+  }, []);
+
+  const handleBuyButtonClick = (course) => {
+    if (!userHasToken) {
+      toast.error("Silahkan Login Terlebih dahulu");
+    } else {
+      setCourseDetail(course);
+      setModalShowBeli(true);
+    }
+  };
 
   return (
     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 mt-3 card-kursus-wrapper">
@@ -53,10 +70,7 @@ const CardTopikKelas = ({ courses }) => {
                 <div className="btn-wrapper">
                   <button
                     className="btn-buy"
-                    onClick={() => {
-                      setCourseDetail(course);
-                      setModalShowBeli(true);
-                    }}
+                    onClick={() => handleBuyButtonClick(course)}
                   >
                     <img src={permata} /> {course.tipeKelas}
                   </button>
