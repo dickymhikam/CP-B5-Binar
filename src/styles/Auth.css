@@ -33,6 +33,7 @@
 
 .body-txt-lupa{
   color:#6148FF;
+  cursor: pointer;
 }
 
 .input-form-user::placeholder {
@@ -91,4 +92,9 @@
   .account-block {
     display: none;
   }
+
+  .auth-form-wrapper{
+    width: 80%;
+  }
+ 
 }

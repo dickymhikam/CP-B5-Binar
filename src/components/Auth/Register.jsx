@@ -87,8 +87,9 @@ const Register = () => {
                   </button>
                 </div>
                 <p className=" text-muted text-center">
-                  Sudah punya akun?
+                  Sudah punya akun? {""}
                   <a href="/Login" className="text-decoration-none a ">
+                    {""}
                     Masuk di sini
                   </a>
                 </p>
