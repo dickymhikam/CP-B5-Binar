@@ -14,10 +14,9 @@ import { toast } from "react-toastify";
 
 const CardKursus = () => {
   const [coursePopular, setCoursePopular] = useState([]);
-  const [modalShowBeli, setModalShowBeli] = useState(false);
-  const [courseDetail, setCourseDetail] = useState(null);
   const [activeCategory, setActiveCategory] = useState("All");
   const [userHasToken, setUserHasToken] = useState(null);
+  const [showModalIndex, setShowModalIndex] = useState(null);
 
   useEffect(() => {
     getPopularCourse("All")
@@ -35,22 +34,28 @@ const CardKursus = () => {
       setUserHasToken(false);
     }
   }, []);
-  
-  const handleBuyButtonClick = (course) => {
+
+  const handleBuyButtonClick = (kodeKelas) => {
     if (!userHasToken) {
       toast.error("Silahkan Login Terlebih dahulu");
     } else {
-      setCourseDetail(course);
-      setModalShowBeli(true);
+      const index = coursePopular.findIndex(
+        (course) => course.kodeKelas === kodeKelas
+      );
+      setShowModalIndex(index);
     }
   };
 
+  const handleCloseModal = () => {
+    setShowModalIndex(null);
+  };
+
   const formatCurr = (value) => {
-    const formattedValue = new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
+    const formattedValue = new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
       minimumFractionDigits: 0,
-      maximumFractionDigits: 0
+      maximumFractionDigits: 0,
     }).format(value);
     return formattedValue;
   };
@@ -58,7 +63,7 @@ const CardKursus = () => {
   const HandlerPopular = async (q) => {
     setCoursePopular(await getPopularCourse(q));
     setActiveCategory(q);
-  }
+  };
 
   return (
     <div>
@@ -76,112 +81,137 @@ const CardKursus = () => {
               className={`btn-class mt-1 mb-2 ${
                 activeCategory === "All" ? "btn-active" : "btn"
               }`}
-            >All</button>
+            >
+              All
+            </button>
             <button
               onClick={() => HandlerPopular("Data Science")}
               className={`btn-class mt-1 mb-2 ${
                 activeCategory === "Data Science" ? "btn-active" : "btn"
               }`}
-            >Data Science</button>
+            >
+              Data Science
+            </button>
             <button
               onClick={() => HandlerPopular("UI/UX Design")}
               className={`btn-class mt-1 mb-2 ${
                 activeCategory === "UI/UX Design" ? "btn-active" : "btn"
               }`}
-            >UI/UX Design</button>
+            >
+              UI/UX Design
+            </button>
             <button
               onClick={() => HandlerPopular("Android Development")}
               className={`btn-class mt-1 mb-2 ${
                 activeCategory === "Android Development" ? "btn-active" : "btn"
               }`}
-            >Android Development</button>
+            >
+              Android Development
+            </button>
             <button
               onClick={() => HandlerPopular("Web Development")}
               className={`btn-class mt-1 mb-2 ${
                 activeCategory === "Web Development" ? "btn-active" : "btn"
               }`}
-            >Web Development</button>
+            >
+              Web Development
+            </button>
             <button
               onClick={() => HandlerPopular("IOS Development")}
               className={`btn-class mt-1 mb-2 ${
                 activeCategory === "IOS Development" ? "btn-active" : "btn"
               }`}
-            >IOS Development</button>
+            >
+              IOS Development
+            </button>
             <button
               onClick={() => HandlerPopular("Business Intelligence")}
               className={`btn-class mt-1 mb-2 ${
-                activeCategory === "Business Intelligence" ? "btn-active" : "btn"
+                activeCategory === "Business Intelligence"
+                  ? "btn-active"
+                  : "btn"
               }`}
-            >Business Intelligence</button>
+            >
+              Business Intelligence
+            </button>
           </div>
         </div>
       </div>
 
       <div className="type-container-card">
         <div className="row row-cols-1 row-cols-md-3 row-cols-lg-3  card-kursus-wrapper">
-          {coursePopular && coursePopular.map((course, index) => ( 
-            <div key={index} className="col px-0 d-flex justify-content-center my-2 card-kursus-home">
-              <div className="card ">
-                <Link to={`detail-kelas/${course?.kodeKelas}`} className="text-decoration-none">
-                  <img src={course.imageUrl} className="card-img-top" alt="..." />
-                </Link>
-                <div className="card-body">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <h5 className="card-title text-truncate">
-                     {course.kategori} 
-                    </h5>
-                    <div className="icon-star">
-                      <img src={star} />
-                      <p>{course.rating}</p>
+          {coursePopular &&
+            coursePopular.map((course, index) => (
+              <div
+                key={index}
+                className="col px-0 d-flex justify-content-center my-2 card-kursus-home"
+              >
+                <div className="card ">
+                  <Link
+                    to={`detail-kelas/${course?.kodeKelas}`}
+                    className="text-decoration-none"
+                  >
+                    <img
+                      src={course.imageUrl}
+                      className="card-img-top"
+                      alt="..."
+                    />
+                  </Link>
+                  <div className="card-body">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <h5 className="card-title text-truncate">
+                        {course.kategori}
+                      </h5>
+                      <div className="icon-star">
+                        <img src={star} />
+                        <p>{course.rating}</p>
+                      </div>
                     </div>
-                  </div>
 
-                  <p className="about-class mb-0 text-truncate">
-                    {course.namaKelas}
-                  </p>
-                  <div className=" pb-0  w-100">
-                    <p className="mentor mb-md-0">{course.author}</p>
-                    <div className="writing-learn d-flex gap-4">
-                      <p className="writing-level">
-                        <img src={badge} />
-                       {`${course.level} Level`}
-                      </p>
-                      <p>
-                        <img src={book} />
-                        {`${course.modul} Modul`}
-                      </p>
-                      <p>
-                        <img src={time} />
-                        {`${course.time} Menit`}
-                      </p>
-                    </div>
-                    <div className="btn-wrapper">
-                      <button
-                        className="btn-buy"
-                        onClick={() => handleBuyButtonClick(course)}
-                      >
-                        <img src={permata} />{`Beli ${formatCurr(course.harga)}`}
-                      </button>
-                      {modalShowBeli && (
-                        <ModalBeliSekarang
-                          show={modalShowBeli}
-                          onHide={() => {
-                            setCourseDetail(null);
-                            setModalShowBeli(false);
-                          }}
-                          course={courseDetail}
-                        />
-                      )}
+                    <p className="about-class mb-0 text-truncate">
+                      {course.namaKelas}
+                    </p>
+                    <div className=" pb-0  w-100">
+                      <p className="mentor mb-md-0">{course.author}</p>
+                      <div className="writing-learn d-flex gap-4">
+                        <p className="writing-level">
+                          <img src={badge} />
+                          {`${course.level} Level`}
+                        </p>
+                        <p>
+                          <img src={book} />
+                          {`${course.modul} Modul`}
+                        </p>
+                        <p>
+                          <img src={time} />
+                          {`${course.time} Menit`}
+                        </p>
+                      </div>
+                      <div className="btn-wrapper">
+                        <button
+                          className="btn-buy"
+                          onClick={() => handleBuyButtonClick(course.kodeKelas)}
+                        >
+                          <img src={permata} />
+                          {`Beli ${formatCurr(course.harga)}`}
+                        </button>
+                        {showModalIndex === index && (
+                          <ModalBeliSekarang
+                            show={true}
+                            onHide={handleCloseModal}
+                            course={course}
+                          />
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 
-export default CardKursus
+export default CardKursus;
