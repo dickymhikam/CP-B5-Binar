@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Accordion from "react-bootstrap/Accordion";
-import { TrashFill } from "react-bootstrap-icons";
 
 import "../../styles/Admin/ModalTambahKelas.css";
 import { createCourse } from "../../services/apiAdmin";
