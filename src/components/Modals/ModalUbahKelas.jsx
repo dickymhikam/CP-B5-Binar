@@ -140,34 +140,6 @@ const ModalUbahKelas = (props) => {
     });
   };
 
-  const removeChapter = (chapterIndex) => {
-    const newChapters = chapters.filter((_, index) => index !== chapterIndex);
-    setChapters(newChapters);
-  };
-
-  const removeVideo = (chapterIndex, videoIndex) => {
-    setChapters((prevChapters) => {
-      const newChapters = [...prevChapters];
-      newChapters[chapterIndex] = {
-        ...newChapters[chapterIndex],
-        videoResponseData: newChapters[chapterIndex].videoResponseData.filter(
-          (_, index) => index !== videoIndex
-        ),
-      };
-      return newChapters;
-    });
-    setChapterForms((prevChapterForms) => {
-      const newChapterForms = [...prevChapterForms];
-      newChapterForms[chapterIndex] = {
-        ...newChapterForms[chapterIndex],
-        videoResponseData: newChapterForms[
-          chapterIndex
-        ].videoResponseData.filter((_, index) => index !== videoIndex),
-      };
-      return newChapterForms;
-    });
-  };
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -363,12 +335,6 @@ const ModalUbahKelas = (props) => {
           {chapters.map((chapter, chapterIndex) => (
             <div className="chapter-wrapper mb-3" key={chapterIndex}>
               <div className="container p-4">
-                <div className="d-flex justify-content-end">
-                  <TrashFill
-                    className="text-danger me-0"
-                    onClick={() => removeChapter(chapterIndex)}
-                  />
-                </div>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput5"
@@ -472,14 +438,6 @@ const ModalUbahKelas = (props) => {
                               <option value={true}>Premium</option>
                             </Form.Control>
                           </Form.Group>
-                          <Button
-                            className="btn-hapus-video mx-auto"
-                            onClick={() =>
-                              removeVideo(chapterIndex, videoIndex)
-                            }
-                          >
-                            Hapus Video
-                          </Button>
                         </Accordion.Body>
                       </Accordion.Item>
                     ))}

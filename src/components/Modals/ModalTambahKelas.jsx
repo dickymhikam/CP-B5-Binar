@@ -110,17 +110,6 @@ const ModalTambahKelas = (props) => {
     setChapterForms(newChapterForms);
   };
 
-  const removeVideo = (chapterIndex, videoIndex) => {
-    const newChapters = [...chapters];
-    newChapters[chapterIndex].insertVideoRequests.splice(videoIndex, 1);
-    setChapters(newChapters);
-  };
-
-  const removeChapter = (chapterIndex) => {
-    const newChapters = chapters.filter((_, index) => index !== chapterIndex);
-    setChapters(newChapters);
-  };
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
@@ -275,12 +264,6 @@ const ModalTambahKelas = (props) => {
           {chapters.map((chapter, chapterIndex) => (
             <div className="chapter-wrapper mb-3" key={chapterIndex}>
               <div className="container p-4">
-                <div className="d-flex justify-content-end">
-                  <TrashFill
-                    className="text-danger me-0"
-                    onClick={() => removeChapter(chapterIndex)}
-                  />
-                </div>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput5"
@@ -387,12 +370,6 @@ const ModalTambahKelas = (props) => {
                             <option value={true}>Premium</option>
                           </Form.Control>
                         </Form.Group>
-                        <Button
-                          className="btn-hapus-video mx-auto"
-                          onClick={() => removeVideo(chapterIndex, videoIndex)}
-                        >
-                          Hapus Video
-                        </Button>
                       </Accordion.Body>
                     </Accordion.Item>
                   ))}

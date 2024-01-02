@@ -82,6 +82,12 @@
   cursor: default;
 }
 
+.resend{
+  text-decoration: none;
+  color: blue;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 767px) {
   .OTP-brand {
     display: none;

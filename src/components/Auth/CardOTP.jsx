@@ -116,7 +116,7 @@ const CardOTP = ({ email }) => {
                 <p className="text-center">
                     Kirim Ulang OTP dalam {Math.floor(resendTimer / 60)} menit {resendTimer % 60} detik  <br />
                     {resendTimer === 0 && (
-                        <a onClick={handleResendOTP}  style={{ textDecoration: 'none',color : 'blue'}}>
+                        <a className='resend' onClick={handleResendOTP}>
                         Kirim Ulang
                         </a>
                     )}
